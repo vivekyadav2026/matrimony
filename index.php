@@ -85,44 +85,6 @@ $success_stories = $stmtStories->fetchAll();
     </div>
 </section>
 
-<!-- Petal Animation Script for Hero Banner -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const heroBanner = document.querySelector('.hero-banner');
-    if (heroBanner) {
-        const petalCount = 30; // Number of petals falling
-        for (let i = 0; i < petalCount; i++) {
-            createPetal(heroBanner);
-        }
-    }
-
-    function createPetal(container) {
-        const petal = document.createElement('div');
-        petal.classList.add('petal');
-        
-        // Randomize size, position, and animation duration for organic look
-        const size = Math.random() * 15 + 10; // 10px to 25px
-        const leftPos = Math.random() * 100; // 0% to 100% width
-        const animDuration = Math.random() * 5 + 5; // 5s to 10s
-        const animDelay = Math.random() * 5; // 0s to 5s delay
-
-        // Apply styles
-        petal.style.width = size + 'px';
-        petal.style.height = size + 'px';
-        petal.style.left = leftPos + '%';
-        petal.style.animationDuration = animDuration + 's';
-        petal.style.animationDelay = animDelay + 's';
-        
-        // Randomly tint some petals slightly orange/gold for Indian theme
-        if (Math.random() > 0.7) {
-            petal.style.backgroundColor = '#f59e0b'; // Marigold color
-        }
-
-        container.appendChild(petal);
-    }
-});
-</script>
-
 <!-- Premium Profiles Section -->
 <section class="section">
     <div class="container">
@@ -340,7 +302,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <div style="position: absolute; right: -10%; top: -20%; width: 50%; height: 140%; background: radial-gradient(circle, rgba(234,179,8,0.15) 0%, rgba(15,23,42,0) 70%);"></div>
     <div class="container">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
-            <div data-aos="fade-right">
+            <div>
                 <span style="display: inline-block; background: rgba(234, 179, 8, 0.2); color: var(--secondary-gold); font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 20px; margin-bottom: 15px; letter-spacing: 0.5px; text-transform: uppercase;"><i class="fa fa-gem"></i> VIP Service</span>
                 <h2 style="font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 20px;">
                     Assisted Matchmaking for Premium Families
@@ -355,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 </ul>
                 <a href="contact.php" class="btn-red" style="padding: 12px 35px; font-size: 15px; border-radius: 25px; display: inline-flex; align-items: center; gap: 8px;">Request VIP Callback <i class="fa fa-arrow-right"></i></a>
             </div>
-            <div data-aos="fade-left" style="position: relative;">
+            <div style="position: relative;">
                 <img src="images/assisted_matchmaking.jpg" alt="Assisted Matchmaking" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 4px solid rgba(255,255,255,0.1);">
             </div>
         </div>
@@ -406,10 +368,10 @@ document.addEventListener("DOMContentLoaded", function() {
 <section style="background-color: #fff; padding: 70px 20px; overflow: hidden; border-top: 1px solid #e2e8f0;">
     <div class="container">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; background: linear-gradient(135deg, #fef2f2 0%, #fff 100%); padding: 40px; border-radius: 24px; box-shadow: 0 10px 40px rgba(204,30,43,0.05); border: 1px solid #fee2e2;">
-            <div data-aos="fade-right" style="position: relative; text-align: center;">
+            <div style="position: relative; text-align: center;">
                 <img src="images/matrimony_app_mockup.jpg" alt="Mobile Friendly Matrimony" style="width: 85%; max-width: 400px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border: 8px solid #fff;">
             </div>
-            <div data-aos="fade-left">
+            <div>
                 <span style="display: inline-block; background: #fff; border: 1px solid #e2e8f0; color: var(--primary-red); font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 20px; margin-bottom: 15px; letter-spacing: 0.5px; text-transform: uppercase;"><i class="fa fa-mobile-alt"></i> Mobile Optimized</span>
                 
                 <h2 style="font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 800; color: #0f172a; line-height: 1.2; margin-bottom: 20px;">

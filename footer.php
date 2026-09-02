@@ -118,39 +118,5 @@
         }
     });
     </script>
-
-    <!-- AOS Animation Library JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Auto-inject AOS attributes to standard elements across all pages
-            const animatedClasses = [
-                '.section-title', '.section-subtitle', '.profile-card', 
-                '.story-card-modern', '.service-card-yellow', 'details', 
-                '.search-box', '.hero-title', '.hero-subtitle', 
-                '.clients-wrapper', '.blessings-card', '.form-group'
-            ];
-            
-            animatedClasses.forEach(selector => {
-                const elements = document.querySelectorAll(selector);
-                elements.forEach((el, index) => {
-                    if (!el.hasAttribute('data-aos')) {
-                        el.setAttribute('data-aos', 'fade-up');
-                        el.setAttribute('data-aos-duration', '800');
-                        // Stagger effect for multiple items like cards
-                        if (index > 0 && index < 4 && (selector === '.profile-card' || selector === '.story-card-modern' || selector === '.service-card-yellow' || selector === 'details')) {
-                            el.setAttribute('data-aos-delay', (index * 100).toString());
-                        }
-                    }
-                });
-            });
-
-            // Initialize AOS
-            AOS.init({
-                once: true, // whether animation should happen only once - while scrolling down
-                offset: 50, // offset (in px) from the original trigger point
-            });
-        });
-    </script>
 </body>
 </html>
