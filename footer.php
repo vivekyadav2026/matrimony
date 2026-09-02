@@ -39,6 +39,13 @@
         </div>
     </footer>
 
+    <!-- Full Image Preview Lightbox Modal -->
+    <div id="imagePreviewModal" style="display:none; position:fixed; z-index:9999; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(5px); align-items:center; justify-content:center; flex-direction:column; padding:20px;">
+        <span id="closePreviewModal" style="position:absolute; top:20px; right:25px; color:#fff; font-size:35px; cursor:pointer; font-weight:bold; line-height:1;">&times;</span>
+        <img id="previewModalImage" src="" alt="Full Preview" style="max-width:90%; max-height:85vh; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.5); object-fit:contain; border:3px solid #fff;">
+        <span id="previewModalCaption" style="color:#fff; margin-top:12px; font-size:15px; font-weight:600;"></span>
+    </div>
+
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         var mobileNavToggle = document.getElementById('mobileNavToggle');
@@ -56,6 +63,54 @@
                         icon.classList.remove('fa-times');
                         icon.classList.add('fa-bars');
                     }
+                }
+            });
+        }
+
+        // Live File Upload Image Preview Handler (e.g. register.php)
+        var fileInput = document.getElementById('profilePhotoInput');
+        var previewImg = document.getElementById('imagePreview');
+        var previewBox = document.getElementById('imagePreviewBox');
+
+        if (fileInput && previewImg) {
+            fileInput.addEventListener('change', function(e) {
+                var file = e.target.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(evt) {
+                        previewImg.src = evt.target.result;
+                        if (previewBox) previewBox.style.display = 'flex';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Click to Preview Image Lightbox Modal Handler
+        var modal = document.getElementById('imagePreviewModal');
+        var modalImg = document.getElementById('previewModalImage');
+        var modalCaption = document.getElementById('previewModalCaption');
+        var closeModal = document.getElementById('closePreviewModal');
+
+        if (modal && modalImg) {
+            document.body.addEventListener('click', function(e) {
+                var target = e.target;
+                if (target.tagName === 'IMG' && target.id !== 'previewModalImage' && (target.closest('.profile-img-wrap') || target.closest('.profile-card') || target.src.includes('/images/'))) {
+                    modal.style.display = 'flex';
+                    modalImg.src = target.src;
+                    modalCaption.innerText = target.alt || 'Profile Image Preview';
+                }
+            });
+
+            if (closeModal) {
+                closeModal.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                });
+            }
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
                 }
             });
         }

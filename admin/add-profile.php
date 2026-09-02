@@ -9,9 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $profile_id = trim($_POST['profile_id'] ?? '');
     $name = trim($_POST['name'] ?? '');
     $gender = $_POST['gender'] ?? 'Female';
+    $mobile = trim($_POST['mobile'] ?? '');
     $age = (int)($_POST['age'] ?? 25);
     $religion = trim($_POST['religion'] ?? 'Hindu');
-    $caste = trim($_POST['caste'] ?? '');
+    $caste = trim($_POST['caste'] ?? 'Sain');
     $state = trim($_POST['state'] ?? 'New Delhi');
     $city = trim($_POST['city'] ?? 'New Delhi');
     $education = trim($_POST['education'] ?? 'Graduate');
@@ -40,8 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($name && $profile_id && $caste) {
         try {
-            $stmt = $pdo->prepare("INSERT INTO profiles (profile_id, name, gender, age, religion, caste, state, city, education, occupation, photo, is_premium, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$profile_id, $name, $gender, $age, $religion, $caste, $state, $city, $education, $occupation, $photo, $is_premium, $status]);
+            $stmt = $pdo->prepare("INSERT INTO profiles (profile_id, name, gender, mobile, age, religion, caste, state, city, education, occupation, photo, is_premium, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$profile_id, $name, $gender, $mobile, $age, $religion, $caste, $state, $city, $education, $occupation, $photo, $is_premium, $status]);
             $msg = "New Profile added successfully!";
         } catch (PDOException $e) {
             $error = "Database Error: " . $e->getMessage();
@@ -92,19 +93,27 @@ $next_id = 'M' . (rand(100, 999));
                 </select>
             </div>
             <div class="form-group">
-                <label style="color: #333;">Age *</label>
-                <input type="number" name="age" value="25" min="18" max="70" required class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+                <label style="color: #333;">Mobile Number (Visible to admin only)</label>
+                <input type="text" name="mobile" placeholder="e.g. 9876543210" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
             </div>
             <div class="form-group">
-                <label style="color: #333;">Religion</label>
-                <input type="text" name="religion" value="Hindu" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+                <label style="color: #333;">Age *</label>
+                <input type="number" name="age" value="25" min="18" max="70" required class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
             </div>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
             <div class="form-group">
+                <label style="color: #333;">Religion</label>
+                <input type="text" name="religion" value="Hindu" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+            </div>
+            <div class="form-group">
                 <label style="color: #333;">Caste *</label>
-                <input type="text" name="caste" required placeholder="e.g. Rajput, Brahmin" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+                <select name="caste" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+                    <option value="Sain">Sain</option>
+                    <option value="Nai">Nai</option>
+                    <option value="Sain/Nai">Sain/Nai</option>
+                </select>
             </div>
             <div class="form-group">
                 <label style="color: #333;">State</label>
@@ -130,7 +139,11 @@ $next_id = 'M' . (rand(100, 999));
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; align-items: center;">
             <div class="form-group">
                 <label style="color: #333;">Profile Image (Photo)</label>
-                <input type="file" name="photo" accept="image/*" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+                <input type="file" name="photo" id="adminPhotoInput" accept="image/*" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+                <div id="adminImagePreviewBox" style="margin-top: 10px; display: none; align-items: center; gap: 10px; background: #f8fafc; padding: 8px; border-radius: 6px; border: 1px dashed #cbd5e1;">
+                    <img id="adminImagePreview" src="" alt="Preview" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 2px solid #28a745;">
+                    <span style="font-size: 12px; color: #333; font-weight: 600;"><i class="fa fa-eye"></i> Photo Preview Ready</span>
+                </div>
             </div>
             <div class="form-group">
                 <label style="color: #333;">Status</label>

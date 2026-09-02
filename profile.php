@@ -62,6 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_interest'])) {
 
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; font-size: 14px; margin-bottom: 25px; color: #334155;">
                     <div><strong style="color: #0f172a;">Gender:</strong> <?php echo htmlspecialchars($profile['gender']); ?></div>
+                    <?php if (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true && !empty($profile['mobile'])): ?>
+                    <div><strong style="color: #0f172a;">Mobile:</strong> <?php echo htmlspecialchars($profile['mobile']); ?> (Admin Only)</div>
+                    <?php endif; ?>
                     <div><strong style="color: #0f172a;">Age:</strong> <?php echo htmlspecialchars($profile['age']); ?> Years</div>
                     <div><strong style="color: #0f172a;">Religion:</strong> <?php echo htmlspecialchars($profile['religion']); ?></div>
                     <div><strong style="color: #0f172a;">Caste:</strong> <?php echo htmlspecialchars($profile['caste']); ?></div>

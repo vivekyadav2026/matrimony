@@ -17,6 +17,23 @@ document.addEventListener('DOMContentLoaded', function() {
             var isCollapsed = layout.classList.contains('sidebar-collapsed');
             localStorage.setItem('admin_sidebar_collapsed', isCollapsed);
         });
+    // Automatic Image Input Live Preview Handler
+    var adminFileInput = document.getElementById('adminPhotoInput');
+    var adminPreviewImg = document.getElementById('adminImagePreview');
+    var adminPreviewBox = document.getElementById('adminImagePreviewBox');
+
+    if (adminFileInput && adminPreviewImg) {
+        adminFileInput.addEventListener('change', function(e) {
+            var file = e.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(evt) {
+                    adminPreviewImg.src = evt.target.result;
+                    if (adminPreviewBox) adminPreviewBox.style.display = 'flex';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
     }
 });
 </script>

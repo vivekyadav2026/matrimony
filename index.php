@@ -60,9 +60,9 @@ $success_stories = $stmtStories->fetchAll();
                     <label>Caste</label>
                     <select name="caste">
                         <option value="">Doesn't Matter</option>
-                        <?php foreach ($distinct_castes as $c): ?>
-                            <option value="<?php echo htmlspecialchars($c); ?>"><?php echo htmlspecialchars($c); ?></option>
-                        <?php endforeach; ?>
+                        <option value="Sain">Sain</option>
+                        <option value="Nai">Nai</option>
+                        <option value="Sain/Nai">Sain/Nai</option>
                     </select>
                 </div>
 
@@ -73,7 +73,7 @@ $success_stories = $stmtStories->fetchAll();
         </div>
 
         <div class="search-subtext">
-            <p><i class="fa fa-shield-alt" style="color: var(--secondary-gold);"></i> Indian Matrimonial Site For Mangliks | <?php echo $total_profiles; ?>+ Active Verified Profiles across <?php echo count($distinct_castes); ?> Communities</p>
+            <p><i class="fa fa-shield-alt" style="color: var(--secondary-gold);"></i> Indian Matrimonial Site For Mangliks | <?php echo $total_profiles; ?>+ Active Verified Profiles across Sain & Nai Communities</p>
             <div class="social-icons-row">
                 <a href="#" class="social-icon-btn"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="social-icon-btn"><i class="fab fa-twitter"></i></a>

@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 <?php endif; ?>
 
-                <form action="register.php" method="POST" style="display: grid; gap: 18px;">
+                <form action="register.php" method="POST" enctype="multipart/form-data" style="display: grid; gap: 18px;">
                     
                     <div class="form-group">
                         <label style="color: #334155; font-weight: 600; font-size: 13.5px; margin-bottom: 6px; display: block;">Candidate Full Name *</label>
@@ -102,11 +102,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                         <div class="form-group">
                             <label style="color: #334155; font-weight: 600; font-size: 13.5px; margin-bottom: 6px; display: block;">Caste / Community *</label>
-                            <input type="text" name="caste" required placeholder="e.g. Rajput, Brahmin, Punjabi" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1; height: 44px; border-radius: 6px;">
+                            <select name="caste" required class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1; height: 44px; border-radius: 6px;">
+                                <option value="Sain">Sain</option>
+                                <option value="Nai">Nai</option>
+                                <option value="Sain/Nai">Sain/Nai</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label style="color: #334155; font-weight: 600; font-size: 13.5px; margin-bottom: 6px; display: block;">City / Location</label>
                             <input type="text" name="city" placeholder="e.g. New Delhi, Mumbai" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1; height: 44px; border-radius: 6px;">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color: #334155; font-weight: 600; font-size: 13.5px; margin-bottom: 6px; display: block;">Profile Photo (Optional)</label>
+                        <input type="file" name="photo" id="profilePhotoInput" accept="image/*" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1; padding: 8px; height: auto; border-radius: 6px;">
+                        <div id="imagePreviewBox" style="margin-top: 10px; display: none; align-items: center; gap: 12px; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px dashed #cbd5e1;">
+                            <img id="imagePreview" src="" alt="Preview" style="width: 70px; height: 70px; object-fit: cover; border-radius: 6px; border: 2px solid var(--primary-red);">
+                            <span style="font-size: 13px; color: #475569; font-weight: 500;"><i class="fa fa-image" style="color: var(--primary-red);"></i> Photo Preview Selected</span>
                         </div>
                     </div>
 

@@ -19,9 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $profile_id = trim($_POST['profile_id'] ?? '');
     $name = trim($_POST['name'] ?? '');
     $gender = $_POST['gender'] ?? 'Female';
+    $mobile = trim($_POST['mobile'] ?? '');
     $age = (int)($_POST['age'] ?? 25);
     $religion = trim($_POST['religion'] ?? 'Hindu');
-    $caste = trim($_POST['caste'] ?? '');
+    $caste = trim($_POST['caste'] ?? 'Sain');
     $state = trim($_POST['state'] ?? 'New Delhi');
     $city = trim($_POST['city'] ?? 'New Delhi');
     $education = trim($_POST['education'] ?? 'Graduate');
@@ -50,8 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($name && $profile_id && $caste) {
         try {
-            $up = $pdo->prepare("UPDATE profiles SET profile_id = ?, name = ?, gender = ?, age = ?, religion = ?, caste = ?, state = ?, city = ?, education = ?, occupation = ?, photo = ?, is_premium = ?, status = ? WHERE id = ?");
-            $up->execute([$profile_id, $name, $gender, $age, $religion, $caste, $state, $city, $education, $occupation, $photo, $is_premium, $status, $id]);
+            $up = $pdo->prepare("UPDATE profiles SET profile_id = ?, name = ?, gender = ?, mobile = ?, age = ?, religion = ?, caste = ?, state = ?, city = ?, education = ?, occupation = ?, photo = ?, is_premium = ?, status = ? WHERE id = ?");
+            $up->execute([$profile_id, $name, $gender, $mobile, $age, $religion, $caste, $state, $city, $education, $occupation, $photo, $is_premium, $status, $id]);
             $msg = "Profile updated successfully!";
 
             // Refresh Profile
@@ -103,19 +104,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </select>
             </div>
             <div class="form-group">
-                <label style="color: #333;">Age *</label>
-                <input type="number" name="age" value="<?php echo htmlspecialchars($profile['age']); ?>" min="18" max="70" required class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+                <label style="color: #333;">Mobile Number (Admin only)</label>
+                <input type="text" name="mobile" value="<?php echo htmlspecialchars($profile['mobile'] ?? ''); ?>" placeholder="e.g. 9876543210" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
             </div>
             <div class="form-group">
-                <label style="color: #333;">Religion</label>
-                <input type="text" name="religion" value="<?php echo htmlspecialchars($profile['religion']); ?>" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+                <label style="color: #333;">Age *</label>
+                <input type="number" name="age" value="<?php echo htmlspecialchars($profile['age']); ?>" min="18" max="70" required class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
             </div>
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px;">
             <div class="form-group">
+                <label style="color: #333;">Religion</label>
+                <input type="text" name="religion" value="<?php echo htmlspecialchars($profile['religion']); ?>" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+            </div>
+            <div class="form-group">
                 <label style="color: #333;">Caste *</label>
-                <input type="text" name="caste" value="<?php echo htmlspecialchars($profile['caste']); ?>" required class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+                <select name="caste" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+                    <option value="Sain" <?php echo ($profile['caste'] == 'Sain') ? 'selected' : ''; ?>>Sain</option>
+                    <option value="Nai" <?php echo ($profile['caste'] == 'Nai') ? 'selected' : ''; ?>>Nai</option>
+                    <option value="Sain/Nai" <?php echo ($profile['caste'] == 'Sain/Nai') ? 'selected' : ''; ?>>Sain/Nai</option>
+                </select>
             </div>
             <div class="form-group">
                 <label style="color: #333;">State</label>
@@ -141,7 +150,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; align-items: center;">
             <div class="form-group">
                 <label style="color: #333;">Change Photo (Current: <?php echo htmlspecialchars($profile['photo']); ?>)</label>
-                <input type="file" name="photo" accept="image/*" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+                <input type="file" name="photo" id="adminPhotoInput" accept="image/*" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
+                <div id="adminImagePreviewBox" style="margin-top: 10px; display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 8px; border-radius: 6px; border: 1px dashed #cbd5e1;">
+                    <img id="adminImagePreview" src="../images/<?php echo htmlspecialchars($profile['photo']); ?>" alt="Preview" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 2px solid #0284c7;">
+                    <span style="font-size: 12px; color: #333; font-weight: 600;"><i class="fa fa-image"></i> Current / Selected Photo Preview</span>
+                </div>
             </div>
             <div class="form-group">
                 <label style="color: #333;">Status</label>

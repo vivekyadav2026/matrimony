@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `profiles` (
   `profile_id` VARCHAR(20) NOT NULL,
   `name` VARCHAR(100) NOT NULL,
   `gender` ENUM('Male','Female') NOT NULL,
+  `mobile` VARCHAR(20) DEFAULT NULL,
   `age` INT(11) NOT NULL,
   `caste` VARCHAR(100) DEFAULT NULL,
   `city` VARCHAR(100) DEFAULT NULL,
