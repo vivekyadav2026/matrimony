@@ -6,9 +6,17 @@ if (session_status() === PHP_SESSION_NONE) {
 // -------------------------------------------------------------
 // SECURE DATABASE CONFIGURATION
 // -------------------------------------------------------------
-// If a local config file exists, use it (it is ignored by git).
-// Otherwise, use the live server credentials.
-if (file_exists(__DIR__ . '/config.local.php')) {
+// 1. Detect if we are running on a local development server
+$http_host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$is_local = (
+    strpos($http_host, 'localhost') !== false ||
+    strpos($http_host, '127.0.0.1') !== false ||
+    $http_host === '::1'
+);
+
+// 2. Only use local config if we are ACTUALLY on localhost
+// This prevents breaking the live site if config.local.php is uploaded by mistake!
+if ($is_local && file_exists(__DIR__ . '/config.local.php')) {
     require_once __DIR__ . '/config.local.php';
 } else {
     // -------------------------------------------------------------
