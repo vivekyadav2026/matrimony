@@ -32,23 +32,34 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <li><a href="inquiries.php" class="<?php echo ($current_page == 'inquiries.php') ? 'active' : ''; ?>"><i class="fa fa-envelope"></i> User Inquiries</a></li>
             <li><a href="stories.php" class="<?php echo ($current_page == 'stories.php') ? 'active' : ''; ?>"><i class="fa fa-heart"></i> Success Stories</a></li>
             <li><a href="settings.php" class="<?php echo ($current_page == 'settings.php') ? 'active' : ''; ?>"><i class="fa fa-user-cog"></i> Account Settings</a></li>
-            <li style="margin-top: 30px;"><a href="../index.php" target="_blank"><i class="fa fa-globe"></i> View Main Site</a></li>
-            <li><a href="logout.php" style="color: #ff6b6b;"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+            <li style="margin-top: 15px;"><a href="../index.php" target="_blank"><i class="fa fa-globe"></i> View Main Site</a></li>
         </ul>
+
+        <!-- User Profile inside Sidebar -->
+        <div style="margin-top: auto; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; gap: 10px;">
+            <div style="display: flex; align-items: center; gap: 10px; color: #fff;">
+                <div style="width: 35px; height: 35px; background: var(--primary-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: bold;">
+                    <?php echo strtoupper(substr($_SESSION['admin_username'], 0, 1)); ?>
+                </div>
+                <div>
+                    <div style="font-size: 14px; font-weight: 700;"><?php echo htmlspecialchars($_SESSION['admin_username']); ?></div>
+                    <div style="font-size: 11px; color: #94a3b8;">Administrator</div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 5px;">
+                <a href="settings.php" class="btn-outline btn-sm" style="flex: 1; border-color: rgba(255,255,255,0.2); color: #fff !important; text-align: center; justify-content: center; padding: 6px;"><i class="fa fa-key"></i> Pass</a>
+                <a href="logout.php" class="btn-red btn-sm" style="flex: 1; text-align: center; justify-content: center; padding: 6px;"><i class="fa fa-power-off"></i> Logout</a>
+            </div>
+        </div>
     </aside>
 
     <!-- Main Content Area -->
     <main class="admin-main">
         <header class="admin-header">
-            <div style="display: flex; align-items: center;">
-                <button type="button" id="sidebarToggle" class="sidebar-toggle-btn" title="Toggle Sidebar Hide/Show">
+            <div style="display: flex; align-items: center; width: 100%;">
+                <button type="button" id="sidebarToggle" class="sidebar-toggle-btn" title="Toggle Sidebar Hide/Show" style="margin-right: 15px;">
                     <i class="fa fa-bars"></i>
                 </button>
                 <h2 style="margin: 0; font-size: 22px; color: var(--dark-navy); font-weight: 800;"><?php echo isset($page_title) ? $page_title : 'Dashboard'; ?></h2>
-            </div>
-            <div>
-                <span style="font-size: 14px; color: #666; margin-right: 12px;"><i class="fa fa-user-circle"></i> Logged as <strong><?php echo htmlspecialchars($_SESSION['admin_username']); ?></strong></span>
-                <a href="settings.php" class="btn-outline btn-sm" style="color: #334155 !important; border-color: #cbd5e1; margin-right: 8px;"><i class="fa fa-key"></i> Password</a>
-                <a href="logout.php" class="btn-red btn-sm"><i class="fa fa-power-off"></i> Logout</a>
             </div>
         </header>
