@@ -11,17 +11,19 @@
                     <ul style="list-style: none; line-height: 2;">
                         <li><a href="<?php echo BASE_URL; ?>">Home</a></li>
                         <li><a href="<?php echo BASE_URL; ?>search.php">Search Profiles</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>about.php">About Us</a></li>
+                        <!-- <li><a href="<?php echo BASE_URL; ?>membership.php">Membership Plans</a></li> -->
                         <li><a href="<?php echo BASE_URL; ?>stories.php">Success Stories</a></li>
-                        <li><a href="<?php echo BASE_URL; ?>register.php">Register Free</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>contact.php">Contact Us</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 style="color: #fff; margin-bottom: 15px; font-size: 16px;">Services</h4>
                     <ul style="list-style: none; line-height: 2;">
-                        <li>Manglik Marriage</li>
-                        <li>Kundli Match Making</li>
-                        <li>Manglik Nivaran Havan</li>
-                        <li>Manglik Shanti Services</li>
+                        <li><a href="<?php echo BASE_URL; ?>services.php">Manglik Marriage</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>services.php">Kundli Match Making</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>services.php">Manglik Nivaran Havan</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>services.php">Manglik Shanti Services</a></li>
                     </ul>
                 </div>
                 <div>
@@ -115,6 +117,40 @@
             });
         }
     });
+    </script>
+
+    <!-- AOS Animation Library JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Auto-inject AOS attributes to standard elements across all pages
+            const animatedClasses = [
+                '.section-title', '.section-subtitle', '.profile-card', 
+                '.story-card-modern', '.service-card-yellow', 'details', 
+                '.search-box', '.hero-title', '.hero-subtitle', 
+                '.clients-wrapper', '.blessings-card', '.form-group'
+            ];
+            
+            animatedClasses.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach((el, index) => {
+                    if (!el.hasAttribute('data-aos')) {
+                        el.setAttribute('data-aos', 'fade-up');
+                        el.setAttribute('data-aos-duration', '800');
+                        // Stagger effect for multiple items like cards
+                        if (index > 0 && index < 4 && (selector === '.profile-card' || selector === '.story-card-modern' || selector === '.service-card-yellow' || selector === 'details')) {
+                            el.setAttribute('data-aos-delay', (index * 100).toString());
+                        }
+                    }
+                });
+            });
+
+            // Initialize AOS
+            AOS.init({
+                once: true, // whether animation should happen only once - while scrolling down
+                offset: 50, // offset (in px) from the original trigger point
+            });
+        });
     </script>
 </body>
 </html>
