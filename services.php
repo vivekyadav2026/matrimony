@@ -149,10 +149,10 @@ require_once __DIR__ . '/header.php';
             Contact our helpline desk or request a VIP relationship manager callback today for confidential candidate proposals.
         </p>
         <div style="display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap;">
-            <a href="contact.php" class="btn-red" style="background: linear-gradient(135deg, var(--primary-red) 0%, #a11320 100%) !important; padding: 14px 32px; font-size: 13.5px; border-radius: 30px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 6px 20px rgba(204,30,43,0.4); border: 1px solid rgba(255,255,255,0.15); display: inline-flex; align-items: center; gap: 8px;">
+            <a href="contact.php" class="btn-red" style="background: linear-gradient(135deg, var(--primary-red) 0%, #a11320 100%) !important; padding: 14px 32px; font-size: 13.5px; border-radius: 8px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 6px 20px rgba(204,30,43,0.4); border: 1px solid rgba(255,255,255,0.15); display: inline-flex; align-items: center; gap: 8px;">
                 <i class="fa fa-headset"></i> Contact Support Desk
             </a>
-            <a href="register.php" class="btn-outline" style="background: rgba(255, 255, 255, 0.08); color: #ffffff !important; padding: 14px 30px; font-size: 13.5px; border-radius: 30px; font-weight: 700; border: 1px solid rgba(255, 255, 255, 0.25); backdrop-filter: blur(5px); text-transform: uppercase; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 8px;">
+            <a href="register.php" class="btn-outline" style="background: rgba(255, 255, 255, 0.08); color: #ffffff !important; padding: 14px 30px; font-size: 13.5px; border-radius: 8px; font-weight: 700; border: 1px solid rgba(255, 255, 255, 0.25); backdrop-filter: blur(5px); text-transform: uppercase; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 8px;">
                 <i class="fa fa-user-plus"></i> Register Free Candidate
             </a>
         </div>

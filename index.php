@@ -22,14 +22,21 @@ $success_stories = $stmtStories->fetchAll();
 <!-- Hero Banner Section -->
 <section class="hero-banner">
     <div class="container">
-        <h1 class="hero-title" style="font-size: 38px; line-height: 1.2; margin-bottom: 12px; font-weight: 800;">Find Your Manglik's Soulmate<br><span style="color: var(--secondary-gold);">Within Our Community.</span></h1>
-        <p class="hero-subtitle" style="font-size: 15px; color: #f1f5f9; font-style: normal; margin-bottom: 30px; text-shadow: 0 1px 4px rgba(0,0,0,0.8); line-height: 1.6; max-width: 600px; margin-left: auto; margin-right: auto;">
-            Join thousands of families in our trusted matrimonial community. Submit your biodata, browse verified profiles, and connect with compatible matches.
+        <span style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 0, 0, 0.5); color: var(--secondary-gold); border: 1px solid rgba(234, 179, 8, 0.4); font-size: 11px; font-weight: 800; padding: 5px 15px; border-radius: 20px; margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; backdrop-filter: blur(8px); box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+            <i class="fa fa-shield-alt"></i> SAIN & NAI SAMAJ MATRIMONY
+        </span>
+        
+        <h1 class="hero-title" style="font-size: clamp(28px, 4.5vw, 42px); line-height: 1.25; margin-bottom: 12px; font-weight: 800; color: #ffffff; text-shadow: 0 4px 18px rgba(0,0,0,0.95), 0 2px 4px rgba(0,0,0,0.9);">
+            Find Verified Matches<br><span style="color: var(--secondary-gold); text-shadow: 0 3px 12px rgba(0,0,0,0.95);">With Complete Trust.</span>
+        </h1>
+        
+        <p class="hero-subtitle" style="font-size: 14.5px; color: #ffffff; font-style: normal; margin-bottom: 25px; text-shadow: 0 2px 10px rgba(0,0,0,0.95); line-height: 1.5; max-width: 550px; margin-left: auto; margin-right: auto; font-weight: 600;">
+            100% Manual Profile Verification & Strict Contact Privacy for Every Family.
         </p>
 
-        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 320px; margin: 0 auto 40px;">
-            <a href="register.php" class="btn-outline" style="background: #ffffff; color: var(--primary-red) !important; border: none; padding: 14px; font-size: 15px; font-weight: 700; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Submit Your Biodata <i class="fa fa-arrow-right"></i></a>
-            <a href="about.php" class="btn-outline" style="background: rgba(0,0,0,0.4); color: #ffffff !important; border: 1px solid rgba(255,255,255,0.2); padding: 14px; font-size: 14px; font-weight: 600; border-radius: 8px; backdrop-filter: blur(5px);">See How It Works</a>
+        <div class="hero-btn-row">
+            <a href="register.php" class="hero-btn-primary">Submit Your Biodata <i class="fa fa-arrow-right"></i></a>
+            <a href="about.php" class="hero-btn-secondary">See How It Works</a>
         </div>
 
         <!-- Search Box Container -->
@@ -132,8 +139,10 @@ $success_stories = $stmtStories->fetchAll();
             <?php endforeach; ?>
         </div>
 
-        <div class="center-btn-wrap">
-            <a href="search.php" class="btn-red" style="padding: 12px 35px; font-size: 15px; border-radius: 25px;">View All <?php echo $total_profiles; ?> Profiles &rarr;</a>
+        <div class="center-btn-wrap" style="margin-top: 35px;">
+            <a href="search.php" class="btn-red" style="padding: 13px 36px; font-size: 15px; border-radius: 8px; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 6px 20px rgba(204,30,43,0.35); text-transform: uppercase; letter-spacing: 0.5px;">
+                <i class="fa fa-users"></i> View All <?php echo $total_profiles; ?> Profiles <i class="fa fa-arrow-right"></i>
+            </a>
         </div>
     </div>
 </section>
@@ -280,8 +289,10 @@ $success_stories = $stmtStories->fetchAll();
             <?php endforeach; ?>
         </div>
 
-        <div class="center-btn-wrap">
-            <a href="stories.php" class="btn-red" style="padding: 12px 35px; font-size: 15px; border-radius: 25px;">View All Success Stories &rarr;</a>
+        <div class="center-btn-wrap" style="margin-top: 35px;">
+            <a href="stories.php" class="btn-red" style="padding: 13px 36px; font-size: 15px; border-radius: 8px; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 6px 20px rgba(204,30,43,0.35); text-transform: uppercase; letter-spacing: 0.5px;">
+                <i class="fa fa-heart"></i> View All Success Stories <i class="fa fa-arrow-right"></i>
+            </a>
         </div>
     </div>
 </section>

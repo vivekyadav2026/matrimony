@@ -13,7 +13,11 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title><?php echo isset($page_title) ? $page_title . ' - Admin' : 'Admin Panel - ' . SITE_NAME; ?></title>
+    <link rel="icon" type="image/png" href="../images/favicon.png?v=<?php echo filemtime(__DIR__ . '/../images/favicon.png'); ?>">
     <link rel="stylesheet" href="../css/style.css?v=<?php echo filemtime(__DIR__ . '/../css/style.css'); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>

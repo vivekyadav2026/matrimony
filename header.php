@@ -6,7 +6,11 @@ require_once __DIR__ . '/config.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title><?php echo isset($page_title) ? $page_title . ' - ' . SITE_NAME : SITE_NAME . ' | Search Profiles by Caste and Community'; ?></title>
+    <link rel="icon" type="image/png" href="<?php echo BASE_URL; ?>images/favicon.png?v=<?php echo filemtime(__DIR__ . '/images/favicon.png'); ?>">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/style.css?v=<?php echo filemtime(__DIR__ . '/css/style.css'); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -25,7 +29,8 @@ require_once __DIR__ . '/config.php';
     <!-- Main Header Navigation -->
     <header class="main-header">
         <div class="container">
-            <a href="<?php echo BASE_URL; ?>" class="logo">
+            <a href="<?php echo BASE_URL; ?>" class="logo" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+                <img src="<?php echo BASE_URL; ?>images/favicon.png" alt="Sain Matrimony Logo" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 2px solid #fee2e2; background: #fff;">
                 <div class="logo-text">Sain<span>matrimony.in</span></div>
             </a>
             
