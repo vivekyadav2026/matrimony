@@ -22,11 +22,28 @@ $success_stories = $stmtStories->fetchAll();
 <!-- Hero Banner Section -->
 <section class="hero-banner">
     <div class="container">
-        <h1 class="hero-title">Find Your Manglik's Soulmate</h1>
-        <p class="hero-subtitle">With The Blessings of Shree Ram Ji</p>
+        <h1 class="hero-title" style="font-size: 38px; line-height: 1.2; margin-bottom: 12px; font-weight: 800;">Find Your Manglik's Soulmate<br><span style="color: var(--secondary-gold);">Within Our Community.</span></h1>
+        <p class="hero-subtitle" style="font-size: 15px; color: #f1f5f9; font-style: normal; margin-bottom: 30px; text-shadow: 0 1px 4px rgba(0,0,0,0.8); line-height: 1.6; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Join thousands of families in our trusted matrimonial community. Submit your biodata, browse verified profiles, and connect with compatible matches.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; max-width: 320px; margin: 0 auto 40px;">
+            <a href="register.php" class="btn-outline" style="background: #ffffff; color: var(--primary-red) !important; border: none; padding: 14px; font-size: 15px; font-weight: 700; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">Submit Your Biodata <i class="fa fa-arrow-right"></i></a>
+            <a href="about.php" class="btn-outline" style="background: rgba(0,0,0,0.4); color: #ffffff !important; border: 1px solid rgba(255,255,255,0.2); padding: 14px; font-size: 14px; font-weight: 600; border-radius: 8px; backdrop-filter: blur(5px);">See How It Works</a>
+        </div>
 
         <!-- Search Box Container -->
-        <div class="search-box">
+        <div class="search-box" style="margin-top: 15px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; margin-bottom: 20px;">
+                <div>
+                    <div style="font-size: 10px; font-weight: 800; color: var(--primary-red); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px;">Quick Search</div>
+                    <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin: 0;">Find Your Match</h3>
+                </div>
+                <div style="background: #fdf2f8; color: #db2777; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; display: flex; align-items: center; gap: 4px;">
+                    <i class="fa fa-shield-check"></i> Verified
+                </div>
+            </div>
+            
             <form action="search.php" method="GET" class="search-form">
                 <div class="form-group">
                     <label>Looking For</label>
@@ -154,78 +171,84 @@ $success_stories = $stmtStories->fetchAll();
             </div>
         </div>
 
-        <div style="background: linear-gradient(90deg, var(--secondary-gold) 0%, #d97706 100%); padding: 30px; border-radius: 16px; text-align: center; box-shadow: 0 10px 30px rgba(217, 119, 6, 0.3);">
-            <h3 style="font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 6px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">Register Free and Upload Your Profile</h3>
-            <p style="color: #fff; font-size: 15px; margin-bottom: 20px; text-shadow: 0 1px 2px rgba(0,0,0,0.1);">Your story is waiting to happen!</p>
-            <a href="register.php" class="btn-red" style="background: #fff !important; color: #d97706 !important; padding: 14px 40px; font-size: 16px; border-radius: 30px; font-weight: 800; box-shadow: 0 4px 15px rgba(0,0,0,0.2); text-transform: uppercase;">Register Now!</a>
+        <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 35px 25px; border-radius: 20px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(234,179,8,0.25); position: relative; overflow: hidden;">
+            <div style="position: absolute; right: -20%; top: -50%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(234,179,8,0.15) 0%, rgba(15,23,42,0) 70%); pointer-events: none;"></div>
+            <h3 style="font-family: 'Playfair Display', serif; font-size: clamp(22px, 3.5vw, 30px); font-weight: 800; color: #fff; margin-bottom: 8px;">Register Free and Upload Your Profile</h3>
+            <p style="color: #cbd5e1; font-size: 14.5px; margin-bottom: 22px;">Join thousands of verified Sain & Nai community families. Your story is waiting to happen!</p>
+            <a href="register.php" class="btn-red" style="background: linear-gradient(135deg, var(--primary-red) 0%, #a11320 100%) !important; padding: 13px 35px; font-size: 14px; border-radius: 30px; font-weight: 800; box-shadow: 0 6px 20px rgba(204,30,43,0.4); text-transform: uppercase; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 8px;">
+                <i class="fa fa-user-plus"></i> Register Free Candidate Profile
+            </a>
         </div>
     </div>
 </section>
 
 <!-- 25,000+ Happy Clients Section -->
-<section style="background-color: #f8fafc; padding: 70px 20px; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+<section style="background-color: #f8fafc; padding: 60px 20px; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; overflow: hidden;">
     <div class="container">
-        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; align-items: center;">
+        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center;">
             
             <!-- Video/Image Side -->
-            <div style="position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.12); border: 8px solid #fff;">
-                <img src="images/testimonial-video.png" alt="Testimonial Video" style="width: 100%; display: block; object-fit: cover;">
-                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center;">
-                    <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; color: var(--primary-red); cursor: pointer; box-shadow: 0 0 0 15px rgba(255,255,255,0.2); transition: all 0.3s ease;">
-                        <i class="fa fa-play" style="margin-left: 5px;"></i>
+            <div style="position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.12); border: 6px solid #fff; background: #0f172a;">
+                <img src="images/trusted_family_story.jpg" alt="Happy Married Couple" style="width: 100%; height: auto; max-height: 420px; display: block; object-fit: cover;">
+                <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%); display: flex; align-items: center; justify-content: center;">
+                    <div style="width: 65px; height: 65px; background: rgba(255,255,255,0.92); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: var(--primary-red); cursor: pointer; box-shadow: 0 0 0 12px rgba(255,255,255,0.25); transition: transform 0.3s ease;">
+                        <i class="fa fa-play" style="margin-left: 4px;"></i>
                     </div>
                 </div>
                 
                 <!-- Floating Stats Badge -->
-                <div style="position: absolute; bottom: 20px; left: 20px; background: #fff; padding: 12px 20px; border-radius: 12px; display: flex; align-items: center; gap: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.15);">
-                    <div style="width: 45px; height: 45px; background: #fef2f2; border-radius: 50%; color: var(--primary-red); display: flex; align-items: center; justify-content: center; font-size: 20px;"><i class="fa fa-heart"></i></div>
-                    <div>
-                        <div style="font-size: 20px; font-weight: 800; color: #0f172a; line-height: 1;">25K+</div>
-                        <div style="font-size: 12px; color: #64748b; font-weight: 600;">Happy Matches</div>
+                <div style="position: absolute; bottom: 15px; left: 15px; right: 15px; background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); padding: 12px 18px; border-radius: 14px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.8);">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="width: 40px; height: 40px; background: #fef2f2; border-radius: 50%; color: var(--primary-red); display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fa fa-heart"></i></div>
+                        <div>
+                            <div style="font-size: 18px; font-weight: 800; color: #0f172a; line-height: 1;">25,000+</div>
+                            <div style="font-size: 11.5px; color: #64748b; font-weight: 600;">Happy Matches</div>
+                        </div>
                     </div>
+                    <span style="background: #dcfce7; color: #15803d; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px;"><i class="fa fa-check-circle"></i> Verified</span>
                 </div>
             </div>
 
             <!-- Content Side -->
             <div>
-                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
-                    <span style="display: inline-block; background: linear-gradient(135deg, var(--primary-red) 0%, #a11320 100%); color: #fff; font-size: 11px; font-weight: 800; padding: 6px 14px; border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(204,30,43,0.3);"><i class="fa fa-shield-alt" style="margin-right: 4px;"></i> India's Most Trusted</span>
-                    <span style="font-size: 13px; color: #64748b; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase;">Since 2010</span>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap;">
+                    <span style="display: inline-block; background: linear-gradient(135deg, var(--primary-red) 0%, #a11320 100%); color: #fff; font-size: 11px; font-weight: 800; padding: 6px 14px; border-radius: 20px; letter-spacing: 0.8px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(204,30,43,0.25);"><i class="fa fa-shield-alt" style="margin-right: 4px;"></i> India's Most Trusted</span>
+                    <span style="font-size: 12px; color: #64748b; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;">Since 2010</span>
                 </div>
                 
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 800; color: #0f172a; line-height: 1.15; margin-bottom: 25px;">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(26px, 4vw, 38px); font-weight: 800; color: #0f172a; line-height: 1.2; margin-bottom: 20px;">
                     Uniting Families with <span style="color: var(--primary-red);">Tradition</span> & <span style="color: var(--secondary-gold-dark);">Trust.</span>
                 </h2>
                 
-                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 30px; background: #fff; padding: 10px 15px; border-radius: 50px; display: inline-flex; border: 1px solid #e2e8f0; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
-                    <div style="color: #eab308; font-size: 16px;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-                    <span style="font-size: 13px; color: #334155; font-weight: 700;">5.0 Rating <span style="color: #94a3b8; font-weight: 500;">(4,850+ Reviews)</span></span>
+                <div style="display: inline-flex; align-items: center; gap: 10px; margin-bottom: 24px; background: #fff; padding: 8px 16px; border-radius: 50px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+                    <div style="color: #eab308; font-size: 15px;"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                    <span style="font-size: 12.5px; color: #334155; font-weight: 700;">5.0 Rating <span style="color: #94a3b8; font-weight: 500;">(4,850+ Reviews)</span></span>
                 </div>
 
                 <?php if ($latest_testimonial): ?>
-                    <div style="background: #fff; padding: 25px 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f1f5f9; margin-bottom: 35px; position: relative; z-index: 1;">
-                        <div style="position: absolute; top: -15px; left: 25px; width: 35px; height: 35px; background: var(--primary-red); color: #fff; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 14px; box-shadow: 0 4px 10px rgba(204,30,43,0.3);"><i class="fa fa-quote-left"></i></div>
-                        <p style="font-size: 15.5px; color: #334155; font-style: italic; line-height: 1.7; margin-bottom: 15px; padding-top: 5px;">"<?php echo htmlspecialchars($latest_testimonial['story']); ?>"</p>
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="width: 30px; height: 2px; background: var(--secondary-gold);"></div>
-                            <h5 style="font-size: 14px; font-weight: 800; color: #0f172a; margin: 0; text-transform: uppercase; letter-spacing: 0.5px;"><?php echo htmlspecialchars($latest_testimonial['title']); ?></h5>
+                    <div style="background: #fff; padding: 22px 24px; border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.04); border: 1px solid #f1f5f9; margin-bottom: 25px; position: relative;">
+                        <div style="position: absolute; top: -14px; left: 20px; width: 32px; height: 32px; background: var(--primary-red); color: #fff; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 13px; box-shadow: 0 4px 10px rgba(204,30,43,0.3);"><i class="fa fa-quote-left"></i></div>
+                        <p style="font-size: 14.5px; color: #334155; font-style: italic; line-height: 1.65; margin-bottom: 12px; padding-top: 4px;">"<?php echo htmlspecialchars($latest_testimonial['story']); ?>"</p>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <div style="width: 24px; height: 2px; background: var(--secondary-gold);"></div>
+                            <h5 style="font-size: 13px; font-weight: 800; color: #0f172a; margin: 0; text-transform: uppercase; letter-spacing: 0.5px;"><?php echo htmlspecialchars($latest_testimonial['title']); ?></h5>
                         </div>
                     </div>
                 <?php endif; ?>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                    <div style="display: flex; align-items: flex-start; gap: 12px;">
+                <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                    <div style="display: flex; align-items: flex-start; gap: 12px; flex: 1; min-width: 200px;">
                         <div style="width: 40px; height: 40px; border-radius: 10px; background: #fef2f2; color: var(--primary-red); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;"><i class="fa fa-user-check"></i></div>
                         <div>
-                            <h5 style="font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">100% Verified</h5>
-                            <p style="font-size: 13px; color: #64748b; margin: 0; line-height: 1.4;">Every profile is manually checked.</p>
+                            <h5 style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-bottom: 3px;">100% Verified</h5>
+                            <p style="font-size: 12.5px; color: #64748b; margin: 0; line-height: 1.4;">Every profile is manually checked.</p>
                         </div>
                     </div>
-                    <div style="display: flex; align-items: flex-start; gap: 12px;">
+                    <div style="display: flex; align-items: flex-start; gap: 12px; flex: 1; min-width: 200px;">
                         <div style="width: 40px; height: 40px; border-radius: 10px; background: #fffbeb; color: var(--secondary-gold-dark); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;"><i class="fa fa-om"></i></div>
                         <div>
-                            <h5 style="font-size: 15px; font-weight: 700; color: #0f172a; margin-bottom: 4px;">Traditional Values</h5>
-                            <p style="font-size: 13px; color: #64748b; margin: 0; line-height: 1.4;">Matching with cultural alignment.</p>
+                            <h5 style="font-size: 14.5px; font-weight: 700; color: #0f172a; margin-bottom: 3px;">Traditional Values</h5>
+                            <p style="font-size: 12.5px; color: #64748b; margin: 0; line-height: 1.4;">Matching with cultural alignment.</p>
                         </div>
                     </div>
                 </div>
@@ -298,65 +321,92 @@ $success_stories = $stmtStories->fetchAll();
 </section>
 
 <!-- Assisted Matchmaking Section -->
-<section style="background-color: #0f172a; padding: 70px 20px; color: #fff; overflow: hidden; position: relative;">
-    <div style="position: absolute; right: -10%; top: -20%; width: 50%; height: 140%; background: radial-gradient(circle, rgba(234,179,8,0.15) 0%, rgba(15,23,42,0) 70%);"></div>
+<section style="background-color: #0b0f19; padding: 60px 20px; color: #fff; overflow: hidden; position: relative;">
+    <div style="position: absolute; right: -10%; top: -20%; width: 50%; height: 140%; background: radial-gradient(circle, rgba(234,179,8,0.12) 0%, rgba(11,15,25,0) 70%); pointer-events: none;"></div>
     <div class="container">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
-            <div>
-                <span style="display: inline-block; background: rgba(234, 179, 8, 0.2); color: var(--secondary-gold); font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 20px; margin-bottom: 15px; letter-spacing: 0.5px; text-transform: uppercase;"><i class="fa fa-gem"></i> VIP Service</span>
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 800; color: #fff; line-height: 1.2; margin-bottom: 20px;">
-                    Assisted Matchmaking for Premium Families
-                </h2>
-                <p style="font-size: 15px; color: #94a3b8; line-height: 1.6; margin-bottom: 25px;">
-                    Don't have time to search? Let our expert relationship managers do the work for you. We handpick profiles that match your exact criteria, verify their background, and arrange meetings between families with utmost confidentiality.
-                </p>
-                <ul style="list-style: none; padding: 0; margin-bottom: 30px; display: flex; flex-direction: column; gap: 12px;">
-                    <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #cbd5e1;"><i class="fa fa-check-circle" style="color: var(--secondary-gold); font-size: 18px;"></i> Dedicated Relationship Manager</li>
-                    <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #cbd5e1;"><i class="fa fa-check-circle" style="color: var(--secondary-gold); font-size: 18px;"></i> 100% Confidentiality & Privacy</li>
-                    <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #cbd5e1;"><i class="fa fa-check-circle" style="color: var(--secondary-gold); font-size: 18px;"></i> Handpicked Premium Profiles</li>
-                </ul>
-                <a href="contact.php" class="btn-red" style="padding: 12px 35px; font-size: 15px; border-radius: 25px; display: inline-flex; align-items: center; gap: 8px;">Request VIP Callback <i class="fa fa-arrow-right"></i></a>
-            </div>
-            <div style="position: relative;">
-                <img src="images/assisted_matchmaking.jpg" alt="Assisted Matchmaking" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border: 4px solid rgba(255,255,255,0.1);">
+        <div style="background: linear-gradient(135deg, #111827 0%, #1f2937 100%); border-radius: 24px; padding: 35px; border: 1px solid rgba(234,179,8,0.25); box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                <div>
+                    <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(234, 179, 8, 0.15); color: #f59e0b; border: 1px solid rgba(234, 179, 8, 0.3); font-size: 11px; font-weight: 800; padding: 5px 14px; border-radius: 20px; margin-bottom: 18px; letter-spacing: 1px; text-transform: uppercase;">
+                        <i class="fa fa-crown"></i> Dedicated VIP Service
+                    </div>
+                    <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 36px); font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 16px;">
+                        Assisted Matchmaking for <span style="color: var(--secondary-gold);">Premium Families</span>
+                    </h2>
+                    <p style="font-size: 14.5px; color: #9ca3af; line-height: 1.65; margin-bottom: 24px;">
+                        Don't have time to search? Let our expert relationship managers do the work for you. We handpick profiles matching your exact criteria, verify backgrounds, and arrange family meetings with 100% confidentiality.
+                    </p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px;">
+                        <div style="display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.04); padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(234,179,8,0.2); color: #f59e0b; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;"><i class="fa fa-user-tie"></i></div>
+                            <span style="font-size: 13.5px; color: #e5e7eb; font-weight: 600;">Dedicated Personal Relationship Manager</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.04); padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(234,179,8,0.2); color: #f59e0b; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;"><i class="fa fa-user-shield"></i></div>
+                            <span style="font-size: 13.5px; color: #e5e7eb; font-weight: 600;">100% Confidentiality & Background Privacy</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.04); padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+                            <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(234,179,8,0.2); color: #f59e0b; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;"><i class="fa fa-gem"></i></div>
+                            <span style="font-size: 13.5px; color: #e5e7eb; font-weight: 600;">Handpicked Verified Premium Profiles</span>
+                        </div>
+                    </div>
+
+                    <a href="contact.php" class="btn-red" style="background: linear-gradient(135deg, var(--primary-red) 0%, #a11320 100%) !important; padding: 13px 30px; font-size: 14.5px; border-radius: 25px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(204,30,43,0.4); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Request VIP Callback <i class="fa fa-arrow-right"></i></a>
+                </div>
+                <div style="position: relative;">
+                    <img src="images/assisted_matchmaking.jpg" alt="Assisted Matchmaking" style="width: 100%; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.15); object-fit: cover;">
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- FAQ Accordion Section -->
-<section class="section" style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 50px 20px;">
-    <div class="container" style="max-width: 850px;">
+<section class="section" style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 60px 20px;">
+    <div class="container" style="max-width: 820px;">
         <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-subtitle">COMMON QUESTIONS ABOUT SAINMATRIMONY SERVICES</p>
+        <p class="section-subtitle">QUICK ANSWERS ABOUT SAINMATRIMONY SERVICES</p>
 
-        <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 15px;">
+        <div style="margin-top: 35px; display: flex; flex-direction: column; gap: 14px;">
             
-            <details style="background: #ffffff; padding: 18px 22px; border-radius: 12px; border: 1px solid #cbd5e1; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-                <summary style="font-size: 16px; font-weight: 700; color: #0f172a; outline: none;"><i class="fa fa-question-circle" style="color: var(--primary-red); margin-right: 8px;"></i> How do I create a candidate profile?</summary>
-                <p style="margin-top: 12px; font-size: 14px; color: #475569; line-height: 1.6;">
-                    Click on the <strong>Register Free</strong> button in the navigation menu, fill in candidate details (name, gender, age, caste, phone number) and submit. Profiles are verified and approved within 24 hours.
+            <details style="background: #ffffff; padding: 18px 22px; border-radius: 14px; border: 1px solid #e2e8f0; border-left: 4px solid var(--primary-red); cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: all 0.2s ease;">
+                <summary style="font-size: 15.5px; font-weight: 700; color: #0f172a; outline: none; list-style: none; display: flex; align-items: center; justify-content: space-between;">
+                    <span><i class="fa fa-question-circle" style="color: var(--primary-red); margin-right: 10px;"></i> How do I create a candidate profile?</span>
+                    <i class="fa fa-chevron-down" style="font-size: 13px; color: #94a3b8;"></i>
+                </summary>
+                <p style="margin-top: 14px; font-size: 14px; color: #475569; line-height: 1.65; padding-left: 28px; border-top: 1px solid #f1f5f9; padding-top: 12px;">
+                    Click on the <strong>Register Free</strong> button in the top menu, fill in candidate details (name, gender, age, caste, phone number) and upload a photo. Profiles are manually verified and approved by our team within 24 hours.
                 </p>
             </details>
 
-            <details style="background: #ffffff; padding: 18px 22px; border-radius: 12px; border: 1px solid #cbd5e1; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-                <summary style="font-size: 16px; font-weight: 700; color: #0f172a; outline: none;"><i class="fa fa-question-circle" style="color: var(--primary-red); margin-right: 8px;"></i> Are candidate contact numbers safe and private?</summary>
-                <p style="margin-top: 12px; font-size: 14px; color: #475569; line-height: 1.6;">
-                    Yes, 100%! Mobile numbers are strictly confidential and protected. No random user can view your phone number on public profiles. Only authorized admin desk can access numbers for verified matchmaking inquiries.
+            <details style="background: #ffffff; padding: 18px 22px; border-radius: 14px; border: 1px solid #e2e8f0; border-left: 4px solid var(--primary-red); cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: all 0.2s ease;">
+                <summary style="font-size: 15.5px; font-weight: 700; color: #0f172a; outline: none; list-style: none; display: flex; align-items: center; justify-content: space-between;">
+                    <span><i class="fa fa-user-shield" style="color: var(--primary-red); margin-right: 10px;"></i> Are candidate contact numbers safe & private?</span>
+                    <i class="fa fa-chevron-down" style="font-size: 13px; color: #94a3b8;"></i>
+                </summary>
+                <p style="margin-top: 14px; font-size: 14px; color: #475569; line-height: 1.65; padding-left: 28px; border-top: 1px solid #f1f5f9; padding-top: 12px;">
+                    Yes, 100%! Phone numbers are strictly confidential. Public visitors cannot view your mobile number. Only our authorized admin desk handles contact details for verified matchmaking inquiries.
                 </p>
             </details>
 
-            <details style="background: #ffffff; padding: 18px 22px; border-radius: 12px; border: 1px solid #cbd5e1; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-                <summary style="font-size: 16px; font-weight: 700; color: #0f172a; outline: none;"><i class="fa fa-question-circle" style="color: var(--primary-red); margin-right: 8px;"></i> Is registration completely free?</summary>
-                <p style="margin-top: 12px; font-size: 14px; color: #475569; line-height: 1.6;">
-                    Yes, profile registration and searching candidates across Sain and Nai communities is 100% free of cost.
+            <details style="background: #ffffff; padding: 18px 22px; border-radius: 14px; border: 1px solid #e2e8f0; border-left: 4px solid var(--primary-red); cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: all 0.2s ease;">
+                <summary style="font-size: 15.5px; font-weight: 700; color: #0f172a; outline: none; list-style: none; display: flex; align-items: center; justify-content: space-between;">
+                    <span><i class="fa fa-gift" style="color: var(--primary-red); margin-right: 10px;"></i> Is profile registration completely free?</span>
+                    <i class="fa fa-chevron-down" style="font-size: 13px; color: #94a3b8;"></i>
+                </summary>
+                <p style="margin-top: 14px; font-size: 14px; color: #475569; line-height: 1.65; padding-left: 28px; border-top: 1px solid #f1f5f9; padding-top: 12px;">
+                    Yes! Candidate registration and browsing profiles across Sain & Nai communities is 100% free of charge.
                 </p>
             </details>
 
-            <details style="background: #ffffff; padding: 18px 22px; border-radius: 12px; border: 1px solid #cbd5e1; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-                <summary style="font-size: 16px; font-weight: 700; color: #0f172a; outline: none;"><i class="fa fa-question-circle" style="color: var(--primary-red); margin-right: 8px;"></i> How do I express interest in a candidate?</summary>
-                <p style="margin-top: 12px; font-size: 14px; color: #475569; line-height: 1.6;">
-                    Open any candidate's profile page and fill out the "Express Interest" form at the right side. Our team will review your request and forward your introduction to candidate's family.
+            <details style="background: #ffffff; padding: 18px 22px; border-radius: 14px; border: 1px solid #e2e8f0; border-left: 4px solid var(--primary-red); cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: all 0.2s ease;">
+                <summary style="font-size: 15.5px; font-weight: 700; color: #0f172a; outline: none; list-style: none; display: flex; align-items: center; justify-content: space-between;">
+                    <span><i class="fa fa-paper-plane" style="color: var(--primary-red); margin-right: 10px;"></i> How do I express interest in a candidate?</span>
+                    <i class="fa fa-chevron-down" style="font-size: 13px; color: #94a3b8;"></i>
+                </summary>
+                <p style="margin-top: 14px; font-size: 14px; color: #475569; line-height: 1.65; padding-left: 28px; border-top: 1px solid #f1f5f9; padding-top: 12px;">
+                    Open any candidate's profile page and submit the "Express Interest" form. Our team will review your interest and connect both families smoothly.
                 </p>
             </details>
 
@@ -365,29 +415,36 @@ $success_stories = $stmtStories->fetchAll();
 </section>
 
 <!-- Mobile Experience Section -->
-<section style="background-color: #fff; padding: 70px 20px; overflow: hidden; border-top: 1px solid #e2e8f0;">
+<section style="background-color: #fff;  overflow: hidden; border-top: 1px solid #e2e8f0;">
     <div class="container">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; background: linear-gradient(135deg, #fef2f2 0%, #fff 100%); padding: 40px; border-radius: 24px; box-shadow: 0 10px 40px rgba(204,30,43,0.05); border: 1px solid #fee2e2;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%); padding: 35px; border-radius: 20px; box-shadow: 0 10px 30px rgba(204,30,43,0.04); border: 1px solid #fee2e2;">
             <div style="position: relative; text-align: center;">
-                <img src="images/matrimony_app_mockup.jpg" alt="Mobile Friendly Matrimony" style="width: 85%; max-width: 400px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border: 8px solid #fff;">
+                <img src="images/matrimony_app_mockup.jpg" alt="Mobile Friendly Matrimony" style="width: 85%; max-width: 360px; border-radius: 18px; box-shadow: 0 15px 35px rgba(0,0,0,0.12); border: 6px solid #fff;">
             </div>
             <div>
-                <span style="display: inline-block; background: #fff; border: 1px solid #e2e8f0; color: var(--primary-red); font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 20px; margin-bottom: 15px; letter-spacing: 0.5px; text-transform: uppercase;"><i class="fa fa-mobile-alt"></i> Mobile Optimized</span>
+                <span style="display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid #fca5a5; color: var(--primary-red); font-size: 11px; font-weight: 800; padding: 5px 14px; border-radius: 20px; margin-bottom: 16px; letter-spacing: 0.8px; text-transform: uppercase;"><i class="fa fa-mobile-alt"></i> Mobile Optimized</span>
                 
-                <h2 style="font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 800; color: #0f172a; line-height: 1.2; margin-bottom: 20px;">
+                <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 36px); font-weight: 800; color: #0f172a; line-height: 1.25; margin-bottom: 16px;">
                     Find Your Perfect Match <span style="color: var(--primary-red);">On The Go!</span>
                 </h2>
                 
-                <p style="font-size: 15px; color: #475569; line-height: 1.6; margin-bottom: 25px;">
-                    Stay connected and get instant access to verified profiles directly from your smartphone's browser. Our website is 100% mobile-friendly, making your soulmate search faster, smoother, and easier anywhere you go.
+                <p style="font-size: 14.5px; color: #475569; line-height: 1.65; margin-bottom: 22px;">
+                    Access verified candidate profiles directly from your smartphone's browser anytime, anywhere. Our website is 100% mobile-friendly, making your search fast and seamless.
                 </p>
                 
-                <ul style="list-style: none; padding: 0; margin-bottom: 30px; display: flex; flex-direction: column; gap: 12px;">
-                    <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><i class="fa fa-check-circle" style="color: var(--primary-red); font-size: 18px;"></i> No App Download Required</li>
-                    <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><i class="fa fa-check-circle" style="color: var(--primary-red); font-size: 18px;"></i> Fast & Data-Friendly Browsing</li>
-                    <li style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155;"><i class="fa fa-check-circle" style="color: var(--primary-red); font-size: 18px;"></i> Secure & Private Access</li>
-                </ul>
-                <a href="register.php" class="btn-red" style="padding: 12px 30px; font-size: 15px; border-radius: 25px; display: inline-flex; align-items: center; gap: 8px;">Create Free Profile <i class="fa fa-arrow-right"></i></a>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px;">
+                    <div style="display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: #334155; font-weight: 600;">
+                        <i class="fa fa-check-circle" style="color: #16a3a4; font-size: 17px;"></i> No App Download Required
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: #334155; font-weight: 600;">
+                        <i class="fa fa-check-circle" style="color: #16a3a4; font-size: 17px;"></i> Fast & Data-Friendly Mobile Browsing
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 10px; font-size: 13.5px; color: #334155; font-weight: 600;">
+                        <i class="fa fa-check-circle" style="color: #16a3a4; font-size: 17px;"></i> Secure & Private Contact Details
+                    </div>
+                </div>
+
+                <a href="register.php" class="btn-red" style="padding: 12px 28px; font-size: 14.5px; border-radius: 25px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(204,30,43,0.3);">Create Free Profile <i class="fa fa-arrow-right"></i></a>
             </div>
         </div>
     </div>

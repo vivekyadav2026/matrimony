@@ -38,10 +38,85 @@ require_once __DIR__ . '/config.php';
                 <li><a href="<?php echo BASE_URL; ?>search.php"><i class="fa fa-search"></i> Profiles</a></li>
                 <li><a href="<?php echo BASE_URL; ?>about.php"><i class="fa fa-info-circle"></i> About Us</a></li>
                 <li><a href="<?php echo BASE_URL; ?>services.php"><i class="fa fa-cogs"></i> Services</a></li>
-                <!-- <li><a href="<?php echo BASE_URL; ?>membership.php"><i class="fa fa-crown" style="color: var(--secondary-gold);"></i> Plans</a></li> -->
                 <li><a href="<?php echo BASE_URL; ?>stories.php"><i class="fa fa-heart"></i> Stories</a></li>
                 <li><a href="<?php echo BASE_URL; ?>contact.php"><i class="fa fa-envelope"></i> Contact</a></li>
                 <li><a href="<?php echo BASE_URL; ?>register.php" class="btn-red"><i class="fa fa-pencil"></i> Register Free</a></li>
             </ul>
         </div>
     </header>
+
+    <!-- Rishta Sangam Style Mobile Navigation Drawer & Overlay -->
+    <div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <!-- Drawer Header -->
+        <div class="mobile-drawer-header">
+            <div class="mobile-drawer-brand">
+                <div class="brand-heart-icon"><i class="fa fa-heart"></i></div>
+                <div>
+                    <div class="brand-name">SAIN MATRIMONY</div>
+                    <div class="brand-sub">COMMUNITY MATRIMONY</div>
+                </div>
+            </div>
+            <button type="button" class="drawer-close-btn" id="closeMobileDrawer" aria-label="Close Menu">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Drawer Body -->
+        <div class="mobile-drawer-body">
+            <div class="drawer-section-label">MENU</div>
+            
+            <div class="drawer-menu-list">
+                <a href="<?php echo BASE_URL; ?>" class="drawer-menu-card">
+                    <div class="drawer-card-icon"><i class="fa fa-home"></i></div>
+                    <span class="drawer-card-text">Home</span>
+                    <i class="fa fa-arrow-right drawer-card-arrow"></i>
+                </a>
+                
+                <a href="<?php echo BASE_URL; ?>search.php" class="drawer-menu-card">
+                    <div class="drawer-card-icon"><i class="fa fa-users"></i></div>
+                    <span class="drawer-card-text">Browse Profiles</span>
+                    <i class="fa fa-arrow-right drawer-card-arrow"></i>
+                </a>
+
+                <a href="<?php echo BASE_URL; ?>about.php" class="drawer-menu-card">
+                    <div class="drawer-card-icon"><i class="fa fa-info-circle"></i></div>
+                    <span class="drawer-card-text">About</span>
+                    <i class="fa fa-arrow-right drawer-card-arrow"></i>
+                </a>
+
+                <a href="<?php echo BASE_URL; ?>services.php" class="drawer-menu-card">
+                    <div class="drawer-card-icon"><i class="fa fa-hand-holding-heart"></i></div>
+                    <span class="drawer-card-text">Services</span>
+                    <i class="fa fa-arrow-right drawer-card-arrow"></i>
+                </a>
+
+                <a href="<?php echo BASE_URL; ?>stories.php" class="drawer-menu-card">
+                    <div class="drawer-card-icon"><i class="fa fa-heart"></i></div>
+                    <span class="drawer-card-text">Success Stories</span>
+                    <i class="fa fa-arrow-right drawer-card-arrow"></i>
+                </a>
+
+                <a href="<?php echo BASE_URL; ?>contact.php" class="drawer-menu-card">
+                    <div class="drawer-card-icon"><i class="fa fa-envelope"></i></div>
+                    <span class="drawer-card-text">Contact Desk</span>
+                    <i class="fa fa-arrow-right drawer-card-arrow"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Drawer Footer Buttons -->
+        <div class="mobile-drawer-footer">
+            <a href="<?php echo BASE_URL; ?>register.php" class="drawer-btn-primary">
+                Submit Biodata
+            </a>
+            <div class="drawer-dual-btns">
+                <a href="tel:8528600100" class="drawer-btn-call">
+                    <i class="fa fa-phone-alt"></i> Call
+                </a>
+                <a href="https://wa.me/918528600100?text=Hello%20Sainmatrimony,%20I%20want%20to%20inquire%20about%20matrimonial%20profiles" target="_blank" class="drawer-btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
