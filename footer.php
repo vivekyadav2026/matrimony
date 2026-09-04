@@ -74,9 +74,10 @@
             </div>
         </div>
 
-        <div style="background: #030712; padding: 18px 0; border-top: 1px solid #1e293b; text-align: center; font-size: 12.5px; color: #64748b;">
-            <div class="container">
+        <div style="background: #030712; padding: 18px 0; border-top: 1px solid #1e293b; font-size: 12.5px; color: #64748b;">
+            <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px;">
                 <p style="margin: 0;">&copy; <?php echo date('Y'); ?> <strong style="color: #cbd5e1;">Sainmatrimony.in</strong>. All Rights Reserved. Exclusively for Sain & Nai Community.</p>
+                <p style="margin: 0;">Designed &amp; Developed by <a href="https://foundida.com/" target="_blank" rel="noopener noreferrer" style="color: #cbd5e1; font-weight: 600; text-decoration: underline;">Foundida</a></p>
             </div>
         </div>
 
