@@ -23,7 +23,7 @@ $success_stories = $stmtStories->fetchAll();
 <section class="hero-banner">
     <div class="container">
         <span style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0, 0, 0, 0.5); color: var(--secondary-gold); border: 1px solid rgba(234, 179, 8, 0.4); font-size: 11px; font-weight: 800; padding: 5px 15px; border-radius: 20px; margin-bottom: 16px; letter-spacing: 1px; text-transform: uppercase; backdrop-filter: blur(8px); box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-            <i class="fa fa-shield-alt"></i> SAIN & NAI SAMAJ MATRIMONY
+            <i class="fa fa-shield-alt"></i> SAIN SAMAJ MATRIMONY
         </span>
         
         <h1 class="hero-title" style="font-size: clamp(28px, 4.5vw, 42px); line-height: 1.25; margin-bottom: 12px; font-weight: 800; color: #ffffff; text-shadow: 0 4px 18px rgba(0,0,0,0.95), 0 2px 4px rgba(0,0,0,0.9);">

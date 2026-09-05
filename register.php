@@ -96,9 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    if (empty($uploaded_photo)) {
-        $error = "ਪ੍ਰੋਫਾਈਲ ਫੋਟੋ ਅਪਲੋਡ ਕਰਨੀ ਲਾਜ਼ਮੀ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਫੋਟੋ ਅਪਲੋਡ ਕਰੋ। (Profile picture is mandatory. Please upload a photo.)";
-    } elseif ($name && $phone && $caste) {
+    if ($name && $phone && $caste) {
         try {
             // Save to inquiries table
             $ins_inq = $pdo->prepare("INSERT INTO inquiries (name, email, phone, gender, message) VALUES (?, ?, ?, ?, ?)");
@@ -246,29 +244,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="step-pane active" id="step1">
                         <div class="step-header-box">
                             <span class="step-tag-pill">STEP 1</span>
-                            <h2 class="step-header-title">ਨਾਮ & ਨਿੱਜੀ ਵੇਰਵੇ</h2>
-                            <p class="step-header-desc">ਹੇਠਾਂ ਉਮੀਦਵਾਰ ਦੇ ਵੇਰਵੇ ਭਰੋ। (*) ਵਾਲੇ ਖੇਤਰ ਲਾਜ਼ਮੀ ਹਨ।</p>
+                            <h2 class="step-header-title">Name & Personal Details</h2>
+                            <p class="step-header-desc">Enter candidate details below. Fields marked with (*) are mandatory.</p>
                         </div>
 
                         <div style="display: grid; gap: 18px;">
                             <div class="form-group-custom">
-                                <label>ਨਾਮ <span class="required">*</span></label>
+                                <label>Full Name <span class="required">*</span></label>
                                 <div class="input-with-icon">
                                     <i class="fa fa-user"></i>
-                                    <input type="text" name="name" id="field_name" required placeholder="ਉਮੀਦਵਾਰ ਦਾ ਨਾਮ" class="input-custom">
+                                    <input type="text" name="name" id="field_name" required placeholder="Candidate's Full Name" class="input-custom">
                                 </div>
                             </div>
 
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>ਲਿੰਗ <span class="required">*</span></label>
+                                    <label>Gender <span class="required">*</span></label>
                                     <select name="gender" id="field_gender" class="input-custom-noicon">
-                                        <option value="ਲੜਕਾ">ਲੜਕਾ</option>
-                                        <option value="ਲੜਕੀ">ਲੜਕੀ</option>
+                                        <option value="Male">Groom / ਲੜਕਾ</option>
+                                        <option value="Female">Bride / ਲੜਕੀ</option>
                                     </select>
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਜਨਮ ਮਿਤੀ <span class="required">*</span></label>
+                                    <label>Date of Birth <span class="required">*</span></label>
                                     <div class="input-with-icon">
                                         <i class="fa fa-calendar-alt"></i>
                                         <input type="date" name="dob" id="field_dob" class="input-custom" onchange="calculateAgeFromDOB(this.value)" oninput="calculateAgeFromDOB(this.value)">
@@ -278,71 +276,71 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <div class="form-grid-3">
                                 <div class="form-group-custom">
-                                    <label>ਉਮਰ <span class="required">*</span></label>
+                                    <label>Age <span class="required">*</span></label>
                                     <div class="input-with-icon">
                                         <i class="fa fa-birthday-cake"></i>
-                                        <input type="number" name="age" id="field_age" min="18" max="75" required placeholder="ਜਨਮ ਮਿਤੀ ਤੋਂ ਆਟੋ-ਕੈਲਕੂਲੇਟ" class="input-custom">
+                                        <input type="number" name="age" id="field_age" min="18" max="75" required placeholder="Auto-calculated from DOB" class="input-custom">
                                     </div>
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਜਨਮ ਸਮਾਂ</label>
+                                    <label>Time of Birth</label>
                                     <div class="input-with-icon">
                                         <i class="fa fa-clock"></i>
-                                        <input type="text" name="time_of_birth" id="field_time_of_birth" placeholder="ਉਦਾਹਰਣ: 10:30 AM" class="input-custom">
+                                        <input type="text" name="time_of_birth" id="field_time_of_birth" placeholder="e.g. 10:30 AM" class="input-custom">
                                     </div>
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਜਨਮ ਸਥਾਨ</label>
+                                    <label>Place of Birth</label>
                                     <div class="input-with-icon">
                                         <i class="fa fa-map-marker-alt"></i>
-                                        <input type="text" name="place_of_birth" id="field_place_of_birth" placeholder="ਉਦਾਹਰਣ: ਅੰਮ੍ਰਿਤਸਰ" class="input-custom">
+                                        <input type="text" name="place_of_birth" id="field_place_of_birth" placeholder="e.g. Amritsar" class="input-custom">
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>ਕੱਦ (ਹਾਈਟ) <span class="required">*</span></label>
+                                    <label>Height <span class="required">*</span></label>
                                     <div class="input-with-icon">
                                         <i class="fa fa-ruler-vertical"></i>
-                                        <input type="text" name="height" id="field_height" placeholder="ਉਦਾਹਰਣ: 5'7&quot; ਜਾਂ 170 ਸਮ" class="input-custom">
+                                        <input type="text" name="height" id="field_height" placeholder="e.g. 5'7&quot; or 170 cm" class="input-custom">
                                     </div>
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਮਾਰਸ਼ਲ ਸਟੇਟਸ <span class="required">*</span></label>
+                                    <label>Marital Status <span class="required">*</span></label>
                                     <select name="marital_status" id="field_marital_status" class="input-custom-noicon">
-                                        <option value="Never Married">ਅਣ-ਵਿਆਹਿਆ/ਹੀ</option>
-                                        <option value="Divorced">ਤਲਾਕਸ਼ੁਦਾ</option>
-                                        <option value="Widowed">ਵਿਧਵਾ/ਵਿਧੁਰ</option>
+                                        <option value="Never Married">Never Married</option>
+                                        <option value="Divorced">Divorced</option>
+                                        <option value="Widowed">Widowed</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>ਕਾਸਟ <span class="required">*</span></label>
+                                    <label>Caste <span class="required">*</span></label>
                                     <select name="caste" id="field_caste" class="input-custom-noicon">
-                                        <option value="ਨਾਈ">ਨਾਈ (Nai)</option>
-                                        <option value="ਅਦਰ">ਅਦਰ (Others)</option>
+                                        <option value="Nai">Nai / Sain</option>
+                                        <option value="Others">Others</option>
                                     </select>
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਧਰਮ <span class="required">*</span></label>
+                                    <label>Religion <span class="required">*</span></label>
                                     <select name="religion" id="field_religion" class="input-custom-noicon">
-                                        <option value="ਹਿੰਦੂ">ਹਿੰਦੂ</option>
-                                        <option value="ਸਿੱਖ">ਸਿੱਖ</option>
+                                        <option value="Sikh">Sikh</option>
+                                        <option value="Hindu">Hindu</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>ਦਾਦਕੇ ਗੋਤ (Dadke Gotra)</label>
-                                    <input type="text" name="gotra" id="field_gotra" placeholder="ਉਦਾਹਰਣ: ਗਿੱਲ, ਧਾਲੀਵਾਲ" class="input-custom-noicon">
+                                    <label>Dadke Gotra (Father's Family Gotra)</label>
+                                    <input type="text" name="gotra" id="field_gotra" placeholder="e.g. Gill, Dhaliwal" class="input-custom-noicon">
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਨਾਨਕੇ ਗੋਤ (Nanke Gotra)</label>
-                                    <input type="text" name="mother_gotra" id="field_mother_gotra" placeholder="ਉਦਾਹਰਣ: ਸੰਧੂ, ਢਿੱਲੋਂ" class="input-custom-noicon">
+                                    <label>Nanke Gotra (Mother's Family Gotra)</label>
+                                    <input type="text" name="mother_gotra" id="field_mother_gotra" placeholder="e.g. Sandhu, Dhillon" class="input-custom-noicon">
                                 </div>
                             </div>
                         </div>
@@ -352,17 +350,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="step-pane" id="step2">
                         <div class="step-header-box">
                             <span class="step-tag-pill">STEP 2</span>
-                            <h2 class="step-header-title">ਸਥਾਨ & ਸੰਪਰਕ</h2>
-                            <p class="step-header-desc">ਆਪਣੀ ਸਹੀ ਸੰਪਰਕ ਜਾਣਕਾਰੀ ਦਰਜ ਕਰੋ।</p>
+                            <h2 class="step-header-title">Location & Contact Info</h2>
+                            <p class="step-header-desc">Enter valid contact and location details.</p>
                         </div>
 
                         <div style="display: grid; gap: 18px;">
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>ਮੋਬਾਇਲ ਨੰਬਰ <span class="required">*</span></label>
+                                    <label>Mobile Number <span class="required">*</span></label>
                                     <div class="input-with-icon">
                                         <i class="fa fa-phone"></i>
-                                        <input type="tel" name="phone" id="field_phone" required placeholder="10 ਅੰਕਾਂ ਦਾ ਮੋਬਾਇਲ ਨੰਬਰ" class="input-custom">
+                                        <input type="tel" name="phone" id="field_phone" required placeholder="10 Digit Mobile Number" class="input-custom">
                                     </div>
                                 </div>
                                 <div class="form-group-custom">
@@ -376,22 +374,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <div class="form-grid-3">
                                 <div class="form-group-custom">
-                                    <label>ਜ਼ਿਲ੍ਹਾ <span class="required">*</span></label>
-                                    <input type="text" name="district" id="field_district" required placeholder="ਉਦਾਹਰਣ: ਅੰਮ੍ਰਿਤਸਰ, ਲੁਧਿਆਣਾ" class="input-custom-noicon">
+                                    <label>District <span class="required">*</span></label>
+                                    <input type="text" name="district" id="field_district" required placeholder="e.g. Amritsar, Ludhiana" class="input-custom-noicon">
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਪੋਸਟ ਆਫਿਸ ਤੇ ਤਹਿਸੀਲ</label>
-                                    <input type="text" name="tehsil_post" id="field_tehsil_post" placeholder="ਉਦਾਹਰਣ: ਤਹਿਸੀਲ ਅਜਨਾਲਾ" class="input-custom-noicon">
+                                    <label>Tehsil & Post Office</label>
+                                    <input type="text" name="tehsil_post" id="field_tehsil_post" placeholder="e.g. Tehsil Ajnala" class="input-custom-noicon">
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਸਟੇਟ</label>
+                                    <label>State</label>
                                     <input type="text" name="state" id="field_state" value="Punjab" class="input-custom-noicon">
                                 </div>
                             </div>
 
                             <div class="form-group-custom">
-                                <label>ਪੂਰਾ ਪਤਾ</label>
-                                <textarea name="address" id="field_address" rows="2" placeholder="ਮਕਾਨ ਨੰਬਰ, ਗਲੀ, ਪਿੰਡ/ਕਲੋਨੀ..." class="textarea-custom"></textarea>
+                                <label>Full Address</label>
+                                <textarea name="address" id="field_address" rows="2" placeholder="House No., Street, Village/Locality..." class="textarea-custom"></textarea>
                             </div>
                         </div>
                     </div>
@@ -400,49 +398,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="step-pane" id="step3">
                         <div class="step-header-box">
                             <span class="step-tag-pill">STEP 3</span>
-                            <h2 class="step-header-title">ਪੜ੍ਹਾਈ & ਕੰਮ ਕਾਰ</h2>
-                            <p class="step-header-desc">ਉਮੀਦਵਾਰ ਦੀ ਪੜ੍ਹਾਈ ਅਤੇ ਨੌਕਰੀ/ਬਿਜ਼ਨਸ ਦੀ ਜਾਣਕਾਰੀ ਦਿਓ।</p>
+                            <h2 class="step-header-title">Education & Profession</h2>
+                            <p class="step-header-desc">Enter candidate's educational qualifications and career details.</p>
                         </div>
 
                         <div style="display: grid; gap: 18px;">
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>ਪੜ੍ਹਾਈ/ਯੋਗਤਾ <span class="required">*</span></label>
+                                    <label>Education / Qualification <span class="required">*</span></label>
                                     <select name="education" id="field_education" class="input-custom-noicon">
-                                        <option value="Graduate">ਗ੍ਰੈਜੂਏਟ (Graduate)</option>
-                                        <option value="Post Graduate">ਪੋਸਟ ਗ੍ਰੈਜੂਏਟ (Post Graduate)</option>
-                                        <option value="Doctorate / PhD">ਡਾਕਟਰੇਟ / PhD</option>
-                                        <option value="Medical / MBBS">ਮੈਡੀਕਲ / MBBS / BDS</option>
+                                        <option value="Graduate">Graduate</option>
+                                        <option value="Post Graduate">Post Graduate</option>
+                                        <option value="Doctorate / PhD">Doctorate / PhD</option>
+                                        <option value="Medical / MBBS">Medical / MBBS / BDS</option>
                                         <option value="CA / CS / Finance">CA / CS / Finance</option>
-                                        <option value="Diploma / ITI">ਡਿਪਲੋਮਾ / ITI</option>
-                                        <option value="High School">ਹਾਇਰ ਸੈਕੰਡਰੀ / 12ਵੀਂ</option>
-                                        <option value="Others">ਹੋਰ (Others)</option>
+                                        <option value="Diploma / ITI">Diploma / ITI</option>
+                                        <option value="High School">Higher Secondary / 12th</option>
+                                        <option value="Others">Others</option>
                                     </select>
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਡਿਗਰੀ/ਕੋਰਸ</label>
-                                    <input type="text" name="education_detail" id="field_education_detail" placeholder="ਉਦਾਹਰਣ: B.Tech, MBA" class="input-custom-noicon">
+                                    <label>Degree / Course Details</label>
+                                    <input type="text" name="education_detail" id="field_education_detail" placeholder="e.g. B.Tech, MBA, B.Com" class="input-custom-noicon">
                                 </div>
                             </div>
 
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>ਕੰਮ ਕਾਰ/ਨੌਕਰੀ/ਬਿਜ਼ਨਸ <span class="required">*</span></label>
+                                    <label>Occupation / Profession <span class="required">*</span></label>
                                     <select name="occupation" id="field_occupation" class="input-custom-noicon">
-                                        <option value="ਸਰਕਾਰੀ">ਸਰਕਾਰੀ</option>
-                                        <option value="ਪ੍ਰਾਈਵੇਟ">ਪ੍ਰਾਈਵੇਟ</option>
-                                        <option value="ਅਦਰ">ਅਦਰ</option>
+                                        <option value="Government Job">Government Job</option>
+                                        <option value="Private Job">Private Job</option>
+                                        <option value="Business">Business</option>
+                                        <option value="Others">Others</option>
                                     </select>
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਕੰਪਨੀ</label>
-                                    <input type="text" name="organization" id="field_organization" placeholder="ਕੰਪਨੀ / ਵਿਭਾਗ ਦਾ ਨਾਮ" class="input-custom-noicon">
+                                    <label>Company / Organization</label>
+                                    <input type="text" name="organization" id="field_organization" placeholder="Company / Department Name" class="input-custom-noicon">
                                 </div>
                             </div>
 
                             <div class="form-group-custom">
-                                <label>ਸਾਲਾਨਾ ਆਮਦਨ</label>
-                                <input type="text" name="income" id="field_income" placeholder="ਉਦਾਹਰਣ: 5-7 ਲੱਖ ਸਾਲਾਨਾ" class="input-custom-noicon">
+                                <label>Annual Income</label>
+                                <input type="text" name="income" id="field_income" placeholder="e.g. 5-7 Lakh Per Annum" class="input-custom-noicon">
                             </div>
                         </div>
                     </div>
@@ -451,54 +450,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="step-pane" id="step4">
                         <div class="step-header-box">
                             <span class="step-tag-pill">STEP 4</span>
-                            <h2 class="step-header-title">ਪਰਿਵਾਰਕ ਵੇਰਵੇ</h2>
-                            <p class="step-header-desc">ਮਾਤਾ-ਪਿਤਾ, ਭੈਣ-ਭਰਾ ਅਤੇ ਪਰਿਵਾਰਕ ਪਿਛੋਕੜ ਬਾਰੇ ਦੱਸੋ।</p>
+                            <h2 class="step-header-title">Family Details</h2>
+                            <p class="step-header-desc">Provide details about parents, siblings, and family background.</p>
                         </div>
 
                         <div style="display: grid; gap: 18px;">
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>ਪਿਤਾ ਦਾ ਨਾਮ</label>
-                                    <input type="text" name="father_name" id="field_father_name" placeholder="ਪਿਤਾ ਦਾ ਪੂਰਾ ਨਾਮ" class="input-custom-noicon">
+                                    <label>Father's Name</label>
+                                    <input type="text" name="father_name" id="field_father_name" placeholder="Father's Full Name" class="input-custom-noicon">
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਪਿਤਾ ਦਾ ਕੰਮ</label>
-                                    <input type="text" name="father_occ" id="field_father_occ" placeholder="ਉਦਾਹਰਣ: ਬਿਜ਼ਨਸਮੈਨ, ਸਰਕਾਰੀ ਨੌਕਰੀ" class="input-custom-noicon">
-                                </div>
-                            </div>
-
-                            <div class="form-grid-2">
-                                <div class="form-group-custom">
-                                    <label>ਮਾਤਾ ਦਾ ਨਾਮ</label>
-                                    <input type="text" name="mother_name" id="field_mother_name" placeholder="ਮਾਤਾ ਦਾ ਪੂਰਾ ਨਾਮ" class="input-custom-noicon">
-                                </div>
-                                <div class="form-group-custom">
-                                    <label>ਮਾਤਾ ਦਾ ਕੰਮ</label>
-                                    <input type="text" name="mother_occ" id="field_mother_occ" placeholder="ਉਦਾਹਰਣ: ਘਰੇਲੂ, ਅਧਿਆਪਕ" class="input-custom-noicon">
+                                    <label>Father's Occupation</label>
+                                    <input type="text" name="father_occ" id="field_father_occ" placeholder="e.g. Businessman, Govt Employee" class="input-custom-noicon">
                                 </div>
                             </div>
 
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>ਦਾਦਕੇ ਗੋਤ (Dadke Gotra)</label>
-                                    <input type="text" name="family_gotra" id="field_family_gotra" placeholder="ਪਰਿਵਾਰ ਦਾ ਗੋਤ" class="input-custom-noicon">
+                                    <label>Mother's Name</label>
+                                    <input type="text" name="mother_name" id="field_mother_name" placeholder="Mother's Full Name" class="input-custom-noicon">
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਨਾਨਕੇ ਗੋਤ (Nanke Gotra)</label>
-                                    <input type="text" name="mother_gotra_step4" id="field_mother_gotra_step4" placeholder="ਮਾਤਾ ਦਾ ਨਾਨਕੇ ਗੋਤ" class="input-custom-noicon">
+                                    <label>Mother's Occupation</label>
+                                    <input type="text" name="mother_occ" id="field_mother_occ" placeholder="e.g. Homemaker, Teacher" class="input-custom-noicon">
                                 </div>
                             </div>
 
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>ਭੈਣ ਭਰਾ</label>
-                                    <input type="text" name="siblings" id="field_siblings" placeholder="ਉਦਾਹਰਣ: 1 ਭਰਾ, 1 ਭੈਣ" class="input-custom-noicon">
+                                    <label>Dadke Gotra (Father's Family Gotra)</label>
+                                    <input type="text" name="family_gotra" id="field_family_gotra" placeholder="Family Gotra" class="input-custom-noicon">
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਪਰਿਵਾਰ ਦੀ ਕਿਸਮ</label>
+                                    <label>Nanke Gotra (Mother's Family Gotra)</label>
+                                    <input type="text" name="mother_gotra_step4" id="field_mother_gotra_step4" placeholder="Mother's Gotra" class="input-custom-noicon">
+                                </div>
+                            </div>
+
+                            <div class="form-grid-2">
+                                <div class="form-group-custom">
+                                    <label>Siblings</label>
+                                    <input type="text" name="siblings" id="field_siblings" placeholder="e.g. 1 Brother, 1 Sister" class="input-custom-noicon">
+                                </div>
+                                <div class="form-group-custom">
+                                    <label>Family Type</label>
                                     <select name="family_type" id="field_family_type" class="input-custom-noicon">
-                                        <option value="Nuclear">ਇਕੱਲਾ ਪਰਿਵਾਰ (Nuclear)</option>
-                                        <option value="Joint">ਸਾਂਝਾ ਪਰਿਵਾਰ (Joint)</option>
+                                        <option value="Nuclear">Nuclear Family</option>
+                                        <option value="Joint">Joint Family</option>
                                     </select>
                                 </div>
                             </div>
@@ -509,44 +508,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="step-pane" id="step5">
                         <div class="step-header-box">
                             <span class="step-tag-pill">STEP 5</span>
-                            <h2 class="step-header-title">ਜੀਵਨ ਸਾਥੀ ਦੀ ਪਸੰਦ</h2>
-                            <p class="step-header-desc">ਤੁਸੀਂ ਆਪਣੇ ਹੋਣ ਵਾਲੇ ਜੀਵਨ ਸਾਥੀ ਵਿੱਚ ਕੀ ਪਸੰਦ ਕਰਦੇ ਹੋ।</p>
+                            <h2 class="step-header-title">Partner Preferences</h2>
+                            <p class="step-header-desc">Describe what you are looking for in your life partner.</p>
                         </div>
 
                         <div style="display: grid; gap: 18px;">
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>ਮੰਗਲੀਕ ਰਿਸ਼ਤਾ ਚਾਹੀਦਾ</label>
+                                    <label>Manglik Match Required</label>
                                     <select name="manglik_required" id="field_manglik_required" class="input-custom-noicon">
-                                        <option value="ਹਾਂ">ਹਾਂ</option>
-                                        <option value="ਨਹੀਂ">ਨਹੀਂ</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
                                     </select>
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਪਸੰਦੀਦਾ ਉਮਰ</label>
-                                    <input type="text" name="partner_age" id="field_partner_age" placeholder="ਉਦਾਹਰਣ: 22 - 27 ਸਾਲ" class="input-custom-noicon">
+                                    <label>Preferred Age</label>
+                                    <input type="text" name="partner_age" id="field_partner_age" placeholder="e.g. 22 - 27 Years" class="input-custom-noicon">
                                 </div>
                             </div>
 
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>ਪਸੰਦੀਦਾ ਕੱਦ</label>
-                                    <input type="text" name="partner_height" id="field_partner_height" placeholder="ਉਦਾਹਰਣ: 5'2&quot; ਤੋਂ 5'8&quot;" class="input-custom-noicon">
+                                    <label>Preferred Height</label>
+                                    <input type="text" name="partner_height" id="field_partner_height" placeholder="e.g. 5'2&quot; to 5'8&quot;" class="input-custom-noicon">
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਪਸੰਦੀਦਾ ਕਾਸਟ</label>
-                                    <input type="text" name="partner_caste" id="field_partner_caste" value="ਸੈਣੀ" class="input-custom-noicon">
+                                    <label>Preferred Caste</label>
+                                    <input type="text" name="partner_caste" id="field_partner_caste" value="Nai / Sain" class="input-custom-noicon">
                                 </div>
                             </div>
 
                             <div class="form-group-custom">
-                                <label>ਪਸੰਦੀਦਾ ਯੋਗਤਾ & ਨੌਕਰੀ</label>
-                                <input type="text" name="partner_education" id="field_partner_education" placeholder="ਉਦਾਹਰਣ: ਗ੍ਰੈਜੂਏਟ / ਸਰਕਾਰੀ ਨੌਕਰੀ" class="input-custom-noicon">
+                                <label>Preferred Qualification & Occupation</label>
+                                <input type="text" name="partner_education" id="field_partner_education" placeholder="e.g. Graduate / Government Job" class="input-custom-noicon">
                             </div>
 
                             <div class="form-group-custom">
-                                <label>ਹੋਰ ਇੱਛਾਵਾਂ</label>
-                                <textarea name="partner_notes" id="field_partner_notes" rows="2" placeholder="ਹੋਰ ਕੋਈ ਖਾਸ ਇੱਛਾ ਜਾਂ ਮੰਗ..." class="textarea-custom"></textarea>
+                                <label>Other Preferences / Notes</label>
+                                <textarea name="partner_notes" id="field_partner_notes" rows="2" placeholder="Any specific requirements or preferences..." class="textarea-custom"></textarea>
                             </div>
                         </div>
                     </div>
@@ -555,40 +554,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="step-pane" id="step6">
                         <div class="step-header-box">
                             <span class="step-tag-pill">STEP 6</span>
-                            <h2 class="step-header-title">ਫੋਟੋ ਅਤੇ ਹੋਰ ਵੇਰਵੇ</h2>
-                            <p class="step-header-desc">ਉਮੀਦਵਾਰ ਦੀ ਫੋਟੋ ਅਪਲੋਡ ਕਰੋ ਅਤੇ ਹੋਰ ਵੇਰਵੇ ਭਰੋ।</p>
+                            <h2 class="step-header-title">Photo & Additional Info</h2>
+                            <p class="step-header-desc">Upload candidate photo and fill remaining details.</p>
                         </div>
 
                         <div style="display: grid; gap: 18px;">
                             <div class="form-group-custom">
-                                <label>ਉਮੀਦਵਾਰ ਦੀ ਪ੍ਰੋਫਾਈਲ ਫੋਟੋ <span class="required">*</span></label>
-                                <input type="file" name="photo" id="photoInput" accept="image/*" class="input-custom-noicon" style="padding: 9px;" required onchange="handlePhotoSelect(this)">
+                                <label>Candidate Profile Photo (Optional)</label>
+                                <input type="file" name="photo" id="photoInput" accept="image/*" class="input-custom-noicon" style="padding: 9px;" onchange="handlePhotoSelect(this)">
                                 <div class="photo-upload-preview" id="photoPreviewWrapper" style="display: none;">
                                     <img id="photoPreviewImg" src="" alt="Photo Preview" class="photo-preview-img">
                                     <div>
-                                        <strong style="color: #0f172a; font-size: 13.5px; display: block;">ਫੋਟੋ ਚੁਣੀ ਗਈ</strong>
-                                        <span style="color: #64748b; font-size: 12px;">ਇਹ ਫੋਟੋ ਤੁਹਾਡੀ ਵੈਰੀਫਾਈਡ ਪ੍ਰੋਫਾਈਲ 'ਤੇ ਦਿਖਾਈ ਜਾਵੇਗੀ।</span>
+                                        <strong style="color: #0f172a; font-size: 13.5px; display: block;">Photo Selected</strong>
+                                        <span style="color: #64748b; font-size: 12px;">This photo will be displayed on your verified profile.</span>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>ਮੰਗਲੀਕ <span class="required">*</span></label>
+                                    <label>Manglik Status <span class="required">*</span></label>
                                     <select name="manglik" id="field_manglik" class="input-custom-noicon">
-                                        <option value="ਨਹੀਂ">ਨਹੀਂ</option>
-                                        <option value="ਹਾਂ">ਹਾਂ</option>
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
                                     </select>
                                 </div>
                                 <div class="form-group-custom">
-                                    <label>ਰਾਸ਼ੀ</label>
-                                    <input type="text" name="rashi" id="field_rashi" placeholder="ਉਦਾਹਰਣ: ਸਿੰਘ / ਮੇਖ" class="input-custom-noicon">
+                                    <label>Rashi</label>
+                                    <input type="text" name="rashi" id="field_rashi" placeholder="e.g. Leo / Aries" class="input-custom-noicon">
                                 </div>
                             </div>
 
                             <div class="form-group-custom">
-                                <label>ਨੋਟ</label>
-                                <textarea name="note" id="field_note" rows="3" placeholder="ਕੋਈ ਖਾਸ ਨੋਟ ਜਾਂ ਹਦਾਇਤ ਲਿਖੋ..." class="textarea-custom"></textarea>
+                                <label>Notes / Remarks</label>
+                                <textarea name="note" id="field_note" rows="3" placeholder="Write any special note or instructions..." class="textarea-custom"></textarea>
                             </div>
                         </div>
                     </div>

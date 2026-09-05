@@ -88,8 +88,140 @@ require_once __DIR__ . '/config.php';
             'Male': 'ਮਰਦ',
             'Quick Links': 'ਤੁਰੰਤ ਲਿੰਕ',
             'Our Services': 'ਸਾਡੀਆਂ ਸੇਵਾਵਾਂ',
-            'All Rights Reserved.': 'ਸਾਰੇ ਹੱਕ ਰਾਖਵੇਂ ਹਨ।'
+            'All Rights Reserved.': 'ਸਾਰੇ ਹੱਕ ਰਾਖਵੇਂ ਹਨ।',
+
+            // Step Pills & Steps
+            'Personal Details': 'ਨਿੱਜੀ ਵੇਰਵੇ',
+            'Location & Contact': 'ਸਥਾਨ & ਸੰਪਰਕ',
+            'Photos & Info': 'ਫੋਟੋ ਅਤੇ ਹੋਰ ਵੇਰਵੇ',
+            'Review': 'ਰਿਵਿਊ',
+            'Name & Personal Details': 'ਨਾਮ & ਨਿੱਜੀ ਵੇਰਵੇ',
+            'Enter candidate details below. Fields marked with (*) are mandatory.': 'ਹੇਠਾਂ ਉਮੀਦਵਾਰ ਦੇ ਵੇਰਵੇ ਭਰੋ। (*) ਵਾਲੇ ਖੇਤਰ ਲਾਜ਼ਮੀ ਹਨ।',
+            'Full Name': 'ਨਾਮ',
+            'Candidate\'s Full Name': 'ਉਮੀਦਵਾਰ ਦਾ ਨਾਮ',
+            'Gender': 'ਲਿੰਗ',
+            'Groom / ਲੜਕਾ': 'ਲੜਕਾ',
+            'Bride / ਲੜਕੀ': 'ਲੜਕੀ',
+            'Male / Groom (ਲੜਕਾ)': 'ਲੜਕਾ',
+            'Female / Bride (ਲੜਕੀ)': 'ਲੜਕੀ',
+            'Date of Birth': 'ਜਨਮ ਮਿਤੀ',
+            'Auto-calculated from DOB': 'ਜਨਮ ਮਿਤੀ ਤੋਂ ਆਟੋ-ਕੈਲਕੂਲੇਟ',
+            'Time of Birth': 'ਜਨਮ ਸਮਾਂ',
+            'e.g. 10:30 AM': 'ਉਦਾਹਰਣ: 10:30 AM',
+            'Place of Birth': 'ਜਨਮ ਸਥਾਨ',
+            'e.g. Amritsar': 'ਉਦਾਹਰਣ: ਅੰਮ੍ਰਿਤਸਰ',
+            'Height': 'ਕੱਦ (ਹਾਈਟ)',
+            'e.g. 5\'7" or 170 cm': 'ਉਦਾਹਰਣ: 5\'7" ਜਾਂ 170 ਸਮ',
+            'Marital Status': 'ਮਾਰਸ਼ਲ ਸਟੇਟਸ',
+            'Never Married': 'ਅਣ-ਵਿਆਹਿਆ/ਹੀ',
+            'Divorced': 'ਤਲਾਕਸ਼ੁਦਾ',
+            'Widowed': 'ਵਿਧਵਾ/ਵਿਧੁਰ',
+            'Nai / Sain': 'ਨਾਈ (Nai)',
+            'Others': 'ਅਦਰ (Others)',
+            'Sikh': 'ਸਿੱਖ',
+            'Hindu': 'ਹਿੰਦੂ',
+            'Dadke Gotra (Father\'s Family Gotra)': 'ਦਾਦਕੇ ਗੋਤ (Dadke Gotra)',
+            'e.g. Gill, Dhaliwal': 'ਉਦਾਹਰਣ: ਗਿੱਲ, ਧਾਲੀਵਾਲ',
+            'Nanke Gotra (Mother\'s Family Gotra)': 'ਨਾਨਕੇ ਗੋਤ (Nanke Gotra)',
+            'e.g. Sandhu, Dhillon': 'ਉਦਾਹਰਣ: ਸੰਧੂ, ਢਿੱਲੋਂ',
+
+            // Step 2
+            'Location & Contact Info': 'ਸਥਾਨ & ਸੰਪਰਕ',
+            'Enter valid contact and location details.': 'ਆਪਣੀ ਸਹੀ ਸੰਪਰਕ ਜਾਣਕਾਰੀ ਦਰਜ ਕਰੋ।',
+            'Mobile Number': 'ਮੋਬਾਇਲ ਨੰਬਰ',
+            '10 Digit Mobile Number': '10 ਅੰਕਾਂ ਦਾ ਮੋਬਾਇਲ ਨੰਬਰ',
+            'Email Address': 'ਈਮੇਲ ਐਡਰੈੱਸ',
+            'District': 'ਜ਼ਿਲ੍ਹਾ',
+            'e.g. Amritsar, Ludhiana': 'ਉਦਾਹਰਣ: ਅੰਮ੍ਰਿਤਸਰ, ਲੁਧਿਆਣਾ',
+            'Tehsil & Post Office': 'ਪੋਸਟ ਆਫਿਸ ਤੇ ਤਹਿਸੀਲ',
+            'e.g. Tehsil Ajnala': 'ਉਦਾਹਰਣ: ਤਹਿਸੀਲ ਅਜਨਾਲਾ',
+            'State': 'ਸਟੇਟ',
+            'Full Address': 'ਪੂਰਾ ਪਤਾ',
+            'House No., Street, Village/Locality...': 'ਮਕਾਨ ਨੰਬਰ, ਗਲੀ, ਪਿੰਡ/ਕਲੋਨੀ...',
+
+            // Step 3
+            'Education & Profession': 'ਪੜ੍ਹਾਈ & ਕੰਮ ਕਾਰ',
+            'Enter candidate\'s educational qualifications and career details.': 'ਉਮੀਦਵਾਰ ਦੀ ਪੜ੍ਹਾਈ ਅਤੇ ਨੌਕਰੀ/ਬਿਜ਼ਨਸ ਦੀ ਜਾਣਕਾਰੀ ਦਿਓ।',
+            'Education / Qualification': 'ਪੜ੍ਹਾਈ/ਯੋਗਤਾ',
+            'Graduate': 'ਗ੍ਰੈਜੂਏਟ (Graduate)',
+            'Post Graduate': 'ਪੋਸਟ ਗ੍ਰੈਜੂਏਟ (Post Graduate)',
+            'Doctorate / PhD': 'ਡਾਕਟਰੇਟ / PhD',
+            'Medical / MBBS / BDS': 'ਮੈਡੀਕਲ / MBBS / BDS',
+            'CA / CS / Finance': 'CA / CS / Finance',
+            'Diploma / ITI': 'ਡਿਪਲੋਮਾ / ITI',
+            'Higher Secondary / 12th': 'ਹਾਇਰ ਸੈਕੰਡਰੀ / 12ਵੀਂ',
+            'Degree / Course Details': 'ਡਿਗਰੀ/ਕੋਰਸ',
+            'e.g. B.Tech, MBA, B.Com': 'ਉਦਾਹਰਣ: B.Tech, MBA',
+            'Occupation / Profession': 'ਕੰਮ ਕਾਰ/ਨੌਕਰੀ/ਬਿਜ਼ਨਸ',
+            'Government Job': 'ਸਰਕਾਰੀ',
+            'Private Job': 'ਪ੍ਰਾਈਵੇਟ',
+            'Business': 'ਬਿਜ਼ਨਸ',
+            'Company / Organization': 'ਕੰਪਨੀ',
+            'Company / Department Name': 'ਕੰਪਨੀ / ਵਿਭਾਗ ਦਾ ਨਾਮ',
+            'Annual Income': 'ਸਾਲਾਨਾ ਆਮਦਨ',
+            'e.g. 5-7 Lakh Per Annum': 'ਉਦਾਹਰਣ: 5-7 ਲੱਖ ਸਾਲਾਨਾ',
+
+            // Step 4
+            'Family Details': 'ਪਰਿਵਾਰਕ ਵੇਰਵੇ',
+            'Provide details about parents, siblings, and family background.': 'ਮਾਤਾ-ਪਿਤਾ, ਭੈਣ-ਭਰਾ ਅਤੇ ਪਰਿਵਾਰਕ ਪਿਛੋਕੜ ਬਾਰੇ ਦੱਸੋ।',
+            'Father\'s Name': 'ਪਿਤਾ ਦਾ ਨਾਮ',
+            'Father\'s Full Name': 'ਪਿਤਾ ਦਾ ਪੂਰਾ ਨਾਮ',
+            'Father\'s Occupation': 'ਪਿਤਾ ਦਾ ਕੰਮ',
+            'e.g. Businessman, Govt Employee': 'ਉਦਾਹਰਣ: ਬਿਜ਼ਨਸਮੈਨ, ਸਰਕਾਰੀ ਨੌਕਰੀ',
+            'Mother\'s Name': 'ਮਾਤਾ ਦਾ ਨਾਮ',
+            'Mother\'s Full Name': 'ਮਾਤਾ ਦਾ ਪੂਰਾ ਨਾਮ',
+            'Mother\'s Occupation': 'ਮਾਤਾ ਦਾ ਕੰਮ',
+            'e.g. Homemaker, Teacher': 'ਉਦਾਹਰਣ: ਘਰੇਲੂ, ਅਧਿਆਪਕ',
+            'Family Gotra': 'ਪਰਿਵਾਰ ਦਾ ਗੋਤ',
+            'Mother\'s Gotra': 'ਮਾਤਾ ਦਾ ਨਾਨਕੇ ਗੋਤ',
+            'Siblings': 'ਭੈਣ ਭਰਾ',
+            'e.g. 1 Brother, 1 Sister': 'ਉਦਾਹਰਣ: 1 ਭਰਾ, 1 ਭੈਣ',
+            'Family Type': 'ਪਰਿਵਾਰ ਦੀ ਕਿਸਮ',
+            'Nuclear Family': 'ਇਕੱਲਾ ਪਰਿਵਾਰ (Nuclear)',
+            'Joint Family': 'ਸਾਂਝਾ ਪਰਿਵਾਰ (Joint)',
+
+            // Step 5
+            'Partner Preferences': 'ਜੀਵਨ ਸਾਥੀ ਦੀ ਪਸੰਦ',
+            'Describe what you are looking for in your life partner.': 'ਤੁਸੀਂ ਆਪਣੇ ਹੋਣ ਵਾਲੇ ਜੀਵਨ ਸਾਥੀ ਵਿੱਚ ਕੀ ਪਸੰਦ ਕਰਦੇ ਹੋ।',
+            'Manglik Match Required': 'ਮੰਗਲੀਕ ਰਿਸ਼ਤਾ ਚਾਹੀਦਾ',
+            'Yes': 'ਹਾਂ',
+            'No': 'ਨਹੀਂ',
+            'Preferred Age': 'ਪਸੰਦੀਦਾ ਉਮਰ',
+            'e.g. 22 - 27 Years': 'ਉਦਾਹਰਣ: 22 - 27 ਸਾਲ',
+            'Preferred Height': 'ਪਸੰਦੀਦਾ ਕੱਦ',
+            'e.g. 5\'2" to 5\'8"': 'ਉਦਾਹਰਣ: 5\'2" ਤੋਂ 5\'8"',
+            'Preferred Caste': 'ਪਸੰਦੀਦਾ ਕਾਸਟ',
+            'Preferred Qualification & Occupation': 'ਪਸੰਦੀਦਾ ਯੋਗਤਾ & ਨੌਕਰੀ',
+            'e.g. Graduate / Government Job': 'ਉਦਾਹਰਣ: ਗ੍ਰੈਜੂਏਟ / ਸਰਕਾਰੀ ਨੌਕਰੀ',
+            'Other Preferences / Notes': 'ਹੋਰ ਇੱਛਾਵਾਂ',
+            'Any specific requirements or preferences...': 'ਹੋਰ ਕੋਈ ਖਾਸ ਇੱਛਾ ਜਾਂ ਮੰਗ...',
+
+            // Step 6
+            'Photo & Additional Info': 'ਫੋਟੋ ਅਤੇ ਹੋਰ ਵੇਰਵੇ',
+            'Upload candidate photo and fill remaining details.': 'ਉਮੀਦਵਾਰ ਦੀ ਫੋਟੋ ਅਪਲੋਡ ਕਰੋ ਅਤੇ ਹੋਰ ਵੇਰਵੇ ਭਰੋ।',
+            'Candidate Profile Photo (Optional)': 'ਉਮੀਦਵਾਰ ਦੀ ਪ੍ਰੋਫਾਈਲ ਫੋਟੋ (Optional)',
+            'Photo Selected': 'ਫੋਟੋ ਚੁਣੀ ਗਈ',
+            'This photo will be displayed on your verified profile.': 'ਇਹ ਫੋਟੋ ਤੁਹਾਡੀ ਵੈਰੀਫਾਈਡ ਪ੍ਰੋਫਾਈਲ \'ਤੇ ਦਿਖਾਈ ਜਾਵੇਗੀ।',
+            'Manglik Status': 'ਮੰਗਲੀਕ',
+            'Rashi': 'ਰਾਸ਼ੀ',
+            'e.g. Leo / Aries': 'ਉਦਾਹਰਣ: ਸਿੰਘ / ਮੇਖ',
+            'Notes / Remarks': 'ਨੋਟ',
+            'Write any special note or instructions...': 'ਕੋਈ ਖਾਸ ਨੋਟ ਜਾਂ ਹਦਾਇਤ ਲਿਖੋ...'
         };
+
+        function clearAllTranslateCookies() {
+            var domain = window.location.hostname;
+            var paths = ['/', '/matrimony', '/matrimony/'];
+            var domains = ['', domain, '.' + domain, 'localhost', '.localhost'];
+
+            paths.forEach(function(p) {
+                domains.forEach(function(d) {
+                    var dStr = d ? '; domain=' + d : '';
+                    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=' + p + dStr + ';';
+                    document.cookie = 'googtrans=/en/en; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=' + p + dStr + ';';
+                });
+            });
+        }
 
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
@@ -101,31 +233,43 @@ require_once __DIR__ . '/config.php';
 
         function setSiteLanguage(langCode) {
             localStorage.setItem('matrimony_lang', langCode);
-            var domain = window.location.hostname;
-            
-            // Set cookie for path=/ and current domain
-            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + domain + ";";
 
-            if (langCode !== 'en') {
-                document.cookie = "googtrans=/en/" + langCode + "; path=/;";
-                document.cookie = "googtrans=/en/" + langCode + "; path=/; domain=" + domain + ";";
-            } else {
-                document.cookie = "googtrans=/en/en; path=/;";
-                document.cookie = "googtrans=/en/en; path=/; domain=" + domain + ";";
+            // Sync select dropdown UI
+            var selects = document.querySelectorAll('.site-lang-select');
+            selects.forEach(function(s) {
+                s.value = langCode;
+            });
+
+            if (langCode === 'en') {
+                localStorage.removeItem('switched_to_pa');
+                clearAllTranslateCookies();
+
+                var googleSelect = document.querySelector('.goog-te-combo');
+                if (googleSelect) {
+                    googleSelect.value = 'en';
+                    googleSelect.dispatchEvent(new Event('change'));
+                }
+                location.reload();
+                return;
             }
+
+            // If Punjabi (pa)
+            var domain = window.location.hostname;
+            document.cookie = "googtrans=/en/pa; path=/;";
+            document.cookie = "googtrans=/en/pa; path=/; domain=" + domain + ";";
 
             var select = document.querySelector('.goog-te-combo');
             if (select) {
-                select.value = langCode;
+                select.value = 'pa';
                 select.dispatchEvent(new Event('change'));
             }
 
-            applyDOMTranslation(langCode);
+            applyDOMTranslation('pa');
         }
 
         function applyDOMTranslation(lang) {
             if (lang === 'pa') {
+                // 1. Text nodes
                 var walker = document.createTreeWalker(document.body || document.documentElement, NodeFilter.SHOW_TEXT, null, false);
                 var node;
                 while (node = walker.nextNode()) {
@@ -137,10 +281,27 @@ require_once __DIR__ . '/config.php';
                         node.nodeValue = node.nodeValue.replace(text, langDict[text]);
                     }
                 }
+
+                // 2. Input/Textarea Placeholders
+                var inputs = document.querySelectorAll('input[placeholder], textarea[placeholder]');
+                inputs.forEach(function(el) {
+                    var ph = el.getAttribute('placeholder');
+                    if (ph && langDict[ph.trim()]) {
+                        el.setAttribute('placeholder', langDict[ph.trim()]);
+                    }
+                });
+
+                // 3. Option elements inside Selects
+                var options = document.querySelectorAll('option');
+                options.forEach(function(opt) {
+                    if (opt.classList.contains('notranslate') || opt.closest('.notranslate')) return;
+                    var txt = opt.textContent.trim();
+                    if (txt && langDict[txt]) {
+                        opt.textContent = langDict[txt];
+                    }
+                });
+
                 localStorage.setItem('switched_to_pa', 'true');
-            } else if (lang === 'en' && localStorage.getItem('switched_to_pa')) {
-                localStorage.removeItem('switched_to_pa');
-                location.reload();
             }
         }
 
@@ -153,7 +314,13 @@ require_once __DIR__ . '/config.php';
                 s.value = currentLang;
             });
 
-            if (currentLang === 'pa') {
+            if (currentLang === 'en') {
+                clearAllTranslateCookies();
+                if (localStorage.getItem('switched_to_pa')) {
+                    localStorage.removeItem('switched_to_pa');
+                    location.reload();
+                }
+            } else if (currentLang === 'pa') {
                 applyDOMTranslation('pa');
             }
 
