@@ -20,7 +20,7 @@ require_once __DIR__ . '/config.php';
     <div class="top-bar">
         <div class="container">
             <ul>
-                <li><a href="<?php echo BASE_URL; ?>register.php"><i class="fa fa-user-plus"></i> Register Free</a></li>
+                <li><a href="<?php echo BASE_URL; ?>register.php"><i class="fa fa-paper-plane"></i> Submit Biodata</a></li>
                 <li><a href="<?php echo BASE_URL; ?>search.php"><i class="fa fa-search"></i> Search Profiles</a></li>
             </ul>
         </div>
@@ -45,7 +45,7 @@ require_once __DIR__ . '/config.php';
                 <li><a href="<?php echo BASE_URL; ?>services.php"><i class="fa fa-cogs"></i> Services</a></li>
                 <li><a href="<?php echo BASE_URL; ?>stories.php"><i class="fa fa-heart"></i> Stories</a></li>
                 <li><a href="<?php echo BASE_URL; ?>contact.php"><i class="fa fa-envelope"></i> Contact</a></li>
-                <li><a href="<?php echo BASE_URL; ?>register.php" class="btn-red"><i class="fa fa-pencil"></i> Register Free</a></li>
+                <li><a href="<?php echo BASE_URL; ?>register.php" class="btn-red"><i class="fa fa-paper-plane"></i> Submit Biodata</a></li>
             </ul>
         </div>
     </header>

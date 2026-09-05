@@ -152,6 +152,7 @@ $page_url_prefix = 'profiles.php?' . ($base_query ? $base_query . '&' : '') . 'p
                             </td>
                             <td>
                                 <div class="action-btn-group">
+                                    <a href="../profile.php?id=<?php echo $p['id']; ?>" target="_blank" class="btn-outline btn-sm" style="color: #0284c7 !important; border-color: #38bdf8;" title="View Candidate Profile Details"><i class="fa fa-eye"></i> View</a>
                                     <a href="edit-profile.php?id=<?php echo $p['id']; ?>" class="btn-outline btn-sm" style="color: #334155 !important; border-color: #cbd5e1;" title="Edit Profile Details"><i class="fa fa-edit"></i> Edit</a>
                                     <a href="profiles.php?action=delete&id=<?php echo $p['id']; ?>&page=<?php echo $page; ?>" onclick="return confirm('Are you sure you want to delete profile <?php echo htmlspecialchars($p['name']); ?> (<?php echo htmlspecialchars($p['profile_id']); ?>)?');" class="btn-red btn-sm" style="background: #ef4444;" title="Delete Profile"><i class="fa fa-trash"></i></a>
                                 </div>

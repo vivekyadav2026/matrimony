@@ -153,7 +153,7 @@ require_once __DIR__ . '/header.php';
                 <i class="fa fa-headset"></i> Contact Support Desk
             </a>
             <a href="register.php" class="btn-outline" style="background: rgba(255, 255, 255, 0.08); color: #ffffff !important; padding: 14px 30px; font-size: 13.5px; border-radius: 8px; font-weight: 700; border: 1px solid rgba(255, 255, 255, 0.25); backdrop-filter: blur(5px); text-transform: uppercase; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 8px;">
-                <i class="fa fa-user-plus"></i> Register Free Candidate
+                <i class="fa fa-paper-plane"></i> Submit Biodata
             </a>
         </div>
     </div>

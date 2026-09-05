@@ -84,9 +84,8 @@ $success_stories = $stmtStories->fetchAll();
                     <label>Caste</label>
                     <select name="caste">
                         <option value="">Doesn't Matter</option>
-                        <option value="Sain">Sain</option>
-                        <option value="Nai">Nai</option>
-                        <option value="Sain/Nai">Sain/Nai</option>
+                        <option value="Sain / Nai">Sain / Nai (Sain Samaj)</option>
+                        <option value="Others">Others</option>
                     </select>
                 </div>
 
@@ -182,10 +181,10 @@ $success_stories = $stmtStories->fetchAll();
 
         <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 35px 25px; border-radius: 20px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 1px solid rgba(234,179,8,0.25); position: relative; overflow: hidden;">
             <div style="position: absolute; right: -20%; top: -50%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(234,179,8,0.15) 0%, rgba(15,23,42,0) 70%); pointer-events: none;"></div>
-            <h3 style="font-family: 'Playfair Display', serif; font-size: clamp(22px, 3.5vw, 30px); font-weight: 800; color: #fff; margin-bottom: 8px;">Register Free and Upload Your Profile</h3>
+            <h3 style="font-family: 'Playfair Display', serif; font-size: clamp(22px, 3.5vw, 30px); font-weight: 800; color: #fff; margin-bottom: 8px;">Submit Biodata and Upload Your Profile</h3>
             <p style="color: #cbd5e1; font-size: 14.5px; margin-bottom: 22px;">Join thousands of verified Sain & Nai community families. Your story is waiting to happen!</p>
-            <a href="register.php" class="btn-red" style="background: linear-gradient(135deg, var(--primary-red) 0%, #a11320 100%) !important; padding: 13px 35px; font-size: 14px; border-radius: 30px; font-weight: 800; box-shadow: 0 6px 20px rgba(204,30,43,0.4); text-transform: uppercase; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 8px;">
-                <i class="fa fa-user-plus"></i> Register Free Candidate Profile
+            <a href="register.php" class="btn-red" style="padding: 13px 35px; font-size: 14px; border-radius: 30px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; display: inline-flex; align-items: center; gap: 8px;">
+                <i class="fa fa-paper-plane"></i> Submit Biodata Candidate Profile
             </a>
         </div>
     </div>
@@ -387,7 +386,7 @@ $success_stories = $stmtStories->fetchAll();
                     <i class="fa fa-chevron-down" style="font-size: 13px; color: #94a3b8;"></i>
                 </summary>
                 <p style="margin-top: 14px; font-size: 14px; color: #475569; line-height: 1.65; padding-left: 28px; border-top: 1px solid #f1f5f9; padding-top: 12px;">
-                    Click on the <strong>Register Free</strong> button in the top menu, fill in candidate details (name, gender, age, caste, phone number) and upload a photo. Profiles are manually verified and approved by our team within 24 hours.
+                    Click on the <strong>Submit Biodata</strong> button in the top menu, fill in candidate details (name, gender, age, caste, phone number) and upload a photo. Profiles are manually verified and approved by our team within 24 hours.
                 </p>
             </details>
 

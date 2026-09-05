@@ -85,7 +85,10 @@ $recent_profiles = $pdo->query("SELECT * FROM profiles ORDER BY id DESC LIMIT 5"
                             <?php endif; ?>
                         </td>
                         <td>
-                            <a href="edit-profile.php?id=<?php echo $p['id']; ?>" class="btn-outline btn-sm" style="color: var(--dark-navy) !important; border-color: #ccc;"><i class="fa fa-edit"></i> Edit</a>
+                            <div class="action-btn-group">
+                                <a href="../profile.php?id=<?php echo $p['id']; ?>" target="_blank" class="btn-outline btn-sm" style="color: #0284c7 !important; border-color: #38bdf8;" title="View Candidate Profile"><i class="fa fa-eye"></i> View</a>
+                                <a href="edit-profile.php?id=<?php echo $p['id']; ?>" class="btn-outline btn-sm" style="color: var(--dark-navy) !important; border-color: #ccc;"><i class="fa fa-edit"></i> Edit</a>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach; ?>

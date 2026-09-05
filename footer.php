@@ -1,35 +1,35 @@
     <!-- Footer -->
-    <footer style="background: #080c14; color: #94a3b8; font-size: 13px; padding: 50px 15px 0 15px; border-top: 1px solid #1e293b;">
+    <footer style="background: var(--dark-footer); color: #fbcfe8; font-size: 13px; padding: 50px 15px 0 15px; border-top: 1px solid #831843;">
         <div class="container">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 35px; padding-bottom: 40px;">
                 
                 <!-- Brand Info -->
                 <div style="display: flex; flex-direction: column; gap: 15px;">
                     <div style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: #ffffff;">
-                        Sain<span style="color: var(--primary-red);">matrimony.in</span>
+                        Sain<span style="color: #f472b6;">matrimony.in</span>
                     </div>
-                    <p style="line-height: 1.65; color: #94a3b8; margin: 0; font-size: 13px;">
+                    <p style="line-height: 1.65; color: #fbcfe8; margin: 0; font-size: 13px;">
                         India's Most Trusted Matrimonial Platform exclusively for <strong>Sain & Nai Communities</strong>. 100% Manual Profile Verification with Complete Contact Privacy.
                     </p>
                     <div style="display: flex; gap: 10px; margin-top: 5px;">
-                        <a href="#" style="width: 34px; height: 34px; border-radius: 50%; background: #1e293b; color: #cbd5e1; display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; transition: all 0.2s ease;"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" style="width: 34px; height: 34px; border-radius: 50%; background: #1e293b; color: #cbd5e1; display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; transition: all 0.2s ease;"><i class="fab fa-twitter"></i></a>
-                        <a href="#" style="width: 34px; height: 34px; border-radius: 50%; background: #1e293b; color: #cbd5e1; display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; transition: all 0.2s ease;"><i class="fab fa-instagram"></i></a>
-                        <a href="#" style="width: 34px; height: 34px; border-radius: 50%; background: #1e293b; color: #cbd5e1; display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; transition: all 0.2s ease;"><i class="fab fa-youtube"></i></a>
+                        <a href="#" style="width: 34px; height: 34px; border-radius: 50%; background: #831843; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; transition: all 0.2s ease;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="width: 34px; height: 34px; border-radius: 50%; background: #831843; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; transition: all 0.2s ease;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="width: 34px; height: 34px; border-radius: 50%; background: #831843; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; transition: all 0.2s ease;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="width: 34px; height: 34px; border-radius: 50%; background: #831843; color: #ffffff; display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; transition: all 0.2s ease;"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
                 <!-- Quick Links -->
                 <div>
                     <h4 style="color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 18px; letter-spacing: 0.5px; text-transform: uppercase; display: flex; align-items: center; gap: 8px;">
-                        <i class="fa fa-link" style="color: var(--primary-red); font-size: 13px;"></i> Quick Links
+                        <i class="fa fa-link" style="color: #f472b6; font-size: 13px;"></i> Quick Links
                     </h4>
                     <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li><a href="<?php echo BASE_URL; ?>" style="color: #cbd5e1; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--primary-red);"></i> Home</a></li>
-                        <li><a href="<?php echo BASE_URL; ?>search.php" style="color: #cbd5e1; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--primary-red);"></i> Search Profiles</a></li>
-                        <li><a href="<?php echo BASE_URL; ?>about.php" style="color: #cbd5e1; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--primary-red);"></i> About Us</a></li>
-                        <li><a href="<?php echo BASE_URL; ?>stories.php" style="color: #cbd5e1; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--primary-red);"></i> Success Stories</a></li>
-                        <li><a href="<?php echo BASE_URL; ?>contact.php" style="color: #cbd5e1; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--primary-red);"></i> Contact & Help</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>" style="color: #fbcfe8; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: #f472b6;"></i> Home</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>search.php" style="color: #fbcfe8; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: #f472b6;"></i> Search Profiles</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>about.php" style="color: #fbcfe8; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: #f472b6;"></i> About Us</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>stories.php" style="color: #fbcfe8; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: #f472b6;"></i> Success Stories</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>contact.php" style="color: #fbcfe8; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: #f472b6;"></i> Contact & Help</a></li>
                     </ul>
                 </div>
 
@@ -39,33 +39,33 @@
                         <i class="fa fa-hand-holding-heart" style="color: var(--secondary-gold); font-size: 13px;"></i> Our Services
                     </h4>
                     <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
-                        <li><a href="<?php echo BASE_URL; ?>services.php" style="color: #cbd5e1; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--secondary-gold);"></i> Manglik Matchmaking</a></li>
-                        <li><a href="<?php echo BASE_URL; ?>services.php" style="color: #cbd5e1; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--secondary-gold);"></i> Kundli Matching</a></li>
-                        <li><a href="<?php echo BASE_URL; ?>services.php" style="color: #cbd5e1; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--secondary-gold);"></i> Manglik Nivaran Puja</a></li>
-                        <li><a href="<?php echo BASE_URL; ?>services.php" style="color: #cbd5e1; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--secondary-gold);"></i> VIP Assisted Service</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>services.php" style="color: #fbcfe8; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--secondary-gold);"></i> Manglik Matchmaking</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>services.php" style="color: #fbcfe8; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--secondary-gold);"></i> Kundli Matching</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>services.php" style="color: #fbcfe8; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--secondary-gold);"></i> Manglik Nivaran Puja</a></li>
+                        <li><a href="<?php echo BASE_URL; ?>services.php" style="color: #fbcfe8; text-decoration: none; transition: color 0.2s ease; display: inline-flex; align-items: center; gap: 6px;"><i class="fa fa-chevron-right" style="font-size: 10px; color: var(--secondary-gold);"></i> VIP Assisted Service</a></li>
                     </ul>
                 </div>
 
                 <!-- Contact & Support -->
                 <div>
                     <h4 style="color: #ffffff; font-size: 15px; font-weight: 700; margin-bottom: 18px; letter-spacing: 0.5px; text-transform: uppercase; display: flex; align-items: center; gap: 8px;">
-                        <i class="fa fa-headset" style="color: var(--primary-red); font-size: 13px;"></i> Contact Desk
+                        <i class="fa fa-headset" style="color: #f472b6; font-size: 13px;"></i> Contact Desk
                     </h4>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <div style="display: flex; align-items: center; gap: 10px; color: #cbd5e1;">
-                            <div style="width: 32px; height: 32px; border-radius: 8px; background: #1e293b; color: var(--primary-red); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;"><i class="fa fa-envelope"></i></div>
+                        <div style="display: flex; align-items: center; gap: 10px; color: #fbcfe8;">
+                            <div style="width: 32px; height: 32px; border-radius: 8px; background: #831843; color: #f472b6; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;"><i class="fa fa-envelope"></i></div>
                             <span>support@sainmatrimony.in</span>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 10px; color: #cbd5e1;">
-                            <div style="width: 32px; height: 32px; border-radius: 8px; background: #1e293b; color: #10b981; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;"><i class="fa fa-phone"></i></div>
+                        <div style="display: flex; align-items: center; gap: 10px; color: #fbcfe8;">
+                            <div style="width: 32px; height: 32px; border-radius: 8px; background: #831843; color: #10b981; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;"><i class="fa fa-phone"></i></div>
                             <span>+91 85286 00100</span>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 10px; color: #cbd5e1;">
-                            <div style="width: 32px; height: 32px; border-radius: 8px; background: #1e293b; color: #25D366; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;"><i class="fab fa-whatsapp"></i></div>
+                        <div style="display: flex; align-items: center; gap: 10px; color: #fbcfe8;">
+                            <div style="width: 32px; height: 32px; border-radius: 8px; background: #831843; color: #25D366; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0;"><i class="fab fa-whatsapp"></i></div>
                             <a href="https://wa.me/918528600100?text=Hello%20Sainmatrimony,%20I%20want%20to%20inquire%20about%20matrimonial%20profiles" target="_blank" style="color: #25D366; text-decoration: none; font-weight: 700;">WhatsApp Chat</a>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 10px; color: #cbd5e1;">
-                            <div style="width: 32px; height: 32px; border-radius: 8px; background: #1e293b; color: var(--secondary-gold); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;"><i class="fa fa-map-marker-alt"></i></div>
+                        <div style="display: flex; align-items: center; gap: 10px; color: #fbcfe8;">
+                            <div style="width: 32px; height: 32px; border-radius: 8px; background: #831843; color: var(--secondary-gold); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;"><i class="fa fa-map-marker-alt"></i></div>
                             <span>New Delhi, India</span>
                         </div>
                     </div>
@@ -74,10 +74,10 @@
             </div>
         </div>
 
-        <div style="background: #030712; padding: 18px 0; border-top: 1px solid #1e293b; font-size: 12.5px; color: #64748b;">
+        <div style="background: #380412; padding: 18px 0; border-top: 1px solid #701a75; font-size: 12.5px; color: #f472b6;">
             <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px;">
-                <p style="margin: 0;">&copy; <?php echo date('Y'); ?> <strong style="color: #cbd5e1;">Sainmatrimony.in</strong>. All Rights Reserved. Exclusively for Sain & Nai Community.</p>
-                <p style="margin: 0;">Designed &amp; Developed by <a href="https://foundida.com/" target="_blank" rel="noopener noreferrer" style="color: #cbd5e1; font-weight: 600; text-decoration: underline;">Foundida</a></p>
+                <p style="margin: 0;">&copy; <?php echo date('Y'); ?> <strong style="color: #ffffff;">Sainmatrimony.in</strong>. All Rights Reserved. Exclusively for Sain & Nai Community.</p>
+                <p style="margin: 0;">Designed &amp; Developed by <a href="https://foundida.com/" target="_blank" rel="noopener noreferrer" style="color: #ffffff; font-weight: 600; text-decoration: underline;">Foundida</a></p>
             </div>
         </div>
 

@@ -31,7 +31,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
         </div>
         <ul class="sidebar-menu">
             <li><a href="index.php" class="<?php echo ($current_page == 'index.php') ? 'active' : ''; ?>"><i class="fa fa-tachometer-alt"></i> Dashboard</a></li>
-            <li><a href="profiles.php" class="<?php echo ($current_page == 'profiles.php' || $current_page == 'add-profile.php' || $current_page == 'edit-profile.php') ? 'active' : ''; ?>"><i class="fa fa-users"></i> Manage Profiles</a></li>
+            <li><a href="profiles.php" class="<?php echo ($current_page == 'profiles.php' || $current_page == 'edit-profile.php') ? 'active' : ''; ?>"><i class="fa fa-users"></i> Manage Profiles</a></li>
             <li><a href="add-profile.php" class="<?php echo ($current_page == 'add-profile.php') ? 'active' : ''; ?>"><i class="fa fa-user-plus"></i> Add New Profile</a></li>
             <li><a href="inquiries.php" class="<?php echo ($current_page == 'inquiries.php') ? 'active' : ''; ?>"><i class="fa fa-envelope"></i> User Inquiries</a></li>
             <li><a href="stories.php" class="<?php echo ($current_page == 'stories.php') ? 'active' : ''; ?>"><i class="fa fa-heart"></i> Success Stories</a></li>

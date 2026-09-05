@@ -41,8 +41,13 @@ if ($religion != '') {
 }
 
 if ($caste != '') {
-    $sql_where .= " AND caste LIKE ?";
-    $params[] = "%$caste%";
+    $caste_clean = strtolower(trim($caste));
+    if (in_array($caste_clean, ['sain', 'nai', 'sain/nai', 'sain / nai'])) {
+        $sql_where .= " AND (caste LIKE '%Sain%' OR caste LIKE '%Nai%')";
+    } else {
+        $sql_where .= " AND caste LIKE ?";
+        $params[] = "%$caste%";
+    }
 }
 
 if ($state != '') {
@@ -135,10 +140,9 @@ $page_url_prefix = 'search.php?' . ($base_query ? $base_query . '&' : '') . 'pag
                 <div class="form-group">
                     <label style="color: #334155; font-size: 12.5px;">Caste</label>
                     <select name="caste" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1; height: 38px;">
-                        <option value="">Doesn't Matter</option>
-                        <option value="Sain" <?php echo ($caste == 'Sain') ? 'selected' : ''; ?>>Sain</option>
-                        <option value="Nai" <?php echo ($caste == 'Nai') ? 'selected' : ''; ?>>Nai</option>
-                        <option value="Sain/Nai" <?php echo ($caste == 'Sain/Nai') ? 'selected' : ''; ?>>Sain/Nai</option>
+                        <option value="">All / Doesn't Matter</option>
+                        <option value="Sain / Nai" <?php echo (in_array(strtolower($caste), ['sain', 'nai', 'sain/nai', 'sain / nai'])) ? 'selected' : ''; ?>>Sain / Nai (Sain Samaj)</option>
+                        <option value="Others" <?php echo (in_array($caste, ['Others', 'Other Community'])) ? 'selected' : ''; ?>>Others</option>
                     </select>
                 </div>
 

@@ -43,7 +43,15 @@ $inquiries = $pdo->query("SELECT * FROM inquiries ORDER BY id DESC")->fetchAll()
                             <td><?php echo htmlspecialchars($inq['email']); ?></td>
                             <td style="max-width: 350px; font-size: 13px; color: #444;"><?php echo nl2br(htmlspecialchars($inq['message'])); ?></td>
                             <td>
-                                <a href="inquiries.php?action=delete&id=<?php echo $inq['id']; ?>" onclick="return confirm('Delete this inquiry?');" class="btn-red btn-sm" style="background: #dc3545;"><i class="fa fa-trash"></i> Delete</a>
+                                <div style="display: flex; gap: 6px;">
+                                    <?php 
+                                    $clean_phone = preg_replace('/[^0-9]/', '', $inq['phone']);
+                                    if ($clean_phone): 
+                                    ?>
+                                        <a href="https://wa.me/<?php echo (strlen($clean_phone) == 10 ? '91' . $clean_phone : $clean_phone); ?>?text=<?php echo urlencode('Hello ' . $inq['name'] . ', thank you for contacting SainMatrimony.com!'); ?>" target="_blank" class="btn-sm" style="background: #25D366; color: #fff; text-decoration: none; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: 600;" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                                    <?php endif; ?>
+                                    <a href="inquiries.php?action=delete&id=<?php echo $inq['id']; ?>" onclick="return confirm('Delete this inquiry?');" class="btn-red btn-sm" style="background: #dc3545;" title="Delete Inquiry"><i class="fa fa-trash"></i></a>
+                                </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>
