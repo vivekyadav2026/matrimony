@@ -14,7 +14,7 @@ require_once __DIR__ . '/header.php';
             Specialized Services for <span style="color: var(--secondary-gold);">Sain & Nai Families</span>
         </h1>
         <p style="color: #cbd5e1; font-size: 15px; font-weight: 500; max-width: 650px; margin: 0 auto; line-height: 1.6;">
-            From verified candidate search to Kundli matching and VIP assisted proposals, we provide complete support for your family.
+            From verified candidate search to privacy protection and VIP assisted proposals, we provide complete support for your family.
         </p>
     </div>
 </section>
@@ -23,7 +23,7 @@ require_once __DIR__ . '/header.php';
 <section style="background-color: #f8fafc; padding: 60px 20px; border-bottom: 1px solid #e2e8f0;">
     <div class="container" style="max-width: 1100px;">
         <h2 class="section-title">What We Offer</h2>
-        <p class="section-subtitle">END-TO-END MATRIMONIAL & ASTROLOGICAL ASSISTANCE</p>
+        <p class="section-subtitle">END-TO-END MATRIMONIAL ASSISTANCE</p>
         
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 35px;">
             
@@ -34,7 +34,7 @@ require_once __DIR__ . '/header.php';
                 </div>
                 <h3 style="font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">Manglik Matchmaking</h3>
                 <p style="font-size: 13.5px; color: #64748b; line-height: 1.65; margin-bottom: 20px; flex: 1;">
-                    Specialized filtering and matching for Full Manglik, Anshik Manglik, or Non-Manglik candidates ensuring compatible horoscopes within Sain & Nai Samaj.
+                    Specialized filtering and matching for Manglik or Non-Manglik candidates ensuring compatible proposals within Sain & Nai Samaj.
                 </p>
                 <a href="search.php" class="btn-outline" style="color: var(--primary-red) !important; border-color: var(--primary-red); font-size: 13px; text-align: center; border-radius: 20px; font-weight: 700;"><i class="fa fa-search"></i> Search Manglik Profiles</a>
             </div>
@@ -42,25 +42,25 @@ require_once __DIR__ . '/header.php';
             <!-- Service 2 -->
             <div style="background: #ffffff; padding: 30px 25px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
                 <div style="width: 50px; height: 50px; background: #fffbeb; color: var(--secondary-gold-dark); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px;">
-                    <i class="fa fa-om"></i>
+                    <i class="fa fa-user-check"></i>
                 </div>
-                <h3 style="font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">Kundli & 36 Guna Matching</h3>
+                <h3 style="font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">Verified Profile Search</h3>
                 <p style="font-size: 13.5px; color: #64748b; line-height: 1.65; margin-bottom: 20px; flex: 1;">
-                    Detailed 36 Guna Milan analysis, Nadi Dosha verification, and planetary placement checks before proceeding with family meetings.
+                    Every candidate profile is manually screened and verified by our admin team before being published to maintain complete authenticity.
                 </p>
-                <a href="contact.php" class="btn-outline" style="color: var(--secondary-gold-dark) !important; border-color: var(--secondary-gold-dark); font-size: 13px; text-align: center; border-radius: 20px; font-weight: 700;"><i class="fa fa-comments"></i> Consult Astrologer Desk</a>
+                <a href="search.php" class="btn-outline" style="color: var(--secondary-gold-dark) !important; border-color: var(--secondary-gold-dark); font-size: 13px; text-align: center; border-radius: 20px; font-weight: 700;"><i class="fa fa-search"></i> Search Profiles</a>
             </div>
 
             <!-- Service 3 -->
             <div style="background: #ffffff; padding: 30px 25px; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
                 <div style="width: 50px; height: 50px; background: #f0fdf4; color: #16a34a; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px;">
-                    <i class="fa fa-fire"></i>
+                    <i class="fa fa-handshake"></i>
                 </div>
-                <h3 style="font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">Manglik Nivaran Havan Guidance</h3>
+                <h3 style="font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">Parent & Family Meeting Support</h3>
                 <p style="font-size: 13.5px; color: #64748b; line-height: 1.65; margin-bottom: 20px; flex: 1;">
-                    Guidance and arrangement for traditional Vedic Havans, Kumbh Vivah rituals, and Shanti Pujas for peace and matrimonial prosperity.
+                    Dedicated support desk facilitating initial family introductions, phone number exchanges, and confidential marriage discussions.
                 </p>
-                <a href="contact.php" class="btn-outline" style="color: #16a34a !important; border-color: #16a34a; font-size: 13px; text-align: center; border-radius: 20px; font-weight: 700;"><i class="fa fa-calendar-check"></i> Book Havan Guidance</a>
+                <a href="contact.php" class="btn-outline" style="color: #16a34a !important; border-color: #16a34a; font-size: 13px; text-align: center; border-radius: 20px; font-weight: 700;"><i class="fa fa-comments"></i> Contact Help Desk</a>
             </div>
 
             <!-- Service 4 -->

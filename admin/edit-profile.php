@@ -21,10 +21,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $gender = $_POST['gender'] ?? 'Female';
     $mobile = trim($_POST['mobile'] ?? '');
     $age = (int)($_POST['age'] ?? 25);
+    $dob = trim($_POST['dob'] ?? '');
+    $time_of_birth = trim($_POST['time_of_birth'] ?? '');
+    $place_of_birth = trim($_POST['place_of_birth'] ?? '');
     $religion = trim($_POST['religion'] ?? 'Hindu');
     $caste = trim($_POST['caste'] ?? 'Sain / Nai');
     $state = trim($_POST['state'] ?? 'Punjab');
     $city = trim($_POST['city'] ?? 'Amritsar');
+    $district = trim($_POST['district'] ?? '');
+    $tehsil_post = trim($_POST['tehsil_post'] ?? '');
+    $address = trim($_POST['address'] ?? '');
     $education = trim($_POST['education'] ?? 'Graduate');
     $occupation = trim($_POST['occupation'] ?? 'Professional');
 
@@ -46,19 +52,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Family Details
     $sub_caste = trim($_POST['sub_caste'] ?? '');
     $gotra = trim($_POST['gotra'] ?? '');
+    $father_name = trim($_POST['father_name'] ?? '');
     $father_occ = trim($_POST['father_occ'] ?? '');
+    $mother_name = trim($_POST['mother_name'] ?? '');
     $mother_occ = trim($_POST['mother_occ'] ?? '');
+    $family_gotra = trim($_POST['family_gotra'] ?? '');
+    $mother_gotra = trim($_POST['mother_gotra'] ?? '');
     $siblings = trim($_POST['siblings'] ?? '');
     $family_type = trim($_POST['family_type'] ?? '');
     $family_values = trim($_POST['family_values'] ?? '');
 
-    // Partner Preferences
+    // Partner Preferences & Notes
     $partner_age = trim($_POST['partner_age'] ?? '');
     $partner_height = trim($_POST['partner_height'] ?? '');
     $partner_caste = trim($_POST['partner_caste'] ?? 'Sain / Nai');
     $partner_education = trim($_POST['partner_education'] ?? '');
     $partner_location = trim($_POST['partner_location'] ?? '');
     $partner_notes = trim($_POST['partner_notes'] ?? '');
+    $manglik_required = trim($_POST['manglik_required'] ?? '');
+    $note = trim($_POST['note'] ?? '');
 
     $is_premium = isset($_POST['is_premium']) ? 1 : 0;
     $status = $_POST['status'] ?? 'active';
@@ -85,20 +97,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($name && $profile_id && $caste) {
         try {
             $up = $pdo->prepare("UPDATE profiles SET 
-                profile_id = ?, name = ?, gender = ?, mobile = ?, age = ?, religion = ?, caste = ?, state = ?, city = ?, 
+                profile_id = ?, name = ?, gender = ?, mobile = ?, age = ?, dob = ?, time_of_birth = ?, place_of_birth = ?, religion = ?, caste = ?, state = ?, city = ?, district = ?, tehsil_post = ?, address = ?,
                 education = ?, occupation = ?, photo = ?, is_premium = ?, status = ?,
                 marital_status = ?, height = ?, weight = ?, complexion = ?, diet = ?, manglik = ?, mother_tongue = ?,
                 education_detail = ?, organization = ?, income = ?, work_location = ?,
-                sub_caste = ?, gotra = ?, father_occ = ?, mother_occ = ?, siblings = ?, family_type = ?, family_values = ?,
-                partner_age = ?, partner_height = ?, partner_caste = ?, partner_education = ?, partner_location = ?, partner_notes = ?
+                sub_caste = ?, gotra = ?, father_name = ?, father_occ = ?, mother_name = ?, mother_occ = ?, family_gotra = ?, mother_gotra = ?, siblings = ?, family_type = ?, family_values = ?,
+                partner_age = ?, partner_height = ?, partner_caste = ?, partner_education = ?, partner_location = ?, partner_notes = ?, manglik_required = ?, note = ?
                 WHERE id = ?");
             $up->execute([
-                $profile_id, $name, $gender, $mobile, $age, $religion, $caste, $state, $city, 
+                $profile_id, $name, $gender, $mobile, $age, $dob, $time_of_birth, $place_of_birth, $religion, $caste, $state, $city, $district, $tehsil_post, $address,
                 $education, $occupation, $photo, $is_premium, $status,
                 $marital_status, $height, $weight, $complexion, $diet, $manglik, $mother_tongue,
                 $education_detail, $organization, $income, $work_location,
-                $sub_caste, $gotra, $father_occ, $mother_occ, $siblings, $family_type, $family_values,
-                $partner_age, $partner_height, $partner_caste, $partner_education, $partner_location, $partner_notes,
+                $sub_caste, $gotra, $father_name, $father_occ, $mother_name, $mother_occ, $family_gotra, $mother_gotra, $siblings, $family_type, $family_values,
+                $partner_age, $partner_height, $partner_caste, $partner_education, $partner_location, $partner_notes, $manglik_required, $note,
                 $id
             ]);
             $msg = "Candidate Profile updated successfully!";
@@ -160,7 +172,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
                 <div class="form-group">
                     <label style="color: #334155; font-weight: 600; font-size: 13px;">Gender *</label>
                     <select name="gender" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
@@ -173,31 +185,59 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" name="mobile" value="<?php echo htmlspecialchars($profile['mobile'] ?? ''); ?>" placeholder="e.g. 9876543210" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
                 </div>
                 <div class="form-group">
+                    <label style="color: #334155; font-weight: 600; font-size: 13px;">Date of Birth</label>
+                    <input type="date" name="dob" id="admin_field_dob" value="<?php echo htmlspecialchars($profile['dob'] ?? ''); ?>" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;" onchange="calculateAgeFromDOB(this.value)">
+                </div>
+                <div class="form-group">
                     <label style="color: #334155; font-weight: 600; font-size: 13px;">Age (Years) *</label>
-                    <input type="number" name="age" value="<?php echo htmlspecialchars($profile['age']); ?>" min="18" max="75" required class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                    <input type="number" name="age" id="admin_field_age" value="<?php echo htmlspecialchars($profile['age']); ?>" min="18" max="75" required class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                <div class="form-group">
+                    <label style="color: #334155; font-weight: 600; font-size: 13px;">Time of Birth</label>
+                    <input type="text" name="time_of_birth" value="<?php echo htmlspecialchars($profile['time_of_birth'] ?? ''); ?>" placeholder="e.g. 10:30 AM" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                </div>
+                <div class="form-group">
+                    <label style="color: #334155; font-weight: 600; font-size: 13px;">Place of Birth</label>
+                    <input type="text" name="place_of_birth" value="<?php echo htmlspecialchars($profile['place_of_birth'] ?? ''); ?>" placeholder="e.g. Amritsar" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                </div>
+                <div class="form-group">
+                    <label style="color: #334155; font-weight: 600; font-size: 13px;">Religion</label>
+                    <input type="text" name="religion" value="<?php echo htmlspecialchars($profile['religion'] ?? 'Hindu'); ?>" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                </div>
+                <div class="form-group">
+                    <label style="color: #334155; font-weight: 600; font-size: 13px;">Caste / Community *</label>
+                    <select name="caste" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                        <option value="Nai" <?php echo (in_array(strtolower($profile['caste']), ['sain', 'nai', 'sain/nai', 'sain / nai', 'ਨਾਈ'])) ? 'selected' : ''; ?>>Nai</option>
+                        <option value="Others" <?php echo ($profile['caste'] == 'Others' || $profile['caste'] == 'Other Community' || $profile['caste'] == 'ਅਦਰ') ? 'selected' : ''; ?>>Others</option>
+                    </select>
                 </div>
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px;">
                 <div class="form-group">
-                    <label style="color: #334155; font-weight: 600; font-size: 13px;">Religion</label>
-                    <input type="text" name="religion" value="<?php echo htmlspecialchars($profile['religion']); ?>" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                    <label style="color: #334155; font-weight: 600; font-size: 13px;">District</label>
+                    <input type="text" name="district" value="<?php echo htmlspecialchars($profile['district'] ?? ''); ?>" placeholder="e.g. Amritsar" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
                 </div>
                 <div class="form-group">
-                    <label style="color: #334155; font-weight: 600; font-size: 13px;">Caste / Community *</label>
-                    <select name="caste" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
-                        <option value="Sain / Nai" <?php echo (in_array(strtolower($profile['caste']), ['sain', 'nai', 'sain/nai', 'sain / nai'])) ? 'selected' : ''; ?>>Sain / Nai (Sain Samaj)</option>
-                        <option value="Others" <?php echo ($profile['caste'] == 'Others' || $profile['caste'] == 'Other Community') ? 'selected' : ''; ?>>Others</option>
-                    </select>
+                    <label style="color: #334155; font-weight: 600; font-size: 13px;">Tehsil / Post</label>
+                    <input type="text" name="tehsil_post" value="<?php echo htmlspecialchars($profile['tehsil_post'] ?? ''); ?>" placeholder="e.g. Tehsil Ajnala" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
                 </div>
                 <div class="form-group">
                     <label style="color: #334155; font-weight: 600; font-size: 13px;">City</label>
-                    <input type="text" name="city" value="<?php echo htmlspecialchars($profile['city']); ?>" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                    <input type="text" name="city" value="<?php echo htmlspecialchars($profile['city'] ?? ''); ?>" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
                 </div>
                 <div class="form-group">
                     <label style="color: #334155; font-weight: 600; font-size: 13px;">State</label>
-                    <input type="text" name="state" value="<?php echo htmlspecialchars($profile['state']); ?>" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                    <input type="text" name="state" value="<?php echo htmlspecialchars($profile['state'] ?? 'Punjab'); ?>" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
                 </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 15px;">
+                <label style="color: #334155; font-weight: 600; font-size: 13px;">Full Address</label>
+                <textarea name="address" rows="2" placeholder="House No, Street, Village/Locality..." class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;"><?php echo htmlspecialchars($profile['address'] ?? ''); ?></textarea>
             </div>
         </div>
 
@@ -238,8 +278,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-group">
                     <label style="color: #334155; font-size: 13px;">Manglik Status</label>
                     <select name="manglik" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
-                        <option value="Non-Manglik" <?php echo (($profile['manglik'] ?? '') == 'Non-Manglik') ? 'selected' : ''; ?>>Non-Manglik</option>
-                        <option value="Manglik" <?php echo (($profile['manglik'] ?? '') == 'Manglik') ? 'selected' : ''; ?>>Manglik</option>
+                        <option value="Non-Manglik" <?php echo (($profile['manglik'] ?? '') == 'Non-Manglik' || ($profile['manglik'] ?? '') == 'ਨਹੀਂ') ? 'selected' : ''; ?>>Non-Manglik (ਨਹੀਂ)</option>
+                        <option value="Manglik" <?php echo (($profile['manglik'] ?? '') == 'Manglik' || ($profile['manglik'] ?? '') == 'ਹਾਂ') ? 'selected' : ''; ?>>Manglik (ਹਾਂ)</option>
                         <option value="Anshik Manglik" <?php echo (($profile['manglik'] ?? '') == 'Anshik Manglik') ? 'selected' : ''; ?>>Anshik Manglik</option>
                     </select>
                 </div>
@@ -293,37 +333,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <i class="fa fa-users"></i> Family Background
             </h4>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px;">
                 <div class="form-group">
-                    <label style="color: #334155; font-size: 13px;">Sub Community / Clan</label>
-                    <input type="text" name="sub_caste" value="<?php echo htmlspecialchars($profile['sub_caste'] ?? ''); ?>" placeholder="e.g. Sandhu" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                    <label style="color: #334155; font-size: 13px;">Father's Name</label>
+                    <input type="text" name="father_name" value="<?php echo htmlspecialchars($profile['father_name'] ?? ''); ?>" placeholder="Father Name" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
                 </div>
-                <div class="form-group">
-                    <label style="color: #334155; font-size: 13px;">Gotra</label>
-                    <input type="text" name="gotra" value="<?php echo htmlspecialchars($profile['gotra'] ?? ''); ?>" placeholder="e.g. Gill" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
-                </div>
-                <div class="form-group">
-                    <label style="color: #334155; font-size: 13px;">Family Type</label>
-                    <input type="text" name="family_type" value="<?php echo htmlspecialchars($profile['family_type'] ?? ''); ?>" placeholder="e.g. Nuclear Family" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
-                </div>
-            </div>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px;">
                 <div class="form-group">
                     <label style="color: #334155; font-size: 13px;">Father's Occupation</label>
                     <input type="text" name="father_occ" value="<?php echo htmlspecialchars($profile['father_occ'] ?? ''); ?>" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
                 </div>
                 <div class="form-group">
+                    <label style="color: #334155; font-size: 13px;">Mother's Name</label>
+                    <input type="text" name="mother_name" value="<?php echo htmlspecialchars($profile['mother_name'] ?? ''); ?>" placeholder="Mother Name" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                </div>
+                <div class="form-group">
                     <label style="color: #334155; font-size: 13px;">Mother's Occupation</label>
                     <input type="text" name="mother_occ" value="<?php echo htmlspecialchars($profile['mother_occ'] ?? ''); ?>" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 15px;">
+                <div class="form-group">
+                    <label style="color: #334155; font-size: 13px;">Dadke Gotra (Father's Gotra)</label>
+                    <input type="text" name="gotra" value="<?php echo htmlspecialchars($profile['gotra'] ?? ''); ?>" placeholder="e.g. Gill" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                </div>
+                <div class="form-group">
+                    <label style="color: #334155; font-size: 13px;">Nanke Gotra (Mother's Gotra)</label>
+                    <input type="text" name="mother_gotra" value="<?php echo htmlspecialchars($profile['mother_gotra'] ?? ''); ?>" placeholder="e.g. Dhillon" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                </div>
+                <div class="form-group">
+                    <label style="color: #334155; font-size: 13px;">Family Gotra</label>
+                    <input type="text" name="family_gotra" value="<?php echo htmlspecialchars($profile['family_gotra'] ?? ''); ?>" placeholder="e.g. Sandhu" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
                 </div>
                 <div class="form-group">
                     <label style="color: #334155; font-size: 13px;">Siblings</label>
                     <input type="text" name="siblings" value="<?php echo htmlspecialchars($profile['siblings'] ?? ''); ?>" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
-                </div>
-                <div class="form-group">
-                    <label style="color: #334155; font-size: 13px;">Family Values</label>
-                    <input type="text" name="family_values" value="<?php echo htmlspecialchars($profile['family_values'] ?? ''); ?>" placeholder="e.g. Moderate & Traditional" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
                 </div>
             </div>
         </div>
@@ -344,10 +388,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" name="partner_height" value="<?php echo htmlspecialchars($profile['partner_height'] ?? ''); ?>" placeholder="e.g. 5'2&quot; - 5'8&quot;" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
                 </div>
                 <div class="form-group">
-                    <label style="color: #334155; font-size: 13px;">Preferred Caste</label>
-                    <select name="partner_caste" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
-                        <option value="Sain / Nai" <?php echo (($profile['partner_caste'] ?? '') == 'Sain / Nai' || (in_array(strtolower($profile['partner_caste'] ?? ''), ['sain', 'nai']))) ? 'selected' : ''; ?>>Sain / Nai (Sain Samaj)</option>
-                        <option value="Others" <?php echo (($profile['partner_caste'] ?? '') == 'Others') ? 'selected' : ''; ?>>Others / Any</option>
+                    <label style="color: #334155; font-size: 13px;">Manglik Match Needed</label>
+                    <select name="manglik_required" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                        <option value="ਹਾਂ" <?php echo (($profile['manglik_required'] ?? '') == 'ਹਾਂ' || ($profile['manglik_required'] ?? '') == 'Yes') ? 'selected' : ''; ?>>Yes (ਹਾਂ)</option>
+                        <option value="ਨਹੀਂ" <?php echo (($profile['manglik_required'] ?? '') == 'ਨਹੀਂ' || ($profile['manglik_required'] ?? '') == 'No') ? 'selected' : ''; ?>>No (ਨਹੀਂ)</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -366,6 +410,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="text" name="partner_notes" value="<?php echo htmlspecialchars($profile['partner_notes'] ?? ''); ?>" placeholder="Educated, caring, family-oriented partner..." class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
                 </div>
             </div>
+
+            <div class="form-group" style="margin-top: 15px;">
+                <label style="color: #334155; font-weight: 600; font-size: 13px;">Admin Special Note</label>
+                <textarea name="note" rows="2" placeholder="Write any specific admin notes or instructions..." class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;"><?php echo htmlspecialchars($profile['note'] ?? ''); ?></textarea>
+            </div>
         </div>
 
         <!-- SECTION 6: PHOTO & CONTROL -->
@@ -377,26 +426,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div style="display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 15px; align-items: center;">
                 <div style="text-align: center;">
                     <label style="color: #334155; font-weight: 600; font-size: 13px; display: block; margin-bottom: 5px;">Current Photo</label>
-                    <img src="../images/<?php echo htmlspecialchars($profile['photo']); ?>" alt="" style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-red);">
+                    <img id="adminPhotoPreview" src="<?php echo get_profile_photo_url($profile['photo'], true); ?>" alt="" style="width: 75px; height: 75px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary-red);">
                 </div>
                 <div class="form-group">
                     <label style="color: #334155; font-weight: 600; font-size: 13px;">Change Profile Photo</label>
-                    <input type="file" name="photo" id="adminPhotoInput" accept="image/*" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
+                    <input type="file" name="photo" id="adminPhotoInput" accept="image/*" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;" onchange="handleAdminPhotoPreview(this)">
                     <small style="color: #64748b;">Leave blank to keep existing photo.</small>
                 </div>
                 <div class="form-group">
                     <label style="color: #334155; font-weight: 600; font-size: 13px;">Status</label>
                     <select name="status" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1;">
-                        <option value="active" <?php echo ($profile['status'] == 'active') ? 'selected' : ''; ?>>Active</option>
-                        <option value="inactive" <?php echo ($profile['status'] == 'inactive') ? 'selected' : ''; ?>>Inactive</option>
+                        <option value="active" <?php echo ($profile['status'] == 'active') ? 'selected' : ''; ?>>Active (Published)</option>
+                        <option value="inactive" <?php echo ($profile['status'] == 'inactive') ? 'selected' : ''; ?>>Inactive (Pending / Hidden)</option>
                     </select>
                 </div>
-            </div>
-
-            <div style="padding-top: 15px; border-top: 1px solid #e2e8f0; margin-top: 15px;">
-                <label style="cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #334155;">
-                    <input type="checkbox" name="is_premium" value="1" <?php echo $profile['is_premium'] ? 'checked' : ''; ?> style="width: 18px; height: 18px;"> Set as Premium Profile (Displays on Homepage Slider)
-                </label>
             </div>
         </div>
 
@@ -407,36 +450,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 </div>
 
-<?php require_once __DIR__ . '/footer.php'; ?>
+<script>
+function calculateAgeFromDOB(dobVal) {
+    if (!dobVal) return;
+    const parts = dobVal.split('-');
+    if (parts.length < 3) return;
+    const year = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1;
+    const day = parseInt(parts[2], 10);
+    if (isNaN(year) || isNaN(month) || isNaN(day)) return;
 
-            <div class="form-group">
-                <label style="color: #333;">Change Photo (Current: <?php echo htmlspecialchars($profile['photo']); ?>)</label>
-                <input type="file" name="photo" id="adminPhotoInput" accept="image/*" class="form-control" style="background: #fff; color: #333; border: 1px solid #ccc;">
-                <div id="adminImagePreviewBox" style="margin-top: 10px; display: flex; align-items: center; gap: 10px; background: #f8fafc; padding: 8px; border-radius: 6px; border: 1px dashed #cbd5e1;">
-                    <img id="adminImagePreview" src="../images/<?php echo htmlspecialchars($profile['photo']); ?>" alt="Preview" style="width: 60px; height: 60px; object-fit: cover; border-radius: 6px; border: 2px solid #0284c7;">
-                    <span style="font-size: 12px; color: #333; font-weight: 600;"><i class="fa fa-image"></i> Current / Selected Photo Preview</span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label style="color: #333;">Status</label>
-                <select name="status" style="background: #fff; color: #333; border: 1px solid #ccc;">
-                    <option value="active" <?php echo ($profile['status'] == 'active') ? 'selected' : ''; ?>>Active</option>
-                    <option value="inactive" <?php echo ($profile['status'] == 'inactive') ? 'selected' : ''; ?>>Inactive</option>
-                </select>
-            </div>
-        </div>
+    const today = new Date();
+    let age = today.getFullYear() - year;
+    const monthDiff = today.getMonth() - month;
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < day)) {
+        age--;
+    }
+    const ageInput = document.getElementById('admin_field_age');
+    if (ageInput && !isNaN(age) && age > 0) {
+        ageInput.value = age;
+    }
+}
 
-        <div style="padding-top: 10px;">
-            <label style="cursor: pointer; display: flex; align-items: center; gap: 8px; font-weight: 600; color: #333;">
-                <input type="checkbox" name="is_premium" value="1" <?php echo ($profile['is_premium']) ? 'checked' : ''; ?> style="width: 18px; height: 18px;"> Set as Premium Profile
-            </label>
-        </div>
-
-        <div style="margin-top: 15px; display: flex; gap: 15px;">
-            <button type="submit" class="btn-red" style="padding: 12px 25px; font-size: 16px;"><i class="fa fa-save"></i> Update Profile</button>
-            <a href="profiles.php" class="btn-outline" style="color: #333 !important; border-color: #ccc; padding: 12px 20px;">Back</a>
-        </div>
-    </form>
-</div>
+function handleAdminPhotoPreview(input) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('adminPhotoPreview').src = e.target.result;
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+</script>
 
 <?php require_once __DIR__ . '/footer.php'; ?>

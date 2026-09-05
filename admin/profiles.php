@@ -24,9 +24,10 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
 // Search & Filter
 $search = trim($_GET['search'] ?? '');
 $filter_gender = $_GET['gender'] ?? '';
+$filter_status = $_GET['status'] ?? '';
 
 // Pagination
-$items_per_page = 5;
+$items_per_page = 10;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 if ($page < 1) $page = 1;
 
@@ -41,6 +42,11 @@ if ($search) {
 if ($filter_gender) {
     $sql_where .= " AND gender = ?";
     $params[] = $filter_gender;
+}
+
+if ($filter_status) {
+    $sql_where .= " AND status = ?";
+    $params[] = $filter_status;
 }
 
 // Count Total Profiles
@@ -81,15 +87,20 @@ $page_url_prefix = 'profiles.php?' . ($base_query ? $base_query . '&' : '') . 'p
         <form action="profiles.php" method="GET" style="display: flex; gap: 10px; flex: 1; align-items: center; flex-wrap: wrap;">
             <div style="position: relative;">
                 <i class="fa fa-search" style="position: absolute; left: 12px; top: 12px; color: #94a3b8;"></i>
-                <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search Name, ID, Caste, City..." class="form-control" style="padding-left: 36px; background: #fff; color: #1e293b; border: 1px solid #cbd5e1; height: 38px; width: 260px;">
+                <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search Name, ID, Caste, City..." class="form-control" style="padding-left: 36px; background: #fff; color: #1e293b; border: 1px solid #cbd5e1; height: 38px; width: 240px;">
             </div>
-            <select name="gender" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1; height: 38px; width: 140px;">
+            <select name="gender" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1; height: 38px; width: 130px;">
                 <option value="">All Genders</option>
                 <option value="Female" <?php echo ($filter_gender == 'Female') ? 'selected' : ''; ?>>Female</option>
                 <option value="Male" <?php echo ($filter_gender == 'Male') ? 'selected' : ''; ?>>Male</option>
             </select>
+            <select name="status" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1; height: 38px; width: 160px;">
+                <option value="">All Statuses</option>
+                <option value="active" <?php echo ($filter_status == 'active') ? 'selected' : ''; ?>>Active (Published)</option>
+                <option value="inactive" <?php echo ($filter_status == 'inactive') ? 'selected' : ''; ?>>Pending Approval</option>
+            </select>
             <button type="submit" class="btn-red btn-sm" style="height: 38px; padding: 0 16px; border-radius: 5px;"><i class="fa fa-filter"></i> Filter</button>
-            <?php if ($search || $filter_gender): ?>
+            <?php if ($search || $filter_gender || $filter_status): ?>
                 <a href="profiles.php" class="btn-outline btn-sm" style="color: #64748b !important; border-color: #cbd5e1; height: 38px; line-height: 26px; padding: 4px 14px;">Reset</a>
             <?php endif; ?>
         </form>
@@ -114,9 +125,8 @@ $page_url_prefix = 'profiles.php?' . ($base_query ? $base_query . '&' : '') . 'p
                     <th>Caste</th>
                     <th>City / State</th>
                     <th>Education</th>
-                    <th style="width: 110px; text-align: center;">Premium</th>
-                    <th style="width: 110px; text-align: center;">Status</th>
-                    <th style="width: 140px; text-align: center;">Actions</th>
+                    <th style="width: 130px; text-align: center;">Status</th>
+                    <th style="width: 170px; text-align: center;">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -124,7 +134,7 @@ $page_url_prefix = 'profiles.php?' . ($base_query ? $base_query . '&' : '') . 'p
                     <?php foreach ($profiles as $p): ?>
                         <tr>
                             <td>
-                                <img src="../images/<?php echo htmlspecialchars($p['photo']); ?>" alt="" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid #e2e8f0;">
+                                <img src="<?php echo get_profile_photo_url($p['photo'], true); ?>" alt="" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 2px solid #e2e8f0;">
                             </td>
                             <td><strong style="color: var(--primary-red);"><?php echo htmlspecialchars($p['profile_id']); ?></strong></td>
                             <td><strong style="color: #0f172a;"><?php echo htmlspecialchars($p['name']); ?></strong></td>
@@ -133,25 +143,19 @@ $page_url_prefix = 'profiles.php?' . ($base_query ? $base_query . '&' : '') . 'p
                             <td><?php echo htmlspecialchars($p['city']); ?>, <?php echo htmlspecialchars($p['state']); ?></td>
                             <td><span style="font-size: 12.5px; color: #475569;"><?php echo htmlspecialchars($p['education']); ?></span></td>
                             <td style="text-align: center;">
-                                <a href="profiles.php?action=toggle_premium&id=<?php echo $p['id']; ?>&page=<?php echo $page; ?>" style="text-decoration: none;" title="Click to toggle Premium status">
-                                    <?php if ($p['is_premium']): ?>
-                                        <span class="badge badge-warning"><i class="fa fa-crown"></i> Premium</span>
-                                    <?php else: ?>
-                                        <span class="badge badge-info">Regular</span>
-                                    <?php endif; ?>
-                                </a>
-                            </td>
-                            <td style="text-align: center;">
                                 <a href="profiles.php?action=toggle_status&id=<?php echo $p['id']; ?>&page=<?php echo $page; ?>" style="text-decoration: none;" title="Click to toggle Active/Inactive status">
                                     <?php if ($p['status'] == 'active'): ?>
                                         <span class="badge badge-success"><i class="fa fa-check"></i> Active</span>
                                     <?php else: ?>
-                                        <span class="badge badge-danger"><i class="fa fa-ban"></i> Inactive</span>
+                                        <span class="badge badge-warning" style="background: #f59e0b; color: #fff;"><i class="fa fa-clock"></i> Pending</span>
                                     <?php endif; ?>
                                 </a>
                             </td>
                             <td>
                                 <div class="action-btn-group">
+                                    <?php if ($p['status'] != 'active'): ?>
+                                        <a href="profiles.php?action=toggle_status&id=<?php echo $p['id']; ?>&page=<?php echo $page; ?>" class="btn-sm" style="background: #10b981; color: #fff; text-decoration: none; padding: 4px 8px; border-radius: 4px; font-size: 12px;" title="Approve Profile and publish on site"><i class="fa fa-check"></i> Approve</a>
+                                    <?php endif; ?>
                                     <a href="../profile.php?id=<?php echo $p['id']; ?>" target="_blank" class="btn-outline btn-sm" style="color: #0284c7 !important; border-color: #38bdf8;" title="View Candidate Profile Details"><i class="fa fa-eye"></i> View</a>
                                     <a href="edit-profile.php?id=<?php echo $p['id']; ?>" class="btn-outline btn-sm" style="color: #334155 !important; border-color: #cbd5e1;" title="Edit Profile Details"><i class="fa fa-edit"></i> Edit</a>
                                     <a href="profiles.php?action=delete&id=<?php echo $p['id']; ?>&page=<?php echo $page; ?>" onclick="return confirm('Are you sure you want to delete profile <?php echo htmlspecialchars($p['name']); ?> (<?php echo htmlspecialchars($p['profile_id']); ?>)?');" class="btn-red btn-sm" style="background: #ef4444;" title="Delete Profile"><i class="fa fa-trash"></i></a>

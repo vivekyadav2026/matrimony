@@ -48,15 +48,15 @@ require_once __DIR__ . '/header.php';
                 </div>
             </div>
 
-            <!-- Astro & Kundli Card -->
+            <!-- Family Matchmaking Support Card -->
             <div>
                 <div style="background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border: 2px solid #fde047; padding: 35px 30px; border-radius: 20px; box-shadow: 0 15px 35px rgba(245, 184, 0, 0.15); text-align: center; position: relative;">
                     <div style="width: 70px; height: 70px; border-radius: 50%; background: #ffffff; color: var(--primary-red); display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 18px; box-shadow: 0 6px 15px rgba(0,0,0,0.08);">
-                        <i class="fa fa-om"></i>
+                        <i class="fa fa-handshake"></i>
                     </div>
-                    <h3 style="font-size: 22px; font-weight: 800; color: #92400e; margin-bottom: 10px;">Manglik & Kundli Guidance</h3>
+                    <h3 style="font-size: 22px; font-weight: 800; color: #92400e; margin-bottom: 10px;">Assisted Family Support</h3>
                     <p style="font-size: 14px; color: #b45309; line-height: 1.65; margin: 0;">
-                        Dedicated matchmaking alignment for Anshik/Full Manglik candidates, horoscope compatibility, and traditional Vedic marriage rituals.
+                        Dedicated relationship assistance for families, candidate profile screening, and facilitating direct family contact meetings.
                     </p>
                 </div>
             </div>

@@ -272,7 +272,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contact'])) {
                         <option value="General Inquiry">General Inquiry</option>
                         <option value="Profile Verification">Profile Verification</option>
                         <option value="Membership Package">Membership & Verification</option>
-                        <option value="Kundli / Horoscope">Kundli & Horoscope Matching</option>
+                        <option value="Assisted Matchmaking">Assisted Matchmaking Support</option>
                     </select>
                 </div>
 

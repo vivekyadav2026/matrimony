@@ -61,4 +61,21 @@ if (!function_exists('build_whatsapp_link')) {
         return "https://wa.me/" . $clean_phone . "?text=" . rawurlencode($message);
     }
 }
+
+if (!function_exists('get_profile_photo_url')) {
+    function get_profile_photo_url($photo, $is_admin = false) {
+        $photo = trim($photo ?? '');
+        $prefix = $is_admin ? '../' : '';
+        if (empty($photo)) {
+            return $prefix . 'images/default.jpg';
+        }
+        if (file_exists(__DIR__ . '/images/' . $photo)) {
+            return $prefix . 'images/' . $photo;
+        }
+        if (file_exists(__DIR__ . '/uploads/' . $photo)) {
+            return $prefix . 'uploads/' . $photo;
+        }
+        return $prefix . 'images/default.jpg';
+    }
+}
 ?>

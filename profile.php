@@ -2,7 +2,13 @@
 require_once __DIR__ . '/config.php';
 
 $id = (int)($_GET['id'] ?? 0);
-$stmt = $pdo->prepare("SELECT * FROM profiles WHERE id = ? AND status = 'active'");
+$is_admin = (isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true);
+
+if ($is_admin) {
+    $stmt = $pdo->prepare("SELECT * FROM profiles WHERE id = ?");
+} else {
+    $stmt = $pdo->prepare("SELECT * FROM profiles WHERE id = ? AND status = 'active'");
+}
 $stmt->execute([$id]);
 $profile = $stmt->fetch();
 
@@ -13,6 +19,24 @@ if (!$profile) {
 
 $page_title = $profile['name'] . " (" . $profile['profile_id'] . ") - Candidate Matrimonial Biodata";
 require_once __DIR__ . '/header.php';
+?>
+
+<?php if ($is_admin && $profile['status'] !== 'active'): ?>
+    <div style="background: #fffbe6; border-bottom: 2px solid #f59e0b; padding: 14px 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 9999;">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            <div style="color: #92400e; font-size: 14.5px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                <i class="fa fa-exclamation-triangle" style="font-size: 18px; color: #f59e0b;"></i>
+                <span>ADMIN PREVIEW: This profile is currently <strong>Pending Admin Approval (Inactive)</strong>. Review all candidate details below.</span>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <a href="admin/profiles.php?action=toggle_status&id=<?php echo $profile['id']; ?>" class="btn-sm" style="background: #10b981; color: #ffffff; text-decoration: none; padding: 7px 16px; border-radius: 6px; font-weight: 700; font-size: 13.5px;" onclick="return confirm('Approve and publish this candidate profile live on website?');"><i class="fa fa-check"></i> Approve & Publish Profile</a>
+                <a href="admin/edit-profile.php?id=<?php echo $profile['id']; ?>" class="btn-sm" style="background: #0284c7; color: #ffffff; text-decoration: none; padding: 7px 16px; border-radius: 6px; font-weight: 600; font-size: 13.5px;"><i class="fa fa-edit"></i> Edit Profile</a>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php
 
 // Handle Contact Interest Form Submission
 $success_msg = '';
@@ -50,36 +74,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_interest'])) {
 
 // Fallback values for rich candidate display
 $marital_status = !empty($profile['marital_status']) ? $profile['marital_status'] : 'Never Married';
-$height = !empty($profile['height']) ? $profile['height'] : '5\'10" - 178 Cm';
-$weight = !empty($profile['weight']) ? $profile['weight'] : '72 kg';
-$complexion = !empty($profile['complexion']) ? $profile['complexion'] : 'Wheatish';
-$diet = !empty($profile['diet']) ? $profile['diet'] : 'Veg / Non-Veg';
-$manglik = !empty($profile['manglik']) ? $profile['manglik'] : 'Non-Manglik';
+$height = !empty($profile['height']) ? $profile['height'] : '5\'10"';
+$weight = !empty($profile['weight']) ? $profile['weight'] : '';
+$complexion = !empty($profile['complexion']) ? $profile['complexion'] : '';
+$diet = !empty($profile['diet']) ? $profile['diet'] : '';
+$manglik = !empty($profile['manglik']) ? $profile['manglik'] : 'ਨਹੀਂ';
 $mother_tongue = !empty($profile['mother_tongue']) ? $profile['mother_tongue'] : 'Punjabi';
 
-$education_detail = !empty($profile['education_detail']) ? $profile['education_detail'] : 'B.Tech — Computer Science, PEC Chandigarh';
-$organization = !empty($profile['organization']) ? $profile['organization'] : 'Tech Lead at an IT Services company';
-$income = !empty($profile['income']) ? $profile['income'] : '15-22 LPA';
-$work_location = !empty($profile['work_location']) ? $profile['work_location'] : ($profile['city'] . ' (Remote-friendly)');
+$time_of_birth = !empty($profile['time_of_birth']) ? $profile['time_of_birth'] : '';
+$place_of_birth = !empty($profile['place_of_birth']) ? $profile['place_of_birth'] : '';
+$father_name = !empty($profile['father_name']) ? $profile['father_name'] : '';
+$mother_name = !empty($profile['mother_name']) ? $profile['mother_name'] : '';
+$family_gotra = !empty($profile['family_gotra']) ? $profile['family_gotra'] : '';
+$mother_gotra = !empty($profile['mother_gotra']) ? $profile['mother_gotra'] : '';
+$district = !empty($profile['district']) ? $profile['district'] : $profile['city'];
+$tehsil_post = !empty($profile['tehsil_post']) ? $profile['tehsil_post'] : '';
+$manglik_required = !empty($profile['manglik_required']) ? $profile['manglik_required'] : 'ਹਾਂ';
+$note = !empty($profile['note']) ? $profile['note'] : '';
 
-$sub_caste = !empty($profile['sub_caste']) ? $profile['sub_caste'] : 'Sandhu';
-$gotra = !empty($profile['gotra']) ? $profile['gotra'] : 'Gill';
-$father_occ = !empty($profile['father_occ']) ? $profile['father_occ'] : 'Retired Government Officer';
-$mother_occ = !empty($profile['mother_occ']) ? $profile['mother_occ'] : 'Homemaker';
-$siblings = !empty($profile['siblings']) ? $profile['siblings'] : '1 Sister (Married)';
-$family_type = !empty($profile['family_type']) ? $profile['family_type'] : 'Nuclear Family';
-$family_values = !empty($profile['family_values']) ? $profile['family_values'] : 'Education focused, respectful Sikh/Hindu family';
+$education_detail = !empty($profile['education_detail']) ? $profile['education_detail'] : '';
+$organization = !empty($profile['organization']) ? $profile['organization'] : '';
+$income = !empty($profile['income']) ? $profile['income'] : '';
+$work_location = !empty($profile['work_location']) ? $profile['work_location'] : ($district . ', Punjab');
 
-$partner_age = !empty($profile['partner_age']) ? $profile['partner_age'] : '24 - 30';
-$partner_education = !empty($profile['partner_education']) ? $profile['partner_education'] : 'Graduate / Masters';
-$partner_location = !empty($profile['partner_location']) ? $profile['partner_location'] : ($profile['state'] ? $profile['state'] : 'Punjab');
-$partner_notes = !empty($profile['partner_notes']) ? $profile['partner_notes'] : 'Educated, caring, family-oriented partner, based in ' . ($profile['state'] ? $profile['state'] : 'Punjab');
+$sub_caste = !empty($profile['sub_caste']) ? $profile['sub_caste'] : '';
+$gotra = !empty($profile['gotra']) ? $profile['gotra'] : '';
+$father_occ = !empty($profile['father_occ']) ? $profile['father_occ'] : '';
+$mother_occ = !empty($profile['mother_occ']) ? $profile['mother_occ'] : '';
+$siblings = !empty($profile['siblings']) ? $profile['siblings'] : '';
+$family_type = !empty($profile['family_type']) ? $profile['family_type'] : '';
+$family_values = !empty($profile['family_values']) ? $profile['family_values'] : '';
+
+$partner_age = !empty($profile['partner_age']) ? $profile['partner_age'] : '';
+$partner_education = !empty($profile['partner_education']) ? $profile['partner_education'] : '';
+$partner_location = !empty($profile['partner_location']) ? $profile['partner_location'] : '';
+$partner_notes = !empty($profile['partner_notes']) ? $profile['partner_notes'] : '';
 
 // Photo file path check
-$photo_path = 'images/' . htmlspecialchars($profile['photo']);
-if (!file_exists(__DIR__ . '/' . $photo_path) && file_exists(__DIR__ . '/uploads/' . htmlspecialchars($profile['photo']))) {
-    $photo_path = 'uploads/' . htmlspecialchars($profile['photo']);
-}
+$photo_path = get_profile_photo_url($profile['photo'], false);
 ?>
 
 <div class="profile-page-section">
@@ -131,8 +163,8 @@ if (!file_exists(__DIR__ . '/' . $photo_path) && file_exists(__DIR__ . '/uploads
                     <!-- Attribute Pills -->
                     <div class="profile-pills-row">
                         <span class="profile-pill-item"><i class="fa fa-camera"></i> 1</span>
-                        <span class="profile-pill-item"><i class="fa fa-user"></i> <?php echo htmlspecialchars($sub_caste); ?></span>
-                        <span class="profile-pill-item">Gotra: <?php echo htmlspecialchars($gotra); ?></span>
+                        <span class="profile-pill-item">Dadke Gotra: <?php echo htmlspecialchars($gotra ?: ($family_gotra ?: 'N/A')); ?></span>
+                        <span class="profile-pill-item">Nanke Gotra: <?php echo htmlspecialchars($mother_gotra ?: 'N/A'); ?></span>
                         <span class="profile-pill-item"><i class="fa fa-briefcase"></i> <?php echo htmlspecialchars($profile['occupation']); ?></span>
                     </div>
 
@@ -365,18 +397,18 @@ if (!file_exists(__DIR__ . '/' . $photo_path) && file_exists(__DIR__ . '/uploads
                     </div>
 
                     <div class="profile-field-row">
-                        <div class="profile-field-icon-circle"><i class="fa fa-dna"></i></div>
+                        <div class="profile-field-icon-circle"><i class="fa fa-bookmark"></i></div>
                         <div class="profile-field-content">
-                            <div class="profile-field-label">SUB COMMUNITY</div>
-                            <div class="profile-field-val"><?php echo htmlspecialchars($sub_caste); ?></div>
+                            <div class="profile-field-label">DADKE GOTRA (ਪਿਤਾ ਦਾ ਗੋਤ)</div>
+                            <div class="profile-field-val"><?php echo htmlspecialchars($gotra ?: ($family_gotra ?: 'N/A')); ?></div>
                         </div>
                     </div>
 
                     <div class="profile-field-row">
-                        <div class="profile-field-icon-circle"><i class="fa fa-bookmark"></i></div>
+                        <div class="profile-field-icon-circle"><i class="fa fa-hand-holding-heart"></i></div>
                         <div class="profile-field-content">
-                            <div class="profile-field-label">GOTRA</div>
-                            <div class="profile-field-val"><?php echo htmlspecialchars($gotra); ?></div>
+                            <div class="profile-field-label">NANKE GOTRA (ਮਾਤਾ ਦਾ ਗੋਤ)</div>
+                            <div class="profile-field-val"><?php echo htmlspecialchars($mother_gotra ?: 'N/A'); ?></div>
                         </div>
                     </div>
 

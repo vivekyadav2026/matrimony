@@ -84,7 +84,7 @@ $success_stories = $stmtStories->fetchAll();
                     <label>Caste</label>
                     <select name="caste">
                         <option value="">Doesn't Matter</option>
-                        <option value="Sain / Nai">Sain / Nai (Sain Samaj)</option>
+                        <option value="Nai">Nai</option>
                         <option value="Others">Others</option>
                     </select>
                 </div>
@@ -108,18 +108,17 @@ $success_stories = $stmtStories->fetchAll();
     </div>
 </section>
 
-<!-- Premium Profiles Section -->
+<!-- Featured Profiles Section -->
 <section class="section">
     <div class="container">
-        <h2 class="section-title">Premium Profiles</h2>
-        <p class="section-subtitle">EXCLUSIVE MATCHES FROM THE SAIN & NAI COMMUNITY</p>
+        <h2 class="section-title">Featured Candidate Profiles</h2>
+        <p class="section-subtitle">RECENT MATCHES FROM THE SAIN & NAI COMMUNITY</p>
 
         <div class="profiles-grid">
             <?php foreach ($premium_profiles as $prof): ?>
                 <div class="profile-card">
                     <div class="profile-img-wrap">
                         <img src="images/<?php echo htmlspecialchars($prof['photo']); ?>" alt="<?php echo htmlspecialchars($prof['name']); ?>">
-                        <span class="premium-tag"><i class="fa fa-crown"></i> PREMIUM</span>
                         <span class="verified-tag"><i class="fa fa-check-circle"></i> Verified</span>
                     </div>
                     <div class="profile-card-body">
@@ -152,30 +151,30 @@ $success_stories = $stmtStories->fetchAll();
     <div class="container" style="position: relative; z-index: 1;">
         
         <div style="text-align: center; margin-bottom: 40px;">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 800; color: var(--secondary-gold); margin-bottom: 10px;">Our Premium Services</h2>
-            <p style="color: #cbd5e1; font-size: 15px;">Dedicated Matchmaking & Astrological Support</p>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 800; color: var(--secondary-gold); margin-bottom: 10px;">Our Matrimonial Services</h2>
+            <p style="color: #cbd5e1; font-size: 15px;">Dedicated Matchmaking & Community Support</p>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-bottom: 45px;">
             <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 16px; text-align: center; backdrop-filter: blur(10px); transition: transform 0.3s ease;">
-                <div style="width: 60px; height: 60px; margin: 0 auto 15px; border-radius: 50%; background: rgba(234, 179, 8, 0.2); color: var(--secondary-gold); display: flex; align-items: center; justify-content: center; font-size: 24px;"><i class="fa fa-ring"></i></div>
-                <h4 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Manglik Marriage</h4>
-                <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin: 0;">Specialized profiles for Manglik brides and grooms.</p>
+                <div style="width: 60px; height: 60px; margin: 0 auto 15px; border-radius: 50%; background: rgba(234, 179, 8, 0.2); color: var(--secondary-gold); display: flex; align-items: center; justify-content: center; font-size: 24px;"><i class="fa fa-user-check"></i></div>
+                <h4 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Verified Profiles</h4>
+                <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin: 0;">100% manually verified candidate profiles for Sain & Nai Samaj.</p>
             </div>
             <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 16px; text-align: center; backdrop-filter: blur(10px); transition: transform 0.3s ease;">
-                <div style="width: 60px; height: 60px; margin: 0 auto 15px; border-radius: 50%; background: rgba(234, 179, 8, 0.2); color: var(--secondary-gold); display: flex; align-items: center; justify-content: center; font-size: 24px;"><i class="fa fa-star"></i></div>
-                <h4 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Kundli Matching</h4>
-                <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin: 0;">In-depth 36 Guna and astrological alignment checks.</p>
+                <div style="width: 60px; height: 60px; margin: 0 auto 15px; border-radius: 50%; background: rgba(234, 179, 8, 0.2); color: var(--secondary-gold); display: flex; align-items: center; justify-content: center; font-size: 24px;"><i class="fa fa-shield-alt"></i></div>
+                <h4 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Contact Privacy</h4>
+                <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin: 0;">Contact details remain strictly protected from public view.</p>
             </div>
             <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 16px; text-align: center; backdrop-filter: blur(10px); transition: transform 0.3s ease;">
-                <div style="width: 60px; height: 60px; margin: 0 auto 15px; border-radius: 50%; background: rgba(234, 179, 8, 0.2); color: var(--secondary-gold); display: flex; align-items: center; justify-content: center; font-size: 24px;"><i class="fa fa-fire"></i></div>
-                <h4 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Manglik Havan</h4>
-                <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin: 0;">Traditional Vedic rituals for peace and prosperity.</p>
+                <div style="width: 60px; height: 60px; margin: 0 auto 15px; border-radius: 50%; background: rgba(234, 179, 8, 0.2); color: var(--secondary-gold); display: flex; align-items: center; justify-content: center; font-size: 24px;"><i class="fa fa-handshake"></i></div>
+                <h4 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Assisted Matchmaking</h4>
+                <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin: 0;">Dedicated support desk to facilitate initial proposal talks.</p>
             </div>
             <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 25px; border-radius: 16px; text-align: center; backdrop-filter: blur(10px); transition: transform 0.3s ease;">
-                <div style="width: 60px; height: 60px; margin: 0 auto 15px; border-radius: 50%; background: rgba(234, 179, 8, 0.2); color: var(--secondary-gold); display: flex; align-items: center; justify-content: center; font-size: 24px;"><i class="fa fa-hands-praying"></i></div>
-                <h4 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Shanti Services</h4>
-                <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin: 0;">Astrological guidance and remedies for a happy married life.</p>
+                <div style="width: 60px; height: 60px; margin: 0 auto 15px; border-radius: 50%; background: rgba(234, 179, 8, 0.2); color: var(--secondary-gold); display: flex; align-items: center; justify-content: center; font-size: 24px;"><i class="fa fa-file-invoice"></i></div>
+                <h4 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px;">Biodata Support</h4>
+                <p style="font-size: 13px; color: #94a3b8; line-height: 1.5; margin: 0;">Easy online biodata submission with photo upload support.</p>
             </div>
         </div>
 
@@ -338,10 +337,10 @@ $success_stories = $stmtStories->fetchAll();
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
                 <div>
                     <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(234, 179, 8, 0.15); color: #f59e0b; border: 1px solid rgba(234, 179, 8, 0.3); font-size: 11px; font-weight: 800; padding: 5px 14px; border-radius: 20px; margin-bottom: 18px; letter-spacing: 1px; text-transform: uppercase;">
-                        <i class="fa fa-crown"></i> Dedicated VIP Service
+                        <i class="fa fa-heart"></i> Dedicated Matchmaking Service
                     </div>
                     <h2 style="font-family: 'Playfair Display', serif; font-size: clamp(24px, 4vw, 36px); font-weight: 800; color: #fff; line-height: 1.25; margin-bottom: 16px;">
-                        Assisted Matchmaking for <span style="color: var(--secondary-gold);">Premium Families</span>
+                        Assisted Matchmaking for <span style="color: var(--secondary-gold);">Respected Families</span>
                     </h2>
                     <p style="font-size: 14.5px; color: #9ca3af; line-height: 1.65; margin-bottom: 24px;">
                         Don't have time to search? Let our expert relationship managers do the work for you. We handpick profiles matching your exact criteria, verify backgrounds, and arrange family meetings with 100% confidentiality.
@@ -358,11 +357,11 @@ $success_stories = $stmtStories->fetchAll();
                         </div>
                         <div style="display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,0.04); padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
                             <div style="width: 32px; height: 32px; border-radius: 50%; background: rgba(234,179,8,0.2); color: #f59e0b; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;"><i class="fa fa-gem"></i></div>
-                            <span style="font-size: 13.5px; color: #e5e7eb; font-weight: 600;">Handpicked Verified Premium Profiles</span>
+                            <span style="font-size: 13.5px; color: #e5e7eb; font-weight: 600;">Handpicked Verified Candidate Profiles</span>
                         </div>
                     </div>
 
-                    <a href="contact.php" class="btn-red" style="background: linear-gradient(135deg, var(--primary-red) 0%, #a11320 100%) !important; padding: 13px 30px; font-size: 14.5px; border-radius: 25px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(204,30,43,0.4); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Request VIP Callback <i class="fa fa-arrow-right"></i></a>
+                    <a href="contact.php" class="btn-red" style="background: linear-gradient(135deg, var(--primary-red) 0%, #a11320 100%) !important; padding: 13px 30px; font-size: 14.5px; border-radius: 25px; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(204,30,43,0.4); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Request Callback <i class="fa fa-arrow-right"></i></a>
                 </div>
                 <div style="position: relative;">
                     <img src="images/assisted_matchmaking.jpg" alt="Assisted Matchmaking" style="width: 100%; border-radius: 16px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.15); object-fit: cover;">

@@ -141,8 +141,8 @@ $page_url_prefix = 'search.php?' . ($base_query ? $base_query . '&' : '') . 'pag
                     <label style="color: #334155; font-size: 12.5px;">Caste</label>
                     <select name="caste" class="form-control" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1; height: 38px;">
                         <option value="">All / Doesn't Matter</option>
-                        <option value="Sain / Nai" <?php echo (in_array(strtolower($caste), ['sain', 'nai', 'sain/nai', 'sain / nai'])) ? 'selected' : ''; ?>>Sain / Nai (Sain Samaj)</option>
-                        <option value="Others" <?php echo (in_array($caste, ['Others', 'Other Community'])) ? 'selected' : ''; ?>>Others</option>
+                        <option value="Nai" <?php echo (in_array(strtolower($caste), ['sain', 'nai', 'sain/nai', 'sain / nai', 'ਨਾਈ'])) ? 'selected' : ''; ?>>Nai</option>
+                        <option value="Others" <?php echo (in_array($caste, ['Others', 'Other Community', 'ਅਦਰ'])) ? 'selected' : ''; ?>>Others</option>
                     </select>
                 </div>
 
@@ -182,7 +182,7 @@ $page_url_prefix = 'search.php?' . ($base_query ? $base_query . '&' : '') . 'pag
 
                 <label style="font-size: 13px; color: #64748b; font-weight: 500;">Sort By:</label>
                 <select name="sort" onchange="this.form.submit()" style="background: #fff; color: #1e293b; border: 1px solid #cbd5e1; height: 34px; padding: 4px 10px; font-size: 13px; border-radius: 4px;">
-                    <option value="default" <?php echo ($sort == 'default') ? 'selected' : ''; ?>>Featured / Premium First</option>
+                    <option value="default" <?php echo ($sort == 'default') ? 'selected' : ''; ?>>Featured First</option>
                     <option value="age_asc" <?php echo ($sort == 'age_asc') ? 'selected' : ''; ?>>Age: Youngest First</option>
                     <option value="age_desc" <?php echo ($sort == 'age_desc') ? 'selected' : ''; ?>>Age: Oldest First</option>
                 </select>
@@ -200,9 +200,6 @@ $page_url_prefix = 'search.php?' . ($base_query ? $base_query . '&' : '') . 'pag
                     <div class="profile-card">
                         <div class="profile-img-wrap">
                             <img src="images/<?php echo htmlspecialchars($prof['photo']); ?>" alt="<?php echo htmlspecialchars($prof['name']); ?>">
-                            <?php if ($prof['is_premium']): ?>
-                                <span class="premium-tag"><i class="fa fa-crown"></i> PREMIUM</span>
-                            <?php endif; ?>
                             <span class="verified-tag"><i class="fa fa-check-circle"></i> Verified</span>
                         </div>
                         <div class="profile-card-body">

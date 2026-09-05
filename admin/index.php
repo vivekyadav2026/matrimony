@@ -4,8 +4,8 @@ require_once __DIR__ . '/header.php';
 
 // Stats
 $total_profiles = $pdo->query("SELECT COUNT(*) FROM profiles")->fetchColumn();
-$premium_profiles = $pdo->query("SELECT COUNT(*) FROM profiles WHERE is_premium = 1")->fetchColumn();
 $active_profiles = $pdo->query("SELECT COUNT(*) FROM profiles WHERE status = 'active'")->fetchColumn();
+$pending_profiles = $pdo->query("SELECT COUNT(*) FROM profiles WHERE status = 'inactive'")->fetchColumn();
 $total_inquiries = $pdo->query("SELECT COUNT(*) FROM inquiries")->fetchColumn();
 $total_stories = $pdo->query("SELECT COUNT(*) FROM success_stories")->fetchColumn();
 
@@ -19,13 +19,13 @@ $recent_profiles = $pdo->query("SELECT * FROM profiles ORDER BY id DESC LIMIT 5"
         <div class="stat-number"><?php echo $total_profiles; ?></div>
         <div class="stat-label">Total Profiles</div>
     </div>
-    <div class="stat-card" style="border-left-color: var(--secondary-yellow);">
-        <div class="stat-number"><?php echo $premium_profiles; ?></div>
-        <div class="stat-label">Premium Profiles</div>
-    </div>
     <div class="stat-card" style="border-left-color: #28a745;">
         <div class="stat-number"><?php echo $active_profiles; ?></div>
         <div class="stat-label">Active Profiles</div>
+    </div>
+    <div class="stat-card" style="border-left-color: #ffc107;">
+        <div class="stat-number"><?php echo $pending_profiles; ?></div>
+        <div class="stat-label">Pending Approval</div>
     </div>
     <div class="stat-card" style="border-left-color: #17a2b8;">
         <div class="stat-number"><?php echo $total_inquiries; ?></div>
@@ -54,7 +54,6 @@ $recent_profiles = $pdo->query("SELECT * FROM profiles ORDER BY id DESC LIMIT 5"
                     <th>Gender / Age</th>
                     <th>Caste</th>
                     <th>Location</th>
-                    <th>Premium</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -63,7 +62,7 @@ $recent_profiles = $pdo->query("SELECT * FROM profiles ORDER BY id DESC LIMIT 5"
                 <?php foreach ($recent_profiles as $p): ?>
                     <tr>
                         <td>
-                            <img src="../images/<?php echo htmlspecialchars($p['photo']); ?>" alt="" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                            <img src="<?php echo get_profile_photo_url($p['photo'], true); ?>" alt="" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
                         </td>
                         <td><strong><?php echo htmlspecialchars($p['profile_id']); ?></strong></td>
                         <td><?php echo htmlspecialchars($p['name']); ?></td>
@@ -71,21 +70,17 @@ $recent_profiles = $pdo->query("SELECT * FROM profiles ORDER BY id DESC LIMIT 5"
                         <td><?php echo htmlspecialchars($p['caste']); ?></td>
                         <td><?php echo htmlspecialchars($p['city']); ?></td>
                         <td>
-                            <?php if ($p['is_premium']): ?>
-                                <span class="badge badge-warning">Premium</span>
-                            <?php else: ?>
-                                <span class="badge badge-info">Regular</span>
-                            <?php endif; ?>
-                        </td>
-                        <td>
                             <?php if ($p['status'] == 'active'): ?>
                                 <span class="badge badge-success">Active</span>
                             <?php else: ?>
-                                <span class="badge badge-danger">Inactive</span>
+                                <span class="badge badge-warning" style="background: #f59e0b; color: #fff;">Pending Approval</span>
                             <?php endif; ?>
                         </td>
                         <td>
                             <div class="action-btn-group">
+                                <?php if ($p['status'] != 'active'): ?>
+                                    <a href="profiles.php?action=toggle_status&id=<?php echo $p['id']; ?>" class="btn-sm" style="background: #10b981; color: #fff; text-decoration: none; padding: 4px 10px; border-radius: 4px;" title="Approve and Publish on Website"><i class="fa fa-check"></i> Approve</a>
+                                <?php endif; ?>
                                 <a href="../profile.php?id=<?php echo $p['id']; ?>" target="_blank" class="btn-outline btn-sm" style="color: #0284c7 !important; border-color: #38bdf8;" title="View Candidate Profile"><i class="fa fa-eye"></i> View</a>
                                 <a href="edit-profile.php?id=<?php echo $p['id']; ?>" class="btn-outline btn-sm" style="color: var(--dark-navy) !important; border-color: #ccc;"><i class="fa fa-edit"></i> Edit</a>
                             </div>
