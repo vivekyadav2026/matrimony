@@ -79,7 +79,7 @@ $recent_profiles = $pdo->query("SELECT * FROM profiles ORDER BY id DESC LIMIT 5"
                         <td>
                             <div class="action-btn-group">
                                 <?php if ($p['status'] != 'active'): ?>
-                                    <a href="profiles.php?action=toggle_status&id=<?php echo $p['id']; ?>" class="btn-sm" style="background: #10b981; color: #fff; text-decoration: none; padding: 4px 10px; border-radius: 4px;" title="Approve and Publish on Website"><i class="fa fa-check"></i> Approve</a>
+                                    <a href="profiles.php?action=approve&id=<?php echo $p['id']; ?>" class="btn-sm" style="background: #10b981; color: #fff; text-decoration: none; padding: 4px 10px; border-radius: 4px; font-weight: 600;" title="Approve and Publish on Website"><i class="fa fa-check"></i> Approve</a>
                                 <?php endif; ?>
                                 <a href="../profile.php?id=<?php echo $p['id']; ?>" target="_blank" class="btn-outline btn-sm" style="color: #0284c7 !important; border-color: #38bdf8;" title="View Candidate Profile"><i class="fa fa-eye"></i> View</a>
                                 <a href="edit-profile.php?id=<?php echo $p['id']; ?>" class="btn-outline btn-sm" style="color: var(--dark-navy) !important; border-color: #ccc;"><i class="fa fa-edit"></i> Edit</a>

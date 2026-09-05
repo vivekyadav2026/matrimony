@@ -1,5 +1,5 @@
 <?php
-$page_title = "Search Manglik Profiles";
+$page_title = "Search Candidate Profiles";
 require_once __DIR__ . '/header.php';
 
 // Get Search Parameters
@@ -97,7 +97,7 @@ $page_url_prefix = 'search.php?' . ($base_query ? $base_query . '&' : '') . 'pag
 <div style="background: linear-gradient(180deg, var(--dark-navy) 0%, #0d121a 100%); color: #fff; padding: 35px 20px 30px; text-align: center;">
     <div class="container">
         <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 34px; font-weight: 800; margin-bottom: 6px;">Search Profiles</h1>
-        <p style="color: #cbd5e1; font-size: 14px;">Find your ideal life partner from 100% verified manglik profiles</p>
+        <p style="color: #cbd5e1; font-size: 14px;">Find your ideal life partner from 100% verified candidate profiles</p>
     </div>
 </div>
 

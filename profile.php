@@ -21,6 +21,18 @@ $page_title = $profile['name'] . " (" . $profile['profile_id'] . ") - Candidate 
 require_once __DIR__ . '/header.php';
 ?>
 
+<?php if (isset($_GET['approved'])): ?>
+    <div style="background: #dcfce7; border-bottom: 2px solid #22c55e; padding: 14px 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 9999;">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            <div style="color: #15803d; font-size: 14.5px; font-weight: 700; display: flex; align-items: center; gap: 8px;">
+                <i class="fa fa-check-circle" style="font-size: 20px; color: #22c55e;"></i>
+                <span>Profile Approved Successfully! Candidate profile is now LIVE for all users on website.</span>
+            </div>
+            <a href="admin/profiles.php" style="color: #15803d; font-weight: 600; text-decoration: underline; font-size: 13px;">Go to Admin Panel →</a>
+        </div>
+    </div>
+<?php endif; ?>
+
 <?php if ($is_admin && $profile['status'] !== 'active'): ?>
     <div style="background: #fffbe6; border-bottom: 2px solid #f59e0b; padding: 14px 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 9999;">
         <div style="max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
@@ -29,7 +41,7 @@ require_once __DIR__ . '/header.php';
                 <span>ADMIN PREVIEW: This profile is currently <strong>Pending Admin Approval (Inactive)</strong>. Review all candidate details below.</span>
             </div>
             <div style="display: flex; gap: 10px;">
-                <a href="admin/profiles.php?action=toggle_status&id=<?php echo $profile['id']; ?>" class="btn-sm" style="background: #10b981; color: #ffffff; text-decoration: none; padding: 7px 16px; border-radius: 6px; font-weight: 700; font-size: 13.5px;" onclick="return confirm('Approve and publish this candidate profile live on website?');"><i class="fa fa-check"></i> Approve & Publish Profile</a>
+                <a href="admin/profiles.php?action=approve&id=<?php echo $profile['id']; ?>&redirect=profile" class="btn-sm" style="background: #10b981; color: #ffffff; text-decoration: none; padding: 7px 16px; border-radius: 6px; font-weight: 700; font-size: 13.5px;" onclick="return confirm('Approve and publish this candidate profile live on website?');"><i class="fa fa-check"></i> Approve & Publish Profile</a>
                 <a href="admin/edit-profile.php?id=<?php echo $profile['id']; ?>" class="btn-sm" style="background: #0284c7; color: #ffffff; text-decoration: none; padding: 7px 16px; border-radius: 6px; font-weight: 600; font-size: 13.5px;"><i class="fa fa-edit"></i> Edit Profile</a>
             </div>
         </div>

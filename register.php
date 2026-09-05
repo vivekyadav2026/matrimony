@@ -51,8 +51,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $father_occ = trim($_POST['father_occ'] ?? '');
     $mother_name = trim($_POST['mother_name'] ?? '');
     $mother_occ = trim($_POST['mother_occ'] ?? '');
-    $family_gotra = trim($_POST['family_gotra'] ?? '');
-    $mother_gotra = trim($_POST['mother_gotra'] ?? '');
     $family_type = trim($_POST['family_type'] ?? 'Nuclear');
     $family_values = trim($_POST['family_values'] ?? 'Moderate');
     $brothers = trim($_POST['brothers'] ?? '0');
@@ -479,17 +477,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>Dadke Gotra (Father's Family Gotra)</label>
-                                    <input type="text" name="family_gotra" id="field_family_gotra" placeholder="Family Gotra" class="input-custom-noicon">
-                                </div>
-                                <div class="form-group-custom">
-                                    <label>Nanke Gotra (Mother's Family Gotra)</label>
-                                    <input type="text" name="mother_gotra_step4" id="field_mother_gotra_step4" placeholder="Mother's Gotra" class="input-custom-noicon">
-                                </div>
-                            </div>
-
-                            <div class="form-grid-2">
-                                <div class="form-group-custom">
                                     <label>Siblings</label>
                                     <input type="text" name="siblings" id="field_siblings" placeholder="e.g. 1 Brother, 1 Sister" class="input-custom-noicon">
                                 </div>
@@ -515,7 +502,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div style="display: grid; gap: 18px;">
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>Manglik Match Required</label>
+                                    <label>Manglik Preference</label>
                                     <select name="manglik_required" id="field_manglik_required" class="input-custom-noicon">
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
@@ -573,7 +560,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <div class="form-grid-2">
                                 <div class="form-group-custom">
-                                    <label>Manglik Status <span class="required">*</span></label>
+                                    <label>Is Candidate Manglik? <span class="required">*</span></label>
                                     <select name="manglik" id="field_manglik" class="input-custom-noicon">
                                         <option value="No">No</option>
                                         <option value="Yes">Yes</option>

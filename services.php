@@ -32,11 +32,11 @@ require_once __DIR__ . '/header.php';
                 <div style="width: 50px; height: 50px; background: #fef2f2; color: var(--primary-red); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px;">
                     <i class="fa fa-ring"></i>
                 </div>
-                <h3 style="font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">Manglik Matchmaking</h3>
+                <h3 style="font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 10px;">Verified Matchmaking</h3>
                 <p style="font-size: 13.5px; color: #64748b; line-height: 1.65; margin-bottom: 20px; flex: 1;">
-                    Specialized filtering and matching for Manglik or Non-Manglik candidates ensuring compatible proposals within Sain & Nai Samaj.
+                    Specialized filtering and matching for verified candidates ensuring compatible proposals within Sain & Nai Samaj.
                 </p>
-                <a href="search.php" class="btn-outline" style="color: var(--primary-red) !important; border-color: var(--primary-red); font-size: 13px; text-align: center; border-radius: 20px; font-weight: 700;"><i class="fa fa-search"></i> Search Manglik Profiles</a>
+                <a href="search.php" class="btn-outline" style="color: var(--primary-red) !important; border-color: var(--primary-red); font-size: 13px; text-align: center; border-radius: 20px; font-weight: 700;"><i class="fa fa-search"></i> Search Candidate Profiles</a>
             </div>
 
             <!-- Service 2 -->

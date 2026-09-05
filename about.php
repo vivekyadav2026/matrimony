@@ -43,7 +43,7 @@ require_once __DIR__ . '/header.php';
                         <i class="fa fa-check-circle" style="color: var(--primary-red); font-size: 18px;"></i> Verified Education, Job & Family Details
                     </div>
                     <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: #0f172a; font-weight: 700;">
-                        <i class="fa fa-check-circle" style="color: var(--primary-red); font-size: 18px;"></i> Specialized Support for Manglik Profiles
+                        <i class="fa fa-check-circle" style="color: var(--primary-red); font-size: 18px;"></i> Specialized Matchmaking Support for Candidates
                     </div>
                 </div>
             </div>

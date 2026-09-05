@@ -2,22 +2,38 @@
 $page_title = "Manage Profiles";
 require_once __DIR__ . '/header.php';
 
-// Handle Actions (Delete, Toggle Status, Toggle Premium)
+// Handle Actions (Delete, Approve, Reject, Toggle Status, Toggle Premium)
 $msg = '';
 if (isset($_GET['action']) && isset($_GET['id'])) {
     $action_id = (int)$_GET['id'];
     $act = $_GET['action'];
 
+    // Fetch profile details for message
+    $p_info = $pdo->prepare("SELECT profile_id, name FROM profiles WHERE id = ?");
+    $p_info->execute([$action_id]);
+    $target_p = $p_info->fetch();
+    $target_label = $target_p ? htmlspecialchars($target_p['name']) . " (" . htmlspecialchars($target_p['profile_id']) . ")" : "Profile #$action_id";
+
     if ($act === 'delete') {
         $del = $pdo->prepare("DELETE FROM profiles WHERE id = ?");
         $del->execute([$action_id]);
-        $msg = "Profile deleted successfully.";
+        $msg = "$target_label deleted successfully.";
+    } elseif ($act === 'approve') {
+        $pdo->prepare("UPDATE profiles SET status = 'active' WHERE id = ?")->execute([$action_id]);
+        $msg = "Profile $target_label has been APPROVED and published live on website!";
+        if (isset($_GET['redirect']) && $_GET['redirect'] === 'profile') {
+            header("Location: ../profile.php?id=" . $action_id . "&approved=1");
+            exit;
+        }
+    } elseif ($act === 'reject' || $act === 'deactivate') {
+        $pdo->prepare("UPDATE profiles SET status = 'inactive' WHERE id = ?")->execute([$action_id]);
+        $msg = "Profile $target_label status set to Pending / Inactive.";
     } elseif ($act === 'toggle_status') {
         $pdo->prepare("UPDATE profiles SET status = IF(status='active', 'inactive', 'active') WHERE id = ?")->execute([$action_id]);
-        $msg = "Profile status updated.";
+        $msg = "Status updated for $target_label.";
     } elseif ($act === 'toggle_premium') {
         $pdo->prepare("UPDATE profiles SET is_premium = IF(is_premium=1, 0, 1) WHERE id = ?")->execute([$action_id]);
-        $msg = "Profile premium status updated.";
+        $msg = "Premium status updated for $target_label.";
     }
 }
 
@@ -154,7 +170,7 @@ $page_url_prefix = 'profiles.php?' . ($base_query ? $base_query . '&' : '') . 'p
                             <td>
                                 <div class="action-btn-group">
                                     <?php if ($p['status'] != 'active'): ?>
-                                        <a href="profiles.php?action=toggle_status&id=<?php echo $p['id']; ?>&page=<?php echo $page; ?>" class="btn-sm" style="background: #10b981; color: #fff; text-decoration: none; padding: 4px 8px; border-radius: 4px; font-size: 12px;" title="Approve Profile and publish on site"><i class="fa fa-check"></i> Approve</a>
+                                        <a href="profiles.php?action=approve&id=<?php echo $p['id']; ?>&page=<?php echo $page; ?>" class="btn-sm" style="background: #10b981; color: #fff; text-decoration: none; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600;" title="Approve Profile and publish on site"><i class="fa fa-check"></i> Approve</a>
                                     <?php endif; ?>
                                     <a href="../profile.php?id=<?php echo $p['id']; ?>" target="_blank" class="btn-outline btn-sm" style="color: #0284c7 !important; border-color: #38bdf8;" title="View Candidate Profile Details"><i class="fa fa-eye"></i> View</a>
                                     <a href="edit-profile.php?id=<?php echo $p['id']; ?>" class="btn-outline btn-sm" style="color: #334155 !important; border-color: #cbd5e1;" title="Edit Profile Details"><i class="fa fa-edit"></i> Edit</a>

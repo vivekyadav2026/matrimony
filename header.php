@@ -46,15 +46,16 @@ require_once __DIR__ . '/config.php';
             padding-top: 0px !important;
         }
         .goog-te-gadget { color: transparent !important; font-size: 0 !important; }
-        .goog-te-gadget .goog-te-combo { display: none !important; }
+        .goog-te-gadget .goog-te-combo { opacity: 0 !important; position: absolute !important; pointer-events: none !important; width: 1px !important; height: 1px !important; }
         #goog-gt-tt { display: none !important; }
         .goog-text-highlight { background-color: transparent !important; box-shadow: none !important; }
     </style>
 
-    <div id="google_translate_element" style="display:none;"></div>
+    <div id="google_translate_element" style="position: absolute; left: -9999px; top: -9999px; opacity: 0; pointer-events: none; width: 1px; height: 1px; overflow: hidden;"></div>
     
     <script type="text/javascript">
         var langDict = {
+            // Navigation & Header
             'Home': 'ਮੁੱਖ ਪੰਨਾ',
             'Profiles': 'ਪ੍ਰੋਫਾਈਲਾਂ',
             'Browse Profiles': 'ਪ੍ਰੋਫਾਈਲਾਂ ਵੇਖੋ',
@@ -84,17 +85,30 @@ require_once __DIR__ . '/config.php';
             'Religion': 'ਧਰਮ',
             'Caste': 'ਜਾਤ',
             'Search': 'ਖੋਜੋ',
+            'Filter': 'ਫਿਲਟਰ',
+            'Reset': 'ਰੀਸੈਟ',
             'Female': 'ਔਰਤ',
             'Male': 'ਮਰਦ',
+            'All Genders': 'ਸਾਰੇ ਲਿੰਗ',
+            'All Castes': 'ਸਾਰੀਆਂ ਜਾਤਾਂ',
+            'All Religions': 'ਸਾਰੇ ਧਰਮ',
             'Quick Links': 'ਤੁਰੰਤ ਲਿੰਕ',
             'Our Services': 'ਸਾਡੀਆਂ ਸੇਵਾਵਾਂ',
             'All Rights Reserved.': 'ਸਾਰੇ ਹੱਕ ਰਾਖਵੇਂ ਹਨ।',
 
-            // Step Pills & Steps
+            // Multi-step Registration Form
             'Personal Details': 'ਨਿੱਜੀ ਵੇਰਵੇ',
             'Location & Contact': 'ਸਥਾਨ & ਸੰਪਰਕ',
             'Photos & Info': 'ਫੋਟੋ ਅਤੇ ਹੋਰ ਵੇਰਵੇ',
             'Review': 'ਰਿਵਿਊ',
+            'Next Step': 'ਅਗਲਾ ਕਦਮ',
+            'Back': 'ਪਿੱਛੇ',
+            'Submit Biodata Form': 'ਬਾਇਓਡਾਟਾ ਫਾਰਮ ਜਮ੍ਹਾਂ ਕਰੋ',
+            'Review & Submit Biodata': 'ਰਿਵਿਊ ਅਤੇ ਬਾਇਓਡਾਟਾ ਜਮ੍ਹਾਂ ਕਰੋ',
+            'Review your filled details carefully before final submission.': 'ਅੰਤਿਮ ਸਬਮਿਸ਼ਨ ਤੋਂ ਪਹਿਲਾਂ ਆਪਣੇ ਭਰੇ ਹੋਏ ਵੇਰਵਿਆਂ ਦੀ ਧਿਆਨ ਨਾਲ ਸਮੀਖਿਆ ਕਰੋ।',
+            '100% Privacy Protected:': '100% ਪ੍ਰਾਈਵੇਸੀ ਸੁਰੱਖਿਅਤ:',
+            'Your mobile number and details are kept safe and shared only with verified members.': 'ਤੁਹਾਡਾ ਮੋਬਾਈਲ ਨੰਬਰ ਅਤੇ ਵੇਰਵੇ ਸੁਰੱਖਿਅਤ ਰੱਖੇ ਜਾਂਦੇ ਹਨ।',
+            'Your progress is saved as you move between steps.': 'ਜਿਵੇਂ ਹੀ ਤੁਸੀਂ ਕਦਮਾਂ ਦੇ ਵਿਚਕਾਰ ਜਾਂਦੇ ਹੋ ਤੁਹਾਡੀ ਪ੍ਰਗਤੀ ਬਚਾਈ ਜਾਂਦੀ ਹੈ।',
             'Name & Personal Details': 'ਨਾਮ & ਨਿੱਜੀ ਵੇਰਵੇ',
             'Enter candidate details below. Fields marked with (*) are mandatory.': 'ਹੇਠਾਂ ਉਮੀਦਵਾਰ ਦੇ ਵੇਰਵੇ ਭਰੋ। (*) ਵਾਲੇ ਖੇਤਰ ਲਾਜ਼ਮੀ ਹਨ।',
             'Full Name': 'ਨਾਮ',
@@ -124,8 +138,6 @@ require_once __DIR__ . '/config.php';
             'e.g. Gill, Dhaliwal': 'ਉਦਾਹਰਣ: ਗਿੱਲ, ਧਾਲੀਵਾਲ',
             'Nanke Gotra (Mother\'s Family Gotra)': 'ਨਾਨਕੇ ਗੋਤ (Nanke Gotra)',
             'e.g. Sandhu, Dhillon': 'ਉਦਾਹਰਣ: ਸੰਧੂ, ਢਿੱਲੋਂ',
-
-            // Step 2
             'Location & Contact Info': 'ਸਥਾਨ & ਸੰਪਰਕ',
             'Enter valid contact and location details.': 'ਆਪਣੀ ਸਹੀ ਸੰਪਰਕ ਜਾਣਕਾਰੀ ਦਰਜ ਕਰੋ।',
             'Mobile Number': 'ਮੋਬਾਇਲ ਨੰਬਰ',
@@ -138,8 +150,6 @@ require_once __DIR__ . '/config.php';
             'State': 'ਸਟੇਟ',
             'Full Address': 'ਪੂਰਾ ਪਤਾ',
             'House No., Street, Village/Locality...': 'ਮਕਾਨ ਨੰਬਰ, ਗਲੀ, ਪਿੰਡ/ਕਲੋਨੀ...',
-
-            // Step 3
             'Education & Profession': 'ਪੜ੍ਹਾਈ & ਕੰਮ ਕਾਰ',
             'Enter candidate\'s educational qualifications and career details.': 'ਉਮੀਦਵਾਰ ਦੀ ਪੜ੍ਹਾਈ ਅਤੇ ਨੌਕਰੀ/ਬਿਜ਼ਨਸ ਦੀ ਜਾਣਕਾਰੀ ਦਿਓ।',
             'Education / Qualification': 'ਪੜ੍ਹਾਈ/ਯੋਗਤਾ',
@@ -160,8 +170,6 @@ require_once __DIR__ . '/config.php';
             'Company / Department Name': 'ਕੰਪਨੀ / ਵਿਭਾਗ ਦਾ ਨਾਮ',
             'Annual Income': 'ਸਾਲਾਨਾ ਆਮਦਨ',
             'e.g. 5-7 Lakh Per Annum': 'ਉਦਾਹਰਣ: 5-7 ਲੱਖ ਸਾਲਾਨਾ',
-
-            // Step 4
             'Family Details': 'ਪਰਿਵਾਰਕ ਵੇਰਵੇ',
             'Provide details about parents, siblings, and family background.': 'ਮਾਤਾ-ਪਿਤਾ, ਭੈਣ-ਭਰਾ ਅਤੇ ਪਰਿਵਾਰਕ ਪਿਛੋਕੜ ਬਾਰੇ ਦੱਸੋ।',
             'Father\'s Name': 'ਪਿਤਾ ਦਾ ਨਾਮ',
@@ -179,11 +187,10 @@ require_once __DIR__ . '/config.php';
             'Family Type': 'ਪਰਿਵਾਰ ਦੀ ਕਿਸਮ',
             'Nuclear Family': 'ਇਕੱਲਾ ਪਰਿਵਾਰ (Nuclear)',
             'Joint Family': 'ਸਾਂਝਾ ਪਰਿਵਾਰ (Joint)',
-
-            // Step 5
             'Partner Preferences': 'ਜੀਵਨ ਸਾਥੀ ਦੀ ਪਸੰਦ',
             'Describe what you are looking for in your life partner.': 'ਤੁਸੀਂ ਆਪਣੇ ਹੋਣ ਵਾਲੇ ਜੀਵਨ ਸਾਥੀ ਵਿੱਚ ਕੀ ਪਸੰਦ ਕਰਦੇ ਹੋ।',
-            'Manglik Match Required': 'ਮੰਗਲੀਕ ਰਿਸ਼ਤਾ ਚਾਹੀਦਾ',
+            'Manglik Preference': 'ਮੰਗਲੀਕ ਰਿਸ਼ਤਾ ਚਾਹੀਦਾ?',
+            'Is Candidate Manglik?': 'ਕੀ ਉਮੀਦਵਾਰ ਮੰਗਲੀਕ ਹੈ?',
             'Yes': 'ਹਾਂ',
             'No': 'ਨਹੀਂ',
             'Preferred Age': 'ਪਸੰਦੀਦਾ ਉਮਰ',
@@ -195,8 +202,6 @@ require_once __DIR__ . '/config.php';
             'e.g. Graduate / Government Job': 'ਉਦਾਹਰਣ: ਗ੍ਰੈਜੂਏਟ / ਸਰਕਾਰੀ ਨੌਕਰੀ',
             'Other Preferences / Notes': 'ਹੋਰ ਇੱਛਾਵਾਂ',
             'Any specific requirements or preferences...': 'ਹੋਰ ਕੋਈ ਖਾਸ ਇੱਛਾ ਜਾਂ ਮੰਗ...',
-
-            // Step 6
             'Photo & Additional Info': 'ਫੋਟੋ ਅਤੇ ਹੋਰ ਵੇਰਵੇ',
             'Upload candidate photo and fill remaining details.': 'ਉਮੀਦਵਾਰ ਦੀ ਫੋਟੋ ਅਪਲੋਡ ਕਰੋ ਅਤੇ ਹੋਰ ਵੇਰਵੇ ਭਰੋ।',
             'Candidate Profile Photo (Optional)': 'ਉਮੀਦਵਾਰ ਦੀ ਪ੍ਰੋਫਾਈਲ ਫੋਟੋ (Optional)',
@@ -206,7 +211,66 @@ require_once __DIR__ . '/config.php';
             'Rashi': 'ਰਾਸ਼ੀ',
             'e.g. Leo / Aries': 'ਉਦਾਹਰਣ: ਸਿੰਘ / ਮੇਖ',
             'Notes / Remarks': 'ਨੋਟ',
-            'Write any special note or instructions...': 'ਕੋਈ ਖਾਸ ਨੋਟ ਜਾਂ ਹਦਾਇਤ ਲਿਖੋ...'
+            'Write any special note or instructions...': 'ਕੋਈ ਖਾਸ ਨੋਟ ਜਾਂ ਹਦਾਇਤ ਲਿਖੋ...',
+            
+            // Homepage Translations
+            'Our Matrimonial Services': 'ਸਾਡੀਆਂ ਮੈਟਰੀਮੋਨੀਅਲ ਸੇਵਾਵਾਂ',
+            'Dedicated Matchmaking & Community Support': 'ਸਮਰਪਿਤ ਮੈਚਮੇਕਿੰਗ ਅਤੇ ਕਮਿਊਨਿਟੀ ਸਹਾਇਤਾ',
+            'Verified Profiles': 'ਪ੍ਰਮਾਣਿਤ ਪ੍ਰੋਫਾਈਲਾਂ',
+            '100% manually verified candidate profiles for Sain & Nai Samaj.': 'ਸੈਣ ਅਤੇ ਨਾਈ ਸਮਾਜ ਲਈ 100% ਖੁਦ ਪ੍ਰਮਾਣਿਤ ਉਮੀਦਵਾਰ ਪ੍ਰੋਫਾਈਲਾਂ।',
+            'Contact Privacy': 'ਸੰਪਰਕ ਪ੍ਰਾਈਵੇਸੀ',
+            'Contact details remain strictly protected from public view.': 'ਸੰਪਰਕ ਵੇਰਵੇ ਜਨਤਕ ਦ੍ਰਿਸ਼ ਤੋਂ ਸਖਤੀ ਨਾਲ ਸੁਰੱਖਿਅਤ ਰਹਿੰਦੇ ਹਨ।',
+            'Assisted Matchmaking': 'ਸਹਾਇਤਾ ਪ੍ਰਾਪਤ ਮੈਚਮੇਕਿੰਗ',
+            'Dedicated support desk to facilitate initial proposal talks.': 'ਸ਼ੁਰੂਆਤੀ ਪ੍ਰਸਤਾਵ ਗੱਲਬਾਤ ਦੀ ਸਹੂਲਤ ਲਈ ਸਮਰਪਿਤ ਸਹਾਇਤਾ ਡੈਸਕ।',
+            'Biodata Support': 'ਬਾਇਓਡਾਟਾ ਸਹਾਇਤਾ',
+            'Easy online biodata submission with photo upload support.': 'ਫੋਟੋ ਅਪਲੋਡ ਸਹਾਇਤਾ ਦੇ ਨਾਲ ਆਸਾਨ ਔਨਲਾਈਨ ਬਾਇਓਡਾਟਾ ਸਬਮਿਸ਼ਨ।',
+            'Submit Biodata and Upload Your Profile': 'ਬਾਇਓਡਾਟਾ ਜਮ੍ਹਾਂ ਕਰੋ ਅਤੇ ਆਪਣੀ ਪ੍ਰੋਫਾਈਲ ਅਪਲੋਡ ਕਰੋ',
+            'Join thousands of verified Sain & Nai community families. Your story is waiting to happen!': 'ਹਜ਼ਾਰਾਂ ਪ੍ਰਮਾਣਿਤ ਸੈਣ ਅਤੇ ਨਾਈ ਕਮਿਊਨਿਟੀ ਪਰਿਵਾਰਾਂ ਵਿੱਚ ਸ਼ਾਮਲ ਹੋਵੋ। ਤੁਹਾਡੀ ਕਹਾਣੀ ਹੋਣ ਦੀ ਉਡੀਕ ਕਰ ਰਹੀ ਹੈ!',
+            'Submit Biodata Candidate Profile': 'ਬਾਇਓਡਾਟਾ ਉਮੀਦਵਾਰ ਪ੍ਰੋਫਾਈਲ ਜਮ੍ਹਾਂ ਕਰੋ',
+            'Uniting Families with': 'ਪਰਿਵਾਰਾਂ ਨੂੰ ਜੋੜਦੇ ਹੋਏ',
+            'Tradition': 'ਪਰੰਪਰਾ',
+            '&': 'ਅਤੇ',
+            'Trust.': 'ਵਿਸ਼ਵਾਸ।',
+            'India\'s Most Trusted': 'ਭਾਰਤ ਦਾ ਸਭ ਤੋਂ ਭਰੋਸੇਮੰਦ',
+            'Since 2010': '2010 ਤੋਂ',
+            '100% Verified': '100% ਪ੍ਰਮਾਣਿਤ',
+            'Every profile is manually checked.': 'ਹਰ ਪ੍ਰੋਫਾਈਲ ਦੀ ਖੁਦ ਜਾਂਚ ਕੀਤੀ ਜਾਂਦੀ ਹੈ।',
+            'Traditional Values': 'ਪਰੰਪਰਾਗਤ ਕਦਰਾਂ-ਕੀਮਤਾਂ',
+            'Matching with cultural alignment.': 'ਸੱਭਿਆਚਾਰਕ ਤਾਲਮੇਲ ਨਾਲ ਮੇਲ।',
+            'REAL HAPPY COUPLES WHO MET ON SAINMATRIMONY.IN': 'ਅਸਲ ਖੁਸ਼ਹਾਲ ਜੋੜੇ ਜੋ SAINMATRIMONY.IN \'ਤੇ ਮਿਲੇ ਹਨ',
+            'Married on': 'ਵਿਆਹ ਹੋਇਆ',
+            'View All Success Stories': 'ਸਾਰੀਆਂ ਸਫਲਤਾ ਦੀਆਂ ਕਹਾਣੀਆਂ ਵੇਖੋ',
+            'How Sainmatrimony Works': 'ਸੈਣ ਮੈਟਰੀਮੋਨੀ ਕਿਵੇਂ ਕੰਮ ਕਰਦੀ ਹੈ',
+            '4 SIMPLE STEPS TO FIND YOUR PERFECT LIFE PARTNER': 'ਤੁਹਾਡਾ ਸੰਪੂਰਨ ਜੀਵਨ ਸਾਥੀ ਲੱਭਣ ਲਈ 4 ਸਧਾਰਨ ਕਦਮ',
+            'Create Free Profile': 'ਮੁਫਤ ਪ੍ਰੋਫਾਈਲ ਬਣਾਓ',
+            'Register in 2 minutes with basic candidate details and upload profile photo.': 'ਮੁਢਲੇ ਉਮੀਦਵਾਰ ਵੇਰਵਿਆਂ ਦੇ ਨਾਲ 2 ਮਿੰਟਾਂ ਵਿੱਚ ਰਜਿਸਟਰ ਕਰੋ ਅਤੇ ਪ੍ਰੋਫਾਈਲ ਫੋਟੋ ਅਪਲੋਡ ਕਰੋ।',
+            'Filter & Search': 'ਫਿਲਟਰ ਅਤੇ ਖੋਜ',
+            'Browse verified Sain & Nai profiles by age, education, occupation and city.': 'ਉਮਰ, ਸਿੱਖਿਆ, ਕਿੱਤੇ ਅਤੇ ਸ਼ਹਿਰ ਦੁਆਰਾ ਪ੍ਰਮਾਣਿਤ ਸੈਣ ਅਤੇ ਨਾਈ ਪ੍ਰੋਫਾਈਲਾਂ ਬ੍ਰਾਊਜ਼ ਕਰੋ।',
+            'Express Interest': 'ਦਿਲਚਸਪੀ ਦਿਖਾਓ',
+            'Send direct express interest messages to profiles you find suitable.': 'ਉਹਨਾਂ ਪ੍ਰੋਫਾਈਲਾਂ ਨੂੰ ਸਿੱਧੇ ਐਕਸਪ੍ਰੈਸ ਦਿਲਚਸਪੀ ਸੁਨੇਹੇ ਭੇਜੋ ਜੋ ਤੁਹਾਨੂੰ ਢੁਕਵੇਂ ਲੱਗਦੇ ਹਨ।',
+            'Connect Families': 'ਪਰਿਵਾਰਾਂ ਨੂੰ ਜੋੜੋ',
+            'Our admin desk connects verified families for marriage talks.': 'ਸਾਡਾ ਐਡਮਿਨ ਡੈਸਕ ਵਿਆਹ ਦੀ ਗੱਲਬਾਤ ਲਈ ਪ੍ਰਮਾਣਿਤ ਪਰਿਵਾਰਾਂ ਨੂੰ ਜੋੜਦਾ ਹੈ।',
+            'Assisted Matchmaking for': 'ਸਤਿਕਾਰਤ ਪਰਿਵਾਰਾਂ ਲਈ ਸਹਾਇਤਾ ਪ੍ਰਾਪਤ',
+            'Respected Families': 'ਮੈਚਮੇਕਿੰਗ',
+            'Dedicated Matchmaking Service': 'ਸਮਰਪਿਤ ਮੈਚਮੇਕਿੰਗ ਸੇਵਾ',
+            'Don\'t have time to search? Let our expert relationship managers do the work for you. We handpick profiles matching your exact criteria, verify backgrounds, and arrange family meetings with 100% confidentiality.': 'ਖੋਜਣ ਦਾ ਸਮਾਂ ਨਹੀਂ ਹੈ? ਸਾਡੇ ਮਾਹਰ ਰਿਸ਼ਤਾ ਪ੍ਰਬੰਧਕਾਂ ਨੂੰ ਤੁਹਾਡੇ ਲਈ ਕੰਮ ਕਰਨ ਦਿਓ। ਅਸੀਂ ਤੁਹਾਡੇ ਸਹੀ ਮਾਪਦੰਡਾਂ ਨਾਲ ਮੇਲ ਖਾਂਦੇ ਪ੍ਰੋਫਾਈਲਾਂ ਨੂੰ ਚੁਣਦੇ ਹਾਂ, ਪਿਛੋਕੜ ਦੀ ਪੁਸ਼ਟੀ ਕਰਦੇ ਹਾਂ, ਅਤੇ 100% ਗੁਪਤਤਾ ਨਾਲ ਪਰਿਵਾਰਕ ਮੀਟਿੰਗਾਂ ਦਾ ਪ੍ਰਬੰਧ ਕਰਦੇ ਹਾਂ।',
+            'Dedicated Personal Relationship Manager': 'ਸਮਰਪਿਤ ਨਿੱਜੀ ਰਿਸ਼ਤਾ ਪ੍ਰਬੰਧਕ',
+            '100% Confidentiality & Background Privacy': '100% ਗੁਪਤਤਾ ਅਤੇ ਪਿਛੋਕੜ ਪ੍ਰਾਈਵੇਸੀ',
+            'Handpicked Verified Candidate Profiles': 'ਹੱਥੀਂ ਚੁਣੇ ਗਏ ਪ੍ਰਮਾਣਿਤ ਉਮੀਦਵਾਰ ਪ੍ਰੋਫਾਈਲ',
+            'Request Callback': 'ਕਾਲਬੈਕ ਦੀ ਬੇਨਤੀ ਕਰੋ',
+            'Frequently Asked Questions': 'ਅਕਸਰ ਪੁੱਛੇ ਜਾਂਦੇ ਸਵਾਲ',
+            'QUICK ANSWERS ABOUT SAINMATRIMONY SERVICES': 'ਸੈਣ ਮੈਟਰੀਮੋਨੀ ਸੇਵਾਵਾਂ ਬਾਰੇ ਤੁਰੰਤ ਜਵਾਬ',
+            'How do I create a candidate profile?': 'ਮੈਂ ਉਮੀਦਵਾਰ ਪ੍ਰੋਫਾਈਲ ਕਿਵੇਂ ਬਣਾਵਾਂ?',
+            'Are candidate contact numbers safe & private?': 'ਕੀ ਉਮੀਦਵਾਰ ਦੇ ਸੰਪਰਕ ਨੰਬਰ ਸੁਰੱਖਿਅਤ ਅਤੇ ਨਿੱਜੀ ਹਨ?',
+            'Is profile registration completely free?': 'ਕੀ ਪ੍ਰੋਫਾਈਲ ਰਜਿਸਟ੍ਰੇਸ਼ਨ ਪੂਰੀ ਤਰ੍ਹਾਂ ਮੁਫਤ ਹੈ?',
+            'How do I express interest in a candidate?': 'ਮੈਂ ਕਿਸੇ ਉਮੀਦਵਾਰ ਵਿੱਚ ਦਿਲਚਸਪੀ ਕਿਵੇਂ ਪ੍ਰਗਟ ਕਰਾਂ?',
+            'Mobile Optimized': 'ਮੋਬਾਈਲ ਲਈ ਅਨੁਕੂਲਿਤ',
+            'Find Your Perfect Match': 'ਆਪਣਾ ਸੰਪੂਰਨ ਮੈਚ ਲੱਭੋ',
+            'On The Go!': 'ਚਲਦੇ ਫਿਰਦੇ!',
+            'Access verified candidate profiles directly from your smartphone\'s browser anytime, anywhere. Our website is 100% mobile-friendly, making your search fast and seamless.': 'ਆਪਣੇ ਸਮਾਰਟਫੋਨ ਦੇ ਬ੍ਰਾਊਜ਼ਰ ਤੋਂ ਕਿਸੇ ਵੀ ਸਮੇਂ, ਕਿਤੇ ਵੀ ਪ੍ਰਮਾਣਿਤ ਉਮੀਦਵਾਰ ਪ੍ਰੋਫਾਈਲਾਂ ਤੱਕ ਪਹੁੰਚ ਕਰੋ। ਸਾਡੀ ਵੈੱਬਸਾਈਟ 100% ਮੋਬਾਈਲ-ਅਨੁਕੂਲ ਹੈ, ਜੋ ਤੁਹਾਡੀ ਖੋਜ ਨੂੰ ਤੇਜ਼ ਅਤੇ ਸਹਿਜ ਬਣਾਉਂਦੀ ਹੈ।',
+            'No App Download Required': 'ਕਿਸੇ ਐਪ ਡਾਊਨਲੋਡ ਦੀ ਲੋੜ ਨਹੀਂ',
+            'Fast & Data-Friendly Mobile Browsing': 'ਤੇਜ਼ ਅਤੇ ਡੇਟਾ-ਅਨੁਕੂਲ ਮੋਬਾਈਲ ਬ੍ਰਾਊਜ਼ਿੰਗ',
+            'Secure & Private Contact Details': 'ਸੁਰੱਖਿਅਤ ਅਤੇ ਨਿੱਜੀ ਸੰਪਰਕ ਵੇਰਵੇ'
         };
 
         function clearAllTranslateCookies() {
@@ -229,6 +293,22 @@ require_once __DIR__ . '/config.php';
                 includedLanguages: 'en,pa',
                 autoDisplay: false
             }, 'google_translate_element');
+
+            var currentLang = localStorage.getItem('matrimony_lang') || 'en';
+            if (currentLang === 'pa') {
+                var attempts = 0;
+                var gTimer = setInterval(function() {
+                    attempts++;
+                    var select = document.querySelector('.goog-te-combo');
+                    if (select) {
+                        select.value = 'pa';
+                        select.dispatchEvent(new Event('change'));
+                        clearInterval(gTimer);
+                    } else if (attempts > 25) {
+                        clearInterval(gTimer);
+                    }
+                }, 100);
+            }
         }
 
         function setSiteLanguage(langCode) {
@@ -253,18 +333,32 @@ require_once __DIR__ . '/config.php';
                 return;
             }
 
-            // If Punjabi (pa)
-            var domain = window.location.hostname;
-            document.cookie = "googtrans=/en/pa; path=/;";
-            document.cookie = "googtrans=/en/pa; path=/; domain=" + domain + ";";
+            if (langCode === 'pa') {
+                var domain = window.location.hostname;
+                var paths = ['/', '/matrimony', '/matrimony/'];
+                var domains = ['', domain, '.' + domain, 'localhost', '.localhost'];
 
-            var select = document.querySelector('.goog-te-combo');
-            if (select) {
-                select.value = 'pa';
-                select.dispatchEvent(new Event('change'));
+                paths.forEach(function(p) {
+                    domains.forEach(function(d) {
+                        var dStr = d ? '; domain=' + d : '';
+                        document.cookie = "googtrans=/en/pa; expires=Thu, 01 Jan 2038 00:00:00 UTC; path=" + p + dStr + ";";
+                    });
+                });
+
+                localStorage.setItem('switched_to_pa', 'true');
+
+                var select = document.querySelector('.goog-te-combo');
+                if (select) {
+                    select.value = 'pa';
+                    select.dispatchEvent(new Event('change'));
+                }
+
+                applyDOMTranslation('pa');
+
+                setTimeout(function() {
+                    location.reload();
+                }, 300);
             }
-
-            applyDOMTranslation('pa');
         }
 
         function applyDOMTranslation(lang) {
@@ -322,6 +416,12 @@ require_once __DIR__ . '/config.php';
                 }
             } else if (currentLang === 'pa') {
                 applyDOMTranslation('pa');
+                // Run additional passes at intervals to catch late/dynamically rendered DOM elements
+                [300, 800, 1500, 3000].forEach(function(delay) {
+                    setTimeout(function() {
+                        applyDOMTranslation('pa');
+                    }, delay);
+                });
             }
 
             // Auto-remove Google Translate top banner if injected on mobile/desktop
@@ -343,6 +443,7 @@ require_once __DIR__ . '/config.php';
                 }
             }, 150);
         });
+
     </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
