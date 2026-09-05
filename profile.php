@@ -16,6 +16,7 @@ require_once __DIR__ . '/header.php';
 
 // Handle Contact Interest Form Submission
 $success_msg = '';
+$wa_url = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_interest'])) {
     $sender_name = trim($_POST['name'] ?? '');
     $sender_email = trim($_POST['email'] ?? '');
@@ -31,7 +32,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_interest'])) {
             'N/A', 
             "Express Interest for Candidate: " . $profile['name'] . " (" . $profile['profile_id'] . "). Note: " . $message
         ]);
-        $success_msg = "Your express interest request for " . htmlspecialchars($profile['name']) . " has been sent! Our desk team will contact you shortly.";
+
+        $wa_text = "Hello Sain Matrimony Desk,\n\n"
+            . "👉 *EXPRESS INTEREST REQUEST*\n"
+            . "-----------------------------------\n"
+            . "*Candidate:* " . $profile['name'] . " (" . $profile['profile_id'] . ")\n"
+            . "*Sender Name:* " . $sender_name . "\n"
+            . "*Sender Mobile:* " . $sender_phone . "\n"
+            . "*Sender Email:* " . ($sender_email ?: 'N/A') . "\n"
+            . "*Note:* " . ($message ?: 'Interested in connecting') . "\n\n"
+            . "Please arrange contact details and connect us.";
+
+        $wa_url = build_whatsapp_link($wa_text);
+        $success_msg = "Your express interest request for <strong>" . htmlspecialchars($profile['name']) . "</strong> has been saved! Opening WhatsApp to notify Sain Matrimony Desk...";
     }
 }
 
@@ -78,8 +91,23 @@ if (!file_exists(__DIR__ . '/' . $photo_path) && file_exists(__DIR__ . '/uploads
         </a>
 
         <?php if ($success_msg): ?>
-            <div style="background-color: #dcfce7; color: #166534; padding: 16px 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #bbf7d0; display: flex; align-items: center; gap: 12px; font-size: 14.5px;">
-                <i class="fa fa-check-circle" style="font-size: 24px; color: #22c55e;"></i> <?php echo htmlspecialchars($success_msg); ?>
+            <div style="background-color: #dcfce7; color: #166534; padding: 18px 20px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #bbf7d0; font-size: 14.5px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: <?php echo $wa_url ? '12px' : '0'; ?>;">
+                    <i class="fa fa-check-circle" style="font-size: 24px; color: #22c55e;"></i>
+                    <span><?php echo $success_msg; ?></span>
+                </div>
+                <?php if ($wa_url): ?>
+                    <div style="margin-top: 10px;">
+                        <a href="<?php echo $wa_url; ?>" target="_blank" class="btn-profile-wa" style="display: inline-flex; width: auto; padding: 10px 20px; font-size: 14px; text-decoration: none; background: #25D366; color: #fff; border-radius: 8px; font-weight: 700;">
+                            <i class="fab fa-whatsapp" style="font-size: 18px;"></i> Open WhatsApp Now to Notify Admin
+                        </a>
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            window.open(<?php echo json_encode($wa_url); ?>, '_blank');
+                        }, 500);
+                    </script>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
 
@@ -136,19 +164,29 @@ if (!file_exists(__DIR__ . '/' . $photo_path) && file_exists(__DIR__ . '/uploads
 
             <!-- Action Buttons Grid -->
             <div class="profile-actions-bar">
-                <button type="button" class="btn-profile-interest" onclick="toggleInterestModal()">
-                    <i class="fa fa-paper-plane"></i> Send Interest
-                </button>
-
-                <button type="button" class="btn-profile-connect" onclick="toggleInterestModal()">
-                    <i class="fa fa-address-book"></i> Request Contact
-                </button>
-
                 <?php 
-                    $wa_text = rawurlencode("Hello Sain Matrimony Desk,\n\nI am interested in Candidate Profile:\nName: " . $profile['name'] . "\nProfile ID: " . $profile['profile_id'] . "\nAge: " . $profile['age'] . " Yrs\nCaste: " . $profile['caste'] . "\nCity: " . $profile['city'] . "\n\nPlease share details and connect us.");
+                    $wa_direct_msg = "Hello Sain Matrimony Desk / ਸਤਿ ਸ਼੍ਰੀ ਅਕਾਲ,\n\n"
+                        . "👉 *EXPRESS INTEREST / ਰਿਸ਼ਤੇ ਲਈ ਸੁਨੇਹਾ*\n"
+                        . "-----------------------------------\n"
+                        . "*Candidate / ਉਮੀਦਵਾਰ:* " . $profile['name'] . " (" . $profile['profile_id'] . ")\n"
+                        . "*Age / ਉਮਰ:* " . $profile['age'] . " Yrs | *Caste / ਜਾਤ:* " . $profile['caste'] . "\n"
+                        . "*Location / ਸ਼ਹਿਰ:* " . $profile['city'] . ", " . $profile['state'] . "\n"
+                        . "*Education / ਪੜ੍ਹਾਈ:* " . ($profile['education'] ?: 'Graduate') . "\n"
+                        . "*Occupation / ਕੰਮ:* " . ($profile['occupation'] ?: 'Professional') . "\n\n"
+                        . "Please share contact details and connect us with this candidate's family.\n"
+                        . "ਕਿਰਪਾ ਕਰਕੇ ਇਸ ਉਮੀਦਵਾਰ ਦੇ ਪਰਿਵਾਰ ਨਾਲ ਸਾਡਾ ਸੰਪਰਕ ਕਰਵਾਓ।";
+                    $wa_direct_url = build_whatsapp_link($wa_direct_msg);
                 ?>
-                <a href="https://wa.me/918528600100?text=<?php echo $wa_text; ?>" target="_blank" class="btn-profile-wa">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
+                <a href="<?php echo $wa_direct_url; ?>" target="_blank" class="btn-profile-interest">
+                    <i class="fa fa-paper-plane"></i> Send Interest
+                </a>
+
+                <a href="<?php echo $wa_direct_url; ?>" target="_blank" class="btn-profile-connect">
+                    <i class="fa fa-address-book"></i> Request Contact
+                </a>
+
+                <a href="<?php echo $wa_direct_url; ?>" target="_blank" class="btn-profile-wa">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                 </a>
             </div>
 
@@ -445,58 +483,7 @@ if (!file_exists(__DIR__ . '/' . $photo_path) && file_exists(__DIR__ . '/uploads
     </div>
 </div>
 
-<!-- Send Interest Modal -->
-<div id="interestModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); z-index: 9999; align-items: center; justify-content: center; padding: 15px;">
-    <div style="background: #ffffff; border-radius: 16px; max-width: 500px; width: 100%; padding: 30px; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.25); animation: fadeInStep 0.3s ease;">
-        <button type="button" onclick="toggleInterestModal()" style="position: absolute; right: 18px; top: 18px; background: none; border: none; font-size: 20px; color: #94a3b8; cursor: pointer;">
-            <i class="fa fa-times"></i>
-        </button>
-
-        <div style="text-align: center; margin-bottom: 20px;">
-            <div style="width: 50px; height: 50px; background: #fef2f2; color: var(--primary-red); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; margin: 0 auto 10px;">
-                <i class="fa fa-paper-plane"></i>
-            </div>
-            <h3 style="font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 4px;">Express Interest</h3>
-            <p style="font-size: 13px; color: #64748b;">Send direct interest request for candidate <strong><?php echo htmlspecialchars($profile['name']); ?></strong> (ID: <?php echo htmlspecialchars($profile['profile_id']); ?>)</p>
-        </div>
-
-        <form action="profile.php?id=<?php echo $profile['id']; ?>" method="POST" style="display: grid; gap: 14px;">
-            <div class="form-group-custom">
-                <label>Your Full Name <span class="required">*</span></label>
-                <input type="text" name="name" required placeholder="Enter your full name" class="input-custom-noicon">
-            </div>
-
-            <div class="form-grid-2">
-                <div class="form-group-custom">
-                    <label>Mobile Number <span class="required">*</span></label>
-                    <input type="tel" name="phone" required placeholder="Your 10-digit mobile" class="input-custom-noicon">
-                </div>
-                <div class="form-group-custom">
-                    <label>Email Address</label>
-                    <input type="email" name="email" placeholder="email@example.com" class="input-custom-noicon">
-                </div>
-            </div>
-
-            <div class="form-group-custom">
-                <label>Message / Note for Candidate Family</label>
-                <textarea name="message" rows="3" placeholder="Write a short message introducing yourself..." class="textarea-custom"></textarea>
-            </div>
-
-            <button type="submit" name="submit_interest" class="btn-profile-interest" style="width: 100%; justify-content: center; padding: 12px;">
-                <i class="fa fa-paper-plane"></i> Submit Express Interest Request
-            </button>
-        </form>
-    </div>
-</div>
-
 <script>
-function toggleInterestModal() {
-    const modal = document.getElementById('interestModal');
-    if (modal) {
-        modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
-    }
-}
-
 function shareProfile() {
     if (navigator.share) {
         navigator.share({

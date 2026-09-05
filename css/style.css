@@ -27,6 +27,33 @@ body {
     background-color: #ffffff;
     color: var(--text-dark);
     line-height: 1.5;
+    top: 0px !important;
+    position: static !important;
+}
+
+/* Hide Google Translate top banner, toolbar & popups completely */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+iframe[id*=":1.container"],
+iframe[id*=":2.container"],
+iframe[id*=":0.container"],
+iframe[class*="goog-te-banner"],
+.VIpgJd-Z44fyf-l4e28-viewer,
+.VIpgJd-Z44fyf-SHaLGe-VJg90e,
+.VIpgJd-Z44fyf-a93Wvd,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
 }
 
 a {

@@ -3,6 +3,7 @@ $page_title = "Contact Us & Assistance Helpline";
 require_once __DIR__ . '/header.php';
 
 $success_msg = '';
+$wa_url = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contact'])) {
     $name = trim($_POST['name'] ?? '');
     $email = trim($_POST['email'] ?? '');
@@ -14,7 +15,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contact'])) {
         $ins = $pdo->prepare("INSERT INTO inquiries (name, email, phone, gender, message) VALUES (?, ?, ?, ?, ?)");
         $details = "[$subject] " . $message;
         $ins->execute([$name, $email, $phone, 'N/A', $details]);
-        $success_msg = "Thank you! Your message has been sent to Sain Matrimony Desk. We will get back to you within 24 hours.";
+
+        $wa_msg = "Hello Sain Matrimony Desk,\n\n"
+            . "📩 *NEW WEBSITE CONTACT INQUIRY*\n"
+            . "-----------------------------------\n"
+            . "*Name:* " . $name . "\n"
+            . "*Mobile:* " . $phone . "\n"
+            . "*Email:* " . ($email ?: 'N/A') . "\n"
+            . "*Subject:* " . $subject . "\n"
+            . "*Message:* " . $message;
+
+        $wa_url = build_whatsapp_link($wa_msg);
+        $success_msg = "Thank you! Your message has been saved. Opening WhatsApp to send details directly to Sain Matrimony Desk...";
     }
 }
 ?>
@@ -34,8 +46,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contact'])) {
     <div class="container" style="max-width: 960px;">
         
         <?php if ($success_msg): ?>
-            <div style="background-color: #f0fdf4; color: #166534; padding: 18px 20px; border-radius: 12px; margin-bottom: 35px; border: 1px solid #bbf7d0; display: flex; align-items: center; gap: 12px; font-size: 15px;">
-                <i class="fa fa-check-circle" style="font-size: 24px; color: #22c55e;"></i> <?php echo htmlspecialchars($success_msg); ?>
+            <div style="background-color: #f0fdf4; color: #166534; padding: 18px 20px; border-radius: 12px; margin-bottom: 35px; border: 1px solid #bbf7d0; font-size: 15px;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: <?php echo $wa_url ? '12px' : '0'; ?>;">
+                    <i class="fa fa-check-circle" style="font-size: 24px; color: #22c55e;"></i>
+                    <span><?php echo $success_msg; ?></span>
+                </div>
+                <?php if ($wa_url): ?>
+                    <div style="margin-top: 10px;">
+                        <a href="<?php echo $wa_url; ?>" target="_blank" class="btn-profile-wa" style="display: inline-flex; width: auto; padding: 10px 20px; font-size: 14px; text-decoration: none; background: #25D366; color: #fff; border-radius: 8px; font-weight: 700;">
+                            <i class="fab fa-whatsapp" style="font-size: 18px;"></i> Open WhatsApp Now to Notify Admin
+                        </a>
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            window.open(<?php echo json_encode($wa_url); ?>, '_blank');
+                        }, 500);
+                    </script>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
 
@@ -49,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contact'])) {
                 </div>
                 <h4>WhatsApp</h4>
                 <p>Fastest way to reach us</p>
-                <a href="https://wa.me/919876543210?text=Hello%20SainMatrimony%20Team" target="_blank" class="contact-link">+91 98765 43210</a>
+                <a href="<?php echo build_whatsapp_link('Hello SainMatrimony Team'); ?>" target="_blank" class="contact-link">+91 85286 00100</a>
             </div>
 
             <!-- Call Us -->
@@ -59,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contact'])) {
                 </div>
                 <h4>Call Us</h4>
                 <p>Speak with our team</p>
-                <a href="tel:+919876543210" class="contact-link">+91 98765 43210</a>
+                <a href="tel:+918528600100" class="contact-link">+91 85286 00100</a>
             </div>
 
             <!-- Email -->
@@ -97,8 +124,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contact'])) {
                 <i class="fa fa-clock" style="color: var(--primary-red);"></i> Mon - Sun: 9:00 AM - 9:00 PM IST
             </div>
             <div class="contact-btn-group">
-                <a href="tel:+919876543210" class="btn-red" style="padding: 12px 28px; font-size: 15px;"><i class="fa fa-phone-alt"></i> Call +91 98765 43210</a>
-                <a href="https://wa.me/919876543210?text=Hello%20SainMatrimony%20Helpline" target="_blank" class="btn-outline" style="color: #25D366 !important; border-color: #25D366; padding: 12px 28px; font-size: 15px;"><i class="fab fa-whatsapp"></i> WhatsApp Helpline</a>
+                <a href="tel:+918528600100" class="btn-red" style="padding: 12px 28px; font-size: 15px;"><i class="fa fa-phone-alt"></i> Call +91 85286 00100</a>
+                <a href="<?php echo build_whatsapp_link('Hello SainMatrimony Helpline'); ?>" target="_blank" class="btn-outline" style="color: #25D366 !important; border-color: #25D366; padding: 12px 28px; font-size: 15px;"><i class="fab fa-whatsapp"></i> WhatsApp Helpline</a>
             </div>
         </div>
 
@@ -113,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_contact'])) {
             </p>
             <div class="contact-btn-group" style="margin-top: 20px;">
                 <a href="register.php" class="btn-red" style="padding: 12px 28px; font-size: 15px;"><i class="fa fa-paper-plane"></i> Submit Biodata</a>
-                <a href="https://wa.me/919876543210?text=Hello%20I%20want%20to%20submit%20my%20biodata" target="_blank" class="btn-outline" style="color: #475569 !important; border-color: #cbd5e1; padding: 12px 28px; font-size: 15px;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                <a href="<?php echo build_whatsapp_link('Hello I want to submit my biodata'); ?>" target="_blank" class="btn-outline" style="color: #475569 !important; border-color: #cbd5e1; padding: 12px 28px; font-size: 15px;"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
             </div>
         </div>
 

@@ -5,7 +5,7 @@
                 
                 <!-- Brand Info -->
                 <div style="display: flex; flex-direction: column; gap: 15px;">
-                    <div style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: #ffffff;">
+                    <div class="notranslate" translate="no" style="font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: #ffffff;">
                         Sain<span style="color: #f472b6;">matrimony.in</span>
                     </div>
                     <p style="line-height: 1.65; color: #fbcfe8; margin: 0; font-size: 13px;">
@@ -76,8 +76,8 @@
 
         <div style="background: #380412; padding: 18px 0; border-top: 1px solid #701a75; font-size: 12.5px; color: #f472b6;">
             <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px;">
-                <p style="margin: 0;">&copy; <?php echo date('Y'); ?> <strong style="color: #ffffff;">Sainmatrimony.in</strong>. All Rights Reserved. Exclusively for Sain & Nai Community.</p>
-                <p style="margin: 0;">Designed &amp; Developed by <a href="https://foundida.com/" target="_blank" rel="noopener noreferrer" style="color: #ffffff; font-weight: 600; text-decoration: underline;">Foundida</a></p>
+                <p style="margin: 0;">&copy; <?php echo date('Y'); ?> <strong class="notranslate" translate="no" style="color: #ffffff;">Sainmatrimony.in</strong>. All Rights Reserved. Exclusively for Sain & Nai Community.</p>
+                <p style="margin: 0;">Designed &amp; Developed by <a href="https://foundida.com/" target="_blank" rel="noopener noreferrer" class="notranslate" translate="no" style="color: #ffffff; font-weight: 600; text-decoration: underline;">Foundida</a></p>
             </div>
         </div>
 

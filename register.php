@@ -153,15 +153,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                     <?php 
-                        $wa_text = rawurlencode("Hello Sain Matrimony Desk,\n\nI have registered my biodata on your website:\nName: $name\nGender: $gender\nAge: $age\nCaste: $caste\nCity: $city\nMobile: $phone\n\nPlease connect me with suitable profiles.");
+                        $reg_wa_text = "Hello Sain Matrimony Desk,\n\n"
+                            . "📝 *NEW BIODATA REGISTRATION*\n"
+                            . "-----------------------------------\n"
+                            . "*Profile ID:* " . $new_prof_id . "\n"
+                            . "*Name:* " . $name . "\n"
+                            . "*Gender:* " . $gender . "\n"
+                            . "*Age:* " . $age . " Yrs\n"
+                            . "*Caste:* " . $caste . "\n"
+                            . "*City:* " . ($city ?: 'N/A') . "\n"
+                            . "*Mobile:* " . $phone . "\n\n"
+                            . "I have registered my biodata on your website. Please connect me with suitable matching profiles.";
+                        $reg_wa_url = build_whatsapp_link($reg_wa_text);
                     ?>
-                    <a href="https://wa.me/918528600100?text=<?php echo $wa_text; ?>" target="_blank" class="btn-step-next" style="background: #25D366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35); text-decoration: none;">
-                        <i class="fab fa-whatsapp" style="font-size: 18px;"></i> Connect & Share Photos on WhatsApp
+                    <a href="<?php echo $reg_wa_url; ?>" target="_blank" class="btn-step-next" style="background: #25D366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35); text-decoration: none;">
+                        <i class="fab fa-whatsapp" style="font-size: 18px;"></i> Send Registration Details on WhatsApp
                     </a>
                     <a href="search.php" class="btn-step-back" style="text-decoration: none;">
                         <i class="fa fa-search"></i> Browse Matching Profiles
                     </a>
                 </div>
+                <script>
+                    setTimeout(function() {
+                        window.open(<?php echo json_encode($reg_wa_url); ?>, '_blank');
+                    }, 500);
+                </script>
             </div>
 
         <?php else: ?>

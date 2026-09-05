@@ -53,4 +53,12 @@ try {
 // Global Site Constants
 define('SITE_NAME', 'Sainmatrimony.in');
 define('BASE_URL', $base_url);
+define('ADMIN_WHATSAPP', '918528600100'); // Central Admin WhatsApp Number
+
+if (!function_exists('build_whatsapp_link')) {
+    function build_whatsapp_link($message) {
+        $clean_phone = preg_replace('/[^0-9]/', '', ADMIN_WHATSAPP);
+        return "https://wa.me/" . $clean_phone . "?text=" . rawurlencode($message);
+    }
+}
 ?>
